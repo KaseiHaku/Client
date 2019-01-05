@@ -1,0 +1,101 @@
+<html>
+<head>
+    <title>JSON</title>
+    </head>
+<body>
+    JSON 文件的文件类型是 ".json"<br/>
+    JSON 文本的 MIME 类型是 "application/json"
+    <hr/>
+
+
+    <h2>JSON 语法：</h2>
+    <pre>
+    "arrayName":     //如果这行不存在，则说明这是一个匿名数组！
+    [
+    	256.127,   //JSON数据是 键/值 对："键名":"值"
+    	"string",
+    	false,
+    	null,
+    	[],
+    	{}
+    ]
+
+    "objectName":     //如果这行不存在，则说明这是一个匿名对象！
+    {
+    	"dataName1":256.127,   //值为：数字
+    	"dataName2":"string", //值为：字符串
+    	"dataName3":false,     //值为：Bool型
+    	"dataName4":null,     //值为：null
+    	"arrayName1":[],       //值为：数组
+    	"objectName1":{}      //值为：对象
+    }
+    </pre>
+    <hr/>
+
+
+    <h2>JSON 用法：</h2>
+    <span>var obj = JSON.parse(jsonStr);  将字符串转换为 JavaScript 对象</span><input type="button" value="Execute"  onclick="jsonStr2Obj();"/><br/>
+    <span>var jsonStr = JSON.stringify(obj, replacer, 8); 将 JavaScript 对象转换为字符串</span><input type="button" value="Execute"  onclick="obj2JsonStr();"/>
+    <script>
+    	function jsonStr2Obj(){
+    		var jsonStr = '{"name":"kasei", "age":22, "ismale":true, "hasHouse":null, "has":[3.14, {"kind":"dog", "name":"Niko"}], "wife":{"name":"Haku", "age":22}}';
+    		var obj = JSON.parse(jsonStr);
+    		window.alert("Person:\n"
+    				+ "姓名： " + obj.name + "\n"
+    				+ "年龄： " + obj.age + "\n"
+    				+ "男的？： " + obj.ismale.valueOf() + "\n"
+    				+ "有房？： " + obj.hasHouse + "\n"
+    				+ "有什么？： " + obj.has[0] + "元钱, 一只宠物，品种：" + obj.has[1].kind  +", 名字叫： "+ obj.has[1].name + "\n"
+    				+ "妻子：名字： " + obj.wife.name + ",  年龄： " + obj.wife.age
+    				);		
+    	}
+    	
+    	function obj2JsonStr(){
+    		var obj = {
+    			name:"kasei",
+    			age:22,
+    			ismale:true,
+    			hasHouse:null,
+    			has:[
+    				3.14, 
+    				{
+    					kind:"dog",
+    					name:"Niko"
+    				}
+    			],
+    			wife:{
+    				name:"Haku",
+    				age:22
+    			}
+    			
+    			add:function(a, b){
+    				return a + b;
+    			}
+    		}
+    		var jsonStr = JSON.stringify(obj);
+    		alert(jsonStr);
+    	}	
+    </script>
+    <hr/>
+
+
+    <h2>JSONP 用法：</h2>
+    <input type="button" value="Execute"  onclick="jsonp();"/><br/>
+    <script>
+    	function jsonp(obj){    // 定义一个 jsonp 的回调函数
+    		alert("jsonp 跨域获取的数据：\n"
+    				+ "姓名： " + obj.name + "\n"
+    				+ "年龄： " + obj.age);
+    	}
+    </script>
+    <script src="./jsonp.js"></script> 
+    <!-- 该标签的作用：把 ./jsonp.js 文件中的内容插入到此处，即如下形式 
+    <script>
+    	./jsonp.js 文件中原封不动的数据
+    </script> 
+    -->
+</body>
+</html>
+		
+
+	

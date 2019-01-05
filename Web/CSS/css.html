@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html>
+<head><!-- -->
+<title>CSS</title>	
+<meta http-equiv="content-Type"content="text/html;charset=utf-8">
+<style>
+	/* 盒子模型及尺寸 */
+	#div5 {
+		/* 外边距：上右下左，[%|1px] */
+		margin:25px 20px 30px 50px;		
+		
+		/* 轮廓设置 */
+		outline-style:solid;
+		outline-width:2px;
+		outline-color:rgb(255,0,0);	
+		outline-offset:30px;						/* 对轮廓进行偏移，并在超出边框边缘的位置绘制轮廓 */
+		
+		/* 边框设置 */
+		border-style: solid;							/* 边框样式 */
+		border-width: 2px;								/* 边框宽度 */
+		border-color: rgb(0,255,0);						/* 边框颜色 */
+		border-radius: 25px 50px 35px 67px;				/* 设置圆角边框 四个角 左上开始 顺时针 设置椭圆角：50px/15px 表示椭圆水平和垂直半径*/
+		box-shadow: 10px 10px 5px #888888;				/* 设置边框阴影 */
+		border-image: url('./border.png') 30 30 round;	/* 设置边框图片 */
+		
+		/* 内边距：上右下左 */
+		padding:25px 20px 30px 50px;	
+		
+		/* 内容区域尺寸设置 */
+		width: 500px;
+		height: 100px;	
+		line-height: 200%;		
+		max-height:;
+		max-width:;
+		min-height:;
+		min-width:;   
+	}
+	
+	
+	/* 定位 */
+	#parent {
+		/* static 定位：HTML元素的默认值，即没有定位，元素出现在正常的流中。静态定位的元素不会受到 top, bottom, left, right影响。*/
+		/* fixed 定位：元素的位置相对于浏览器窗口是固定位置。即使窗口是滚动的它也不会移动 */
+		/* relative 定位：相对定位元素的定位是相对其正常位置。*/
+		/* absolute 定位：绝对定位的元素的位置相对于最近的已定位父元素，如果元素没有已定位的父元素，那么它的位置相对于<html> */
+		position:absolute;
+		left:1000px;
+		top:30px;
+		z-index:-1;
+		float:right;		/* 设置左边浮动,不能同时设置 position */
+		clear:both;			/* 设置该元素周围不能有浮动元素 */
+	}
+	
+	
+	
+	/* 颜色 */
+	#colorAttr {
+		opacity:0.5; /* 设置一个标签的透明度 */
+	}
+	
+	
+	
+	
+	
+	
+	#div0
+	{
+		/* [|] */
+		background-color:#b0c4de;
+		
+		/* 以下属性必须先设置 background-image */
+		background-image:;			/* [url('URL')|none|inherit] */
+		background-position:; 		/* [left top|left center|left bottom|right center|center bottom|x% y%|xpos ypos|inherit] */
+		background-repeat:; 		/* [repeat-x|no-repeat|repeat|inherit]*/
+		background-attachment:;		/* [fixed|scroll|inherit] */
+		
+	}
+	
+	@font-face/* 使用粗体必须先添加另一个包含粗体文字的@font-face规则： */
+	{
+		font-family: myFont;/* 规定自己的字体的id */
+		src: url(sansation_bold.woff);/* 自己的字体文件源 */
+		font-weight:bold;
+	}
+	
+	/* 超链接：这四个顺序不能改变是死的  */
+	a:link {color:#FF0000;}    /* unvisited link */
+	a:visited {color:#00FF00;} /* visited link */
+	a:hover {color:#FF00FF;}   /* mouse over link */
+	a:active {color:#0000FF;}
+
+	
+	@keyframes animeName /* 定义一个动画 */
+	{
+		0%   {left:0px;} /* 表示动画开始 */
+		25%  {left:200px;}
+		50%  {left:500px;}
+		100% {left:800px; } /* 表示动画结束 */
+	}
+	#div1
+	{
+		background: green;
+		
+		
+		position:relative;;
+		left:0px;
+		
+		
+		animation-name:animeName; /* 为该元素绑定动画 */
+		animation-duration:5s; /* 规定动画完成一个周期所花费的秒或毫秒。默认是 0。 */
+		animation-timing-function:cubic-bezier(0.25,0.5,0.25,1); /* linear|ease|ease-in|ease-out|ease-in-out|cubic-bezier(n,n,n,n) 规定动画的速度曲线。*/
+		animation-delay:1s;/* 延时播放动画 */
+		animation-iteration-count:3; /* 规定动画被播放的次数。默认是 1。infinite :无限循环播放 */
+		animation-direction:reverse; /* normal|reverse|alternate|alternate-reverse|initial|inherit */
+		animation-play-state:running; /* paused : 停止播放动画 */
+	}
+	
+	
+	
+	
+	#div3
+	{
+		font-family:"Times New Roman", Times, serif;	/* 字体选择 ：其中逗号后两个是备选字体*/
+		font-style:italic;								/* [normal|italic|oblique|inherit] */
+		font-size:100%;									/* [length|%] */
+		font-weight:900;								/* 设置字体粗细：值域为100~900,必须是整百的值 */
+		font-variant:small-caps;						/* [normal|small-caps] */
+	}
+	
+	#div4
+	{
+		color:rgba(0,168,255,0.9);
+		direction:rtl;							/* [rtl|ltr|inherit] */
+		unicode-bidi:bidi-override;				/* [normal|embed|bidi-override|intitial|inherit] */
+		
+		text-indent:50px;						/* 文本缩进：是用来指定文本的第一行的缩进。 */
+		text-align:center;						/* [left|right|center|inherit|justify] */
+		text-indent:50px;						/* [length|%|inherit] */
+		text-shadow:2px 2px 4px rgb(255,0,0);	/*水平阴影位置，垂直阴影位置，模糊距离，阴影颜色*/
+		text-decoration:none;					/* [none|underline|overline|line-through|blink|inherit] */
+		text-transform:capitalize; 				/* [uppercase|lowercase|capitalize] */
+		text-overflow: ellipsis;				/* 规定当文本溢出包含元素时发生的事情 */
+		
+		line-height:70%;						/* [normal|number|inherit|length|20%] */
+		letter-spacing:2px;						/* [normal|-2px|inherit] */
+		
+		
+		vertical-align:text-top;				/* [baseline|sub|inherit|super|top|text-top|middle|bottom|text-bottom|length|%] */
+		
+		
+		white-space:nowrap;						/* [normal|pre|nowrap|pre-wrap|pre-line|inherit] */
+		
+		word-spacing:30px;						/* [normal|length|inherit] */
+		word-break:break-all;					/* 规定非中日韩文本的换行规则 */
+		word-wrap:break-word;					/* 允许对长的不可分割的单词进行分割并换行到下一行。 */
+	}
+	
+	#img1
+	{
+		filter: grayscale(100%);				/* filter 属性用为元素添加可视效果 (例如：模糊与饱和度) 。*/
+		opacity:0.4;							/* 图片透明属性 */
+	}
+	
+	#ul1
+	{
+		list-style-image:;						/* [url('./123.png')] */
+		list-style-position:inside;				/* [inside|outside|inherit] */
+		list-style-type:lower-greek;			/* [none|disc|circle|square|decimal|decimal-leading-zero|lower-roman|upper-roman|lower-alpha|upper-alpha|lower-greek|lower-latin|upper-latin|hebrew|armenian|georgian|cjk-ideographic|hiragana|katakana|hiragana-iroha|katakana-iroha] */
+	}
+	
+	
+	
+	#div6
+	{
+		height:;
+		width:;
+		line-height:;
+		
+		max-height:;
+		max-width:;
+		min-height:;
+		min-width:;
+	}
+	
+	#div7
+	{
+		visibility:hidden;		/* [collapse|hidden|] */
+		display:;			/* [none|inline|block] */
+	}
+</style>
+</head>
+<body>
+
+<h1>CSS 基础</h1>
+<pre>
+/*html标签使用CSS的基本方法：
+ *A：内联CSS样式：<p style="background-color:rgb(255,255,0);font-weight=bolder;">内联CSS样式格式</p>
+ *B：内部样式表：<style>  内部CSS样式表格式   </style>
+ *C：外部CSS样式文件：<link href="" rel="stylesheet" type="text/css" >
+ *
+ *
+ *html标签使用CSS的基本步骤：
+ *1、使用selector选择需要使用CSS的html标签
+ *2、对选中的标签进行属性设置
+ */
+
+/*CSS(Cascading Style Sheets)语法：选择器:伪类|伪元素{属性1：属性值1；属性2：属性值2；...}*/
+div .class1 .class2:pseudo-class或pseudo-element[attribute1=demo1][attribute2=demo2]
+{
+	property1:value1;
+	attribute2:value2;
+	...
+}
+</pre>
+<hr/>
+
+	<h1>CSS 盒子模型及尺寸</h1>
+	<div id="div5">
+		CSS 盒子模型及尺寸
+	</div>
+	<hr/>
+
+	
+	<h1>CSS 定位</h1>
+	<div id="parent" style="width:700px; height:100px; background:rgba(166,166,0,0.5);">
+		CSS 定位
+		<div id="div2" style="width:200px; height:30px; background:rgba(255,0,0,0.5);"></div>
+		<div style="width:200px; height:30px; background:rgba(0,169,224,0.5);"></div>
+	</div>	
+	<hr/>
+
+
+<h1>CSS 超链接</h1>
+<a name="锚点" href="http://www.baidu.com" target="_blank" rel="">百度一下子</a><br/>
+<hr/>
+
+<h1>CSS 背景</h1>
+<div id="div0" style="width:100%; height:80px;"></div>
+<hr/>
+
+
+
+
+
+<h1>CSS 颜色</h1>
+<span style="color:rgba(255,0,0,0.5);">RGBA颜色值指定：RGBA（红，绿，蓝，alpha）。 Alpha参数是一个介于0.0（完全透明）和1.0（完全不透明）之间的参数。</span>
+<hr/>
+
+
+<h1>CSS 动画</h1>
+<div id="div1" style="width:300px; height:100px;"></div>
+<hr/>
+
+
+<h1>CSS 字体</h1>
+<div id="div3" style="width:1000px; height:100px; background:rgba(255,0,0,0.2);">
+	低分段度为的宫崎骏到期的钢琴的和打男枪地方大火球东阿根廷请你吃哦鹅蛋古钱币去打那么多过不去那大家电话费<br/>
+	hello word! 
+</div>
+<hr/>
+
+
+<h1>CSS 文本</h1>
+<div id="div4" style="width:1000px; height:100px; background:rgba(255,0,0,0.2);">
+	低分段度为的宫崎骏到期的钢琴的和打男枪地方大火球东阿根廷请你吃哦鹅蛋古钱币去打那么多过不去那大家电话费<br/>
+	hello word! 
+</div>
+<hr/>
+
+
+<h1>CSS 表格</h1>
+<table style="width:30%; border:1px solid black; border-collapse: collapse;">
+	<caption style="caption-side:bottom;">GG 思密达</caption>
+	<tr style="height:50px; border:1px solid black; padding:15px; background-color:blue; color:red;">
+		<td>旧的不去</td>
+		<td>的清道夫</td>
+	</tr>
+	<tr>
+		<td style="border:1px solid black; padding:15px; background-color:green; color:white; text-align:right; vertical-align:bottom;">额第七次</td>
+		<td>地方去</td>
+	</tr>
+</table>
+<hr/>
+
+
+<h1>CSS 图片</h1>
+<img id="img1" src="./2333.jpeg" alt="图片无法显示时替换文本" width="640" height="395.52" border="0">
+<hr/>
+
+
+<h1>CSS 列表样式(ul)</h1>
+<ul id="ul1">
+	<li>Coffee</li>
+	<li>Tea</li>
+	<li>Coca Cola</li>
+</ul>
+<hr/>
+
+
+
+
+<h1>CSS 尺寸</h1>
+<div id="div6" style="width:300px; height:100px; background-color:rgb(255,0,0)"></div>
+<hr/>
+
+<h1>CSS 显示</h1>
+<div id="div7" style="width:300px; height:100px; background-color:rgb(255,0,0)"></div>
+<hr/>
+
+
+<h1>CSS 选择器</h1>gbg
+<table border='1px'>
+  <tbody>
+  <tr>
+    <th width="22%" align="left">选择器</th>
+    <th width="17%" align="left">示例</th>
+    <th width="56%" align="left">示例说明</th>
+    <th align="left">CSS</th>
+  </tr>
+  <tr>
+    <td><a href="sel-class.html">.<i>class</i></a></td>
+    <td class="notranslate">.intro</td>
+    <td>选择所有class="intro"的元素</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="sel-id.html">#<i>id</i></a></td>
+    <td class="notranslate">#firstname</td>
+    <td>选择所有id="firstname"的元素</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="sel-all.html">*</a></td>
+    <td class="code notranslate">*</td>
+    <td>选择所有元素</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><i><a href="sel-element.html">element</a></i></td>
+    <td class="notranslate">p</td>
+    <td>选择所有&lt;p&gt;元素</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><i><a href="sel-element-comma.html">element,element</a></i></td>
+    <td class="notranslate">div,p</td>
+    <td>选择所有&lt;div&gt;元素和&lt;p&gt;元素</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="sel-element-element.html"><i>element</i> <i>element</i></a></td>
+    <td class="notranslate">div p</td>
+    <td>选择&lt;div&gt;元素内的所有&lt;p&gt;元素</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="sel-element-gt.html"><i>element</i>&gt;<i>element</i></a></td>
+    <td class="notranslate">div&gt;p</td>
+    <td>选择所有父级是 &lt;div&gt; 元素的 &lt;p&gt; 元素</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="sel-element-pluss.html"><i>element</i>+<i>element</i></a></td>
+    <td class="notranslate">div+p</td>
+    <td>选择所有紧接着&lt;div&gt;元素之后的&lt;p&gt;元素</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="sel-attribute.html">[<i>attribute</i>]</a></td>
+    <td class="notranslate">[target]</td>
+    <td>选择所有带有target属性元素</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="sel-attribute-value.html">[<i>attribute</i>=<i>value</i>]</a></td>
+    <td class="notranslate">[target=-blank]</td>
+    <td>选择所有使用target="-blank"的元素</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="sel-attribute-value-contains.html">[<i>attribute</i>~=<i>value</i>]</a></td>
+    <td class="notranslate">[title~=flower]</td>
+    <td>选择标题属性包含单词"flower"的所有元素</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="sel-attribute-value-lang.html">[<i>attribute</i>|=<i>language</i>]</a></td>
+    <td class="notranslate">[lang|=en]</td>
+    <td>选择一个lang属性的起始值="EN"的所有元素</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="sel-link.html">:link</a></td>
+    <td class="notranslate">a:link</td>
+    <td>选择所有未访问链接</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="sel-visited.html">:visited</a></td>
+    <td class="notranslate">a:visited</td>
+    <td>选择所有访问过的链接</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="sel-active.html">:active</a></td>
+    <td class="notranslate">a:active</td>
+    <td>选择活动链接</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="sel-hover.html">:hover</a></td>
+    <td class="notranslate">a:hover</td>
+    <td>选择鼠标在链接上面时</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="sel-focus.html">:focus</a></td>
+    <td class="notranslate">input:focus</td>
+    <td>选择具有焦点的输入元素</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="sel-firstletter.html">:first-letter</a></td>
+    <td class="notranslate">p:first-letter</td>
+    <td>选择每一个&lt;P&gt;元素的第一个字母</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="sel-firstline.html">:first-line</a></td>
+    <td class="notranslate">p:first-line</td>
+    <td>选择每一个&lt;P&gt;元素的第一行</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><a href="sel-firstchild.html">:first-child</a></td>
+    <td class="notranslate">p:first-child</td>
+    <td>指定只有当&lt;p&gt;元素是其父级的第一个子级的样式。</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="sel-before.html">:before</a></td>
+    <td class="notranslate">p:before</td>
+    <td>在每个&lt;p&gt;元素之前插入内容</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="sel-after.html">:after</a></td>
+    <td class="notranslate">p:after</td>
+    <td>在每个&lt;p&gt;元素之后插入内容</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="sel-lang.html">:lang(<i>language</i>)</a></td>
+    <td class="notranslate">p:lang(it)</td>
+    <td>选择一个lang属性的起始值="it"的所有&lt;p&gt;元素</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><a href="sel-gen-sibling.html"><i>element1</i>~<i>element2</i></a></td>
+    <td>p~ul</td>
+    <td>选择p元素之后的每一个ul元素</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-attr-begin.html">[<i>attribute</i>^=<i>value</i>]</a></td>
+    <td>a[src^="https"]</td>
+    <td>选择每一个src属性的值以"https"开头的元素</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-attr-end.html">[<i>attribute</i>$=<i>value</i>]</a></td>
+    <td>a[src$=".pdf"]</td>
+    <td>选择每一个src属性的值以".pdf"结尾的元素 </td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-attr-contain.html">[<i>attribute</i>*=<i>value</i>]</a></td>
+    <td>a[src*="runoob"]</td>
+    <td>选择每一个src属性的值包含子字符串"runoob"的元素</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-first-of-type.html">:first-of-type</a></td>
+    <td>p:first-of-type</td>
+    <td>选择每个p元素是其父级的第一个p元素</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-last-of-type.html">:last-of-type</a></td>
+    <td>p:last-of-type</td>
+    <td>选择每个p元素是其父级的最后一个p元素</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-only-of-type.html">:only-of-type</a></td>
+    <td>p:only-of-type</td>
+    <td>选择每个p元素是其父级的唯一p元素</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-only-child.html">:only-child</a></td>
+    <td>p:only-child</td>
+    <td>选择每个p元素是其父级的唯一子元素</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-nth-child.html">:nth-child(<i>n</i>)</a></td>
+    <td>p:nth-child(2)</td>
+    <td>选择每个p元素是其父级的第二个子元素</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-nth-last-child.html">:nth-last-child(<i>n</i>)</a></td>
+    <td>p:nth-last-child(2)</td>
+    <td>选择每个p元素的是其父级的第二个子元素，从最后一个子项计数</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-nth-of-type.html">:nth-of-type(<i>n</i>)</a></td>
+    <td>p:nth-of-type(2)</td>
+    <td>选择每个p元素是其父级的第二个p元素</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-nth-last-of-type.html">:nth-last-of-type(<i>n</i>)</a></td>
+    <td>p:nth-last-of-type(2)</td>
+    <td>选择每个p元素的是其父级的第二个p元素，从最后一个子项计数</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-last-child.html">:last-child</a></td>
+    <td>p:last-child</td>
+    <td>选择每个p元素是其父级的最后一个子级。</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-root.html">:root</a></td>
+    <td>:root</td>
+    <td>选择文档的根元素</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-empty.html">:empty</a></td>
+    <td>p:empty</td>
+    <td>选择每个没有任何子级的p元素（包括文本节点）</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-target.html">:target</a></td>
+    <td>#news:target </td>
+    <td>选择当前活动的#news元素（包含该锚名称的点击的URL）</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-enabled.html">:enabled</a></td>
+    <td>input:enabled</td>
+    <td>选择每一个已启用的输入元素</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-disabled.html">:disabled</a></td>
+    <td>input:disabled</td>
+    <td>选择每一个禁用的输入元素</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-checked.html">:checked</a></td>
+    <td>input:checked</td>
+    <td>选择每个选中的输入元素</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-not.html">:not(<i>selector</i>)</a></td>
+    <td>:not(p)</td>
+    <td>选择每个并非p元素的元素</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-selection.html">::selection</a></td>
+    <td>::selection</td>
+    <td>匹配元素中被用户选中或处于高亮状态的部分</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-out-of-range.html">:out-of-range</a></td>
+    <td>:out-of-range</td>
+    <td>匹配值在指定区间之外的input元素</td>
+    <td>3</td>
+  </tr>
+  </tr>
+	<tr>
+    <td><a href="sel-in-range.html">:in-range</a></td>
+    <td>:in-range</td>
+    <td>匹配值在指定区间之内的input元素</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-read-write.html">:read-write</a></td>
+    <td>:read-write</td>
+    <td>用于匹配可读及可写的元素</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-read-only.html">:read-only</a></td>
+    <td>:read-only</td>
+    <td>用于匹配设置 "readonly"（只读） 属性的元素</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-optional.html">:optional</a></td>
+    <td>:optional</td>
+    <td>用于匹配可选的输入元素</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-required.html">:required </a></td>
+    <td>:required</td>
+    <td>用于匹配设置了 "required" 属性的元素</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-valid.html">:valid </a></td>
+    <td>:valid</td>
+    <td>用于匹配输入值为合法的元素</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><a href="sel-invalid.html">:invalid </a></td>
+    <td>:invalid</td>
+    <td>用于匹配输入值为非法的元素</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>p,div</td>
+    <td>p,div</td>
+    <td>同时选择两个标签</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>div p</td>
+    <td>div p</td>
+    <td>后代选择器：选取在div中的p标签</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>div+p</td>
+    <td>div+p</td>
+    <td>相邻兄弟选择器：选择div下一个兄弟p标签</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>div></td>p</td>
+    <td>div></td>p</td>
+    <td>子选择器：选择div里的p标签</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>div~p</td>
+    <td>div~p</td>
+    <td>后续兄弟选择器：选择div后面的所有兄弟p标签</td>
+    <td></td>
+  </tr>
+  </tbody>
+</table>
+<hr/>
+
+
+<h1>CSS 单位</h1>
+<h3>绝对长度</h3>
+<table border='1px'>
+	<tr>
+		<th align="left">单位</th>
+		<th align="left">描述</th>
+	</tr>
+	<tr>
+		<td>cm</td>
+		<td>厘米</td>
+	</tr>
+	<tr>
+		<td>mm</td>
+		<td>毫米</td>
+	</tr>
+	<tr>
+		<td>px</td>
+		<td>像素</td>
+	</tr>
+</table>
+<h3>相对长度</h3>
+<table border='1px'>
+	<tr>
+		<th align="left">单位</th>
+		<th align="left">描述</th>
+	</tr>
+	<tr>
+		<td>em</td>
+		<td>它是描述相对于应用在当前元素的字体尺寸，所以它也是相对长度单位。一般浏览器字体大小默认为16px，则2em == 32px；</td>
+	</tr>
+	<tr>
+		<td>vw</td>
+		<td>viewpoint width，视窗宽度，1vw=视窗宽度的1%</td>
+	</tr>
+	<tr>
+		<td>vh</td>
+		<td>viewpoint height，视窗高度，1vh=视窗高度的1%</td>
+	</tr>
+	<tr>
+		<td>%</td>
+		<td>像素</td>
+	</tr>
+	<tr>
+		<td>px</td>
+		<td>像素</td>
+	</tr>
+</table>
+<hr/>
+
+<h1>CSS 所有伪类/元素</h1>
+<table width="100%" cellspacing="0" cellpadding="0" border="1" id="table13" class="reference">
+  <tbody><tr>
+    <th width="20%" align="left">选择器</th>
+    <th width="17%" align="left">示例</th>
+    <th width="63%" align="left">示例说明</th>
+  </tr>
+
+
+<tr>
+    <td><a href="/cssref/sel-checked.html">:checked</a></td>
+    <td>input:checked</td>
+    <td>选择所有选中的表单元素</td>
+  </tr>
+<tr>
+    <td><a href="cssref/sel-disabled.html">:disabled</a></td>
+    <td>input:disabled</td>
+    <td>选择所有禁用的表单元素</td>
+  </tr>
+<tr>
+    <td><a href="/cssref/sel-empty.html">:empty</a></td>
+    <td>p:empty</td>
+    <td>选择所有没有子元素的p元素</td>
+  </tr>
+<tr>
+    <td><a href="/cssref/sel-enable.html">:enabled</a></td>
+    <td>input:enabled</td>
+    <td>选择所有启用的表单元素</td>
+  </tr>
+<tr>
+    <td><a href="/cssref/sel-first-of-type.html">:first-of-type</a></td>
+    <td>p:first-of-type</td>
+    <td>选择每个父元素是p元素的第一个p子元素</td>
+  </tr>
+<tr>
+    <td><a href="/cssref/sel-in-range.html">:in-range</a></td>
+    <td>input:in-range</td>
+    <td>选择元素指定范围内的值</td>
+  </tr>
+<tr>
+    <td><a href="/cssref/sel-invalid.html">:invalid</a></td>
+    <td>input:invalid</td>
+    <td>选择所有无效的元素</td>
+  </tr>
+<tr>
+    <td><a href="/cssref/sel-last-child.html">:last-child</a></td>
+    <td>p:last-child</td>
+    <td>选择所有p元素的最后一个子元素</td>
+  </tr>
+<tr>
+    <td><a href="/cssref/sel-last-of-type.html">:last-of-type</a></td>
+    <td>p:last-of-type</td>
+    <td>选择每个p元素是其母元素的最后一个p元素</td>
+  </tr>
+<tr>
+    <td><a href="/cssref/sel-not.html">:not(selector)</a></td>
+    <td>:not(p)</td>
+    <td>选择所有p以外的元素</td>
+  </tr>
+<tr>
+    <td><a href="/cssref/sel-nth-child.html">:nth-child(n)</a></td>
+    <td>p:nth-child(2)</td>
+    <td>选择所有p元素的第二个子元素</td>
+  </tr>
+<tr>
+    <td><a href="/cssref/sel-nth-last-child.html">:nth-last-child(n)</a></td>
+    <td>p:nth-last-child(2)</td>
+    <td>选择所有p元素倒数的第二个子元素</td>
+  </tr>
+<tr>
+    <td><a href="/cssref/sel-nth-last-of-type.html">:nth-last-of-type(n)</a></td>
+    <td>p:nth-last-of-type(2)</td>
+    <td>选择所有p元素倒数的第二个为p的子元素</td>
+  </tr>
+<tr>
+    <td><a href="/cssref/sel-nth-of-type.html">:nth-of-type(n)</a></td>
+    <td>p:nth-of-type(2)</td>
+    <td>选择所有p元素第二个为p的子元素</td>
+  </tr>
+<tr>
+    <td><a href="/cssref/sel-only-of-type.html">:only-of-type</a></td>
+    <td>p:only-of-type</td>
+    <td>选择所有仅有一个子元素为p的元素</td>
+  </tr>
+<tr>
+    <td><a href="/cssref/sel-only-child.html">:only-child</a></td>
+    <td>p:only-child</td>
+    <td>选择所有仅有一个子元素的p元素</td>
+  </tr>
+<tr>
+    <td><a href="/cssref/sel-optional.html">:optional</a></td>
+    <td>input:optional</td>
+    <td>选择没有"required"的元素属性</td>
+  </tr>
+<tr>
+    <td><a href="/cssref/sel-out-of-range.html">:out-of-range</a></td>
+    <td>input:out-of-range</td>
+    <td>选择指定范围以外的值的元素属性</td>
+  </tr>
+<tr>
+    <td><a href="/cssref/sel-read-only.html">:read-only</a></td>
+    <td>input:read-only</td>
+    <td>选择只读属性的元素属性</td>
+  </tr>
+<tr>
+    <td><a href="/cssref/sel-read-write.html">:read-write</a></td>
+    <td>input:read-write</td>
+    <td>选择没有只读属性的元素属性</td>
+  </tr>
+<tr>
+    <td><a href="/cssref/sel-required.html">:required</a></td>
+    <td>input:required</td>
+    <td>选择有"required"属性指定的元素属性</td>
+  </tr>
+<tr>
+    <td><a href="/cssref/sel-root.html">:root</a></td>
+    <td>root</td>
+    <td>选择文档的根元素</td>
+  </tr>
+<tr>
+    <td><a href="/cssref/sel-target.html">:target</a></td>
+    <td>#news:target</td>
+    <td>选择当前活动#news元素(点击URL包含锚的名字)</td>
+  </tr>
+<tr>
+    <td><a href="/cssref/sel-valid.html">:valid</a></td>
+    <td>input:valid</td>
+    <td>选择所有有效值的属性</td>
+  </tr>
+  <tr>
+    <td><a href="/cssref/sel-link.html">:link</a></td>
+    <td>a:link</td>
+    <td>选择所有未访问链接</td>
+  </tr>
+	<tr>
+    <td><a href="/cssref/sel-visited.html">:visited</a></td>
+    <td>a:visited</td>
+    <td>选择所有访问过的链接</td>
+  </tr>
+	<tr>
+    <td><a href="/cssref/sel-active.html">:active</a></td>
+    <td>a:active</td>
+    <td>选择正在活动链接</td>
+  </tr>
+	<tr>
+    <td><a href="/cssref/sel-hover.html">:hover</a></td>
+    <td>a:hover</td>
+    <td>把鼠标放在链接上的状态</td>
+  </tr>
+	<tr>
+    <td><a href="/cssref/sel-focus.html">:focus</a></td>
+    <td>input:focus</td>
+    <td>选择元素输入后具有焦点</td>
+  </tr>
+	<tr>
+    <td><a href="/cssref/sel-firstletter.html">:first-letter</a></td>
+    <td>p:first-letter</td>
+    <td>选择每个&lt;p&gt; 元素的第一个字母</td>
+  </tr>
+	<tr>
+    <td><a href="/cssref/sel-firstline.html">:first-line</a></td>
+    <td>p:first-line</td>
+    <td>选择每个&lt;p&gt; 元素的第一行</td>
+  </tr>
+  <tr>
+    <td><a href="/cssref/sel-firstchild.html">:first-child</a></td>
+    <td>p:first-child</td>
+    <td>选择器匹配属于任意元素的第一个子元素的 &lt;]p&gt; 元素</td>
+  </tr>
+	<tr>
+    <td><a href="/cssref/sel-before.html">:before</a></td>
+    <td>p:before</td>
+    <td>在每个&lt;p&gt;元素之前插入内容</td>
+  </tr>
+	<tr>
+    <td><a href="/cssref/sel-after.html">:after</a></td>
+    <td>p:after</td>
+    <td>在每个&lt;p&gt;元素之后插入内容</td>
+  </tr>
+	<tr>
+    <td><a href="/cssref/sel-lang.html">:lang(<i>language</i>)</a></td>
+    <td>p:lang(it)</td>
+    <td>为&lt;p&gt;元素的lang属性选择一个开始值</td>
+  </tr>
+	</tbody>
+</table>
+<hr/>
+
+
+
+</body>
+</html>

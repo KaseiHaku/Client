@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="../js/jquery-3.3.1.js"></script>
+<style>
+    #container {
+        height: 30px;
+        resize: both;
+        background: #a0b3d6;
+        /*display: table-cell;*/
+    }
+
+    #table {
+        border: 1px solid blue;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 4px 8px 16px 32px ;
+        border: 1px dashed black; /*设置边框样式*/
+    }
+
+    .datagrid-wrap.panel-body, .datagrid-view, datagrid-view2, datagrid-body{
+        display: table-cell;
+    }
+
+</style>
+<body>
+
+<div>
+    <button id="addRowBtn" type="button">addRow</button>
+    <div id="container">
+        <table id="table">
+            <tr><td>1</td><td>1</td></tr>
+        </table>kguyg
+    </div>
+    <p style="background: gold">
+        ===========================
+    </p>
+
+</div>
+
+<script>
+    $(function(){
+        document.getElementById("addRowBtn").addEventListener("click", addRow, false);
+        function addRow(e){
+            var str = "<tr><td>1</td><td>1</td></tr>";
+            $('#table').append(str);
+            return false;
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AJAX</title>
+</head>
+	
+	
+<body>
+<pre>
+XMLHttpRequest 对象 {
+
+	属性:		
+	readyState//存有 XMLHttpRequest 的状态信息0: 请求未初始化1: 服务器连接已建2: 请求已接收3: 请求处理中4: 请求已完成，且响应已就绪
+	onreadystatechange	存储函数（或函数的名称）在每次 readyState 属性变化时被自动调用。
+
+	responseText	获得字符串形式的响应数据。responseText 属性返回字符串形式的响应，。
+	responseXML	如果来自服务器的响应是 XML，而且需要作为 XML 对象进行解析
+	status	返回状态数（例如 "404" 为 "Not Found" 或 "200" 为 "OK"）。
+	statusText	返回状态文本（如 "Not Found" 或 "OK"）。
+	
+	
+	方法:
+	abort()	取消当前的请求。
+	getAllResponseHeaders()	返回头信息。
+	getResponseHeader()	返回指定的头信息。
+	open(method,url,async,uname,pswd)	规定请求的类型，URL，请求是否应该进行异步处理，以及请求的其他可选属性。 
+						method：请求的类型：GET 或 POST
+						url：文件在服务器上的位置
+						async：true（异步）或 false（同步）
+	send(string)	发送请求到服务器。string：仅用于 POST 请求
+	setRequestHeader()	把标签/值对添加到要发送的头文件
+}
+</pre>
+<script type="text/javascript"> 
+
+function ajaxDemo(){
+	var xmlhttp = new XMLHttpRequest();//1、创建 XMLHttpRequest 对象
+	xmlhttp.onreadystatechange = function(){ // 2、设置 onreadystatechange 函数
+
+		if(xmlhttp.readyState == 4 && xmlhttp.status==200){
+			var result = xmlhttp.responseText; // 3、获取服务器返回的数据
+			
+			
+			/*数据类型为TXT时*/
+			document.getElementById("demo15").innerHTML = receive;
+						
+			/*数据类型为XML时
+			var xmlRoot = receive.documentElement;
+			try { 
+				var xmlItem = xmlRoot.getElementsByTagName("item"); 
+				alert(xmlItem.firstChild.nodeValue); 
+			} catch(e) { 
+				alert(e.message); 
+			} 
+			*/
+			
+			/* 数据类型为JSON字符串时
+			var obj = JSON.parse(receive); 
+			document.getElementById("fname").innerHTML="FirstName"+obj.employees[0].lastName;
+			document.getElementById("lname").innerHTML="LastName"+obj.employees[1].lastName;
+			*/
+		}
+	}
+	
+	/* //GET请求 */
+	xmlhttp.open("GET",URI+"?q="+args+"&m=GET:",false);//true:表示该 ajax 异步提交；false：表示同步提交
+	xmlhttp.send();
+		
+	/*  //POST请求  
+	xmlhttp.open("POST",URI,true);
+	//设置Content-Type类型为aapplication/x-www-form-urlencoded,以告知服务器实体中有参数
+	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xmlhttp.send("q="+args+"&m=POST:"); 
+	*/
+		
+	function2();
+	/* 当ajax请求是同步时：xmlhttp.onreadystatechange = function(){};内部执行完后才执行 function2();
+	 * 当ajax请求是异步时：浏览器不等 xmlhttp.onreadystatechange = function(){}; 执行完就执行 function2();
+	 */
+	
+}
+</script>
+</body>
+</html>

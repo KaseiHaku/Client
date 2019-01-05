@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="./jquery-3.2.1.js"></script><!-- 引入jquery框架 -->
+<title>JQuery 的使用</title>
+<style>
+tb
+{
+	border:1px solid black;
+}
+</style>
+</head>
+<body>
+	<div>
+		<h2>JQuery 基础</h2>
+<pre>
+//该方法方法允许我们在文档完全加载完后执行函数。
+jQuery(function($){
+
+});
+
+$(document).ready(function(){
+	// 开始写 jQuery 代码... 
+});
+
+
+简写模式：
+$(function(){
+	// 开始写 jQuery 代码...
+});
+		
+		
+Callback 函数在当前d动作 100% 完成之后执行。
+
+jquery 绑定现有元素：选择器
+jquery 绑定动态生成的元素：也是选择器（不过要注意资源是否准备完成）
+jquery 为现有元素绑定事件：$("#现有元素").click();
+jquery 为动态生成的元素绑定事件：$("#现有元素").off("click", "#id").on("click", "#id", function(){ return false;});
+</pre>
+		<script>	
+		</script>
+		<hr/>
+	</div>
+	
+	
+	<div>
+		<h2>JQuery 绑定标签到 jquery 对象</h2>
+		<p id="p1">菜鸟教程!!</p>
+		<input type="button" id="dom0" value="点我">
+		<script>
+		$(function(){
+   			 $("#dom0").click(function(){
+				    $("#p1").css("color","red").slideUp(2000).slideDown(2000); // JQuery 链的用法
+			});
+   			
+   			
+   			// 极其注意 jquery 对象和 dom 对象是不能混用的， $ 开头的变量表示是 jquery 对象
+   			var dom;
+   			var $dom = $(dom); // 把 dom 对象转化成 jquery 对象
+   			var $dom = $("#div").eq(0); // 获取第一个 jquery 对象
+   			
+   			var dom1 = $dom[0]; // 把 jquery 对象转化成 dom 对象
+   			var dom2 = $dom.get(0);
+   			var dom3 = $dom.toArray();  // 把 jquery 对象转化成 dom 对象数组
+   			
+   			var $byThis = $(this); // 获取当前标签的 dom 对象
+   			var $byId = $("#tty"); // 获取 id="tty" 的标签的 dom 对象
+   			var byClass = $(".tty").toArray(); // 获取 class="tty" 的标签的 dom 对象
+   			var byTagName = $("p").toArray(); // 获取所有 p 标签的 dom 对象，返回 dom 对象的数组
+   			var byAttribure = $("[href]").toArray(); // 获取所有带有 href 属性的标签
+   			
+   			
+   			var $byId = $("h1, .bb, #aa"); // 获取 h1 标签中 class="bb" 且 id="aa" 的标签
+   			var $byId = $("div > p"); // 获取 div 标签中标签名为 p 的直接子元素
+   			var $byId = $("div p"); // 获取 div 标签中标签名为 p 的标签，包括直接子元素和级联子元素
+   			var $byId = $("div + p"); // 获取 div 标签，上一个兄弟 p 标签和下一个兄弟 p 标签
+   			var $byId = $("div ~ p"); // 获取 div 标签所有的兄弟 p 标签
+   			
+   			// 遍历方法选择
+   			var $objChildren =  $(this).children("p"); // 获取当前元素所有的 p 直接子元素
+   			var $objFind = $(this).find("p"); // 获取当前元素下所有的 p 元素，包括直接子元素和级联子元素
+   			var $obj = $("#iframeId").contents().find("#iframe中的Id").val(); // 父窗口中获取 iframe 中的元素
+   			var $obj = $("#id", window.frames["iframeName"].document).val();// 父窗口中获取 iframe 中的元素
+   			var $obj = $("#id", parent.document).val(); // 在 iframe 中获取父窗口的元素
+   			
+   			// 获取一个节点的文本节点
+   			var textNode =  $("#tty").contents().filter(function(index){ return $(this)[0].nodeType === 3;});
+		});		
+		</script>
+		<hr/>
+	
+		<h2>jQuery 选择器</h2>
+		<table border="1px" style="border-collapse: collapse;">
+		<tr><th width="45%">实例</th><th width="55%">选取</th></tr>
+		
+		<tr><td>常规选择器</td><td></td></tr>
+		<tr><td>$("*")</td><td>全选</td></tr>
+		<tr><td>$("p")</td><td>元素选择器：选择所有 p 元素</td></tr>
+		<tr><td>$("#test")</td><td>id 选择器：选取 id=test 的元素</td></tr>
+		<tr><td>$(".test")</td><td>类选择器：选取所有 class="test" 的元素</td></tr>
+		<tr><td>$("[href]")</td><td>属性选择器：所有带有 href 属性的元素</td></tr>
+		<tr><td>$("tr:even")</td><td>条件选择器：所有偶数 <r 元素，索引值从 0 开始，第一个元素是偶数 (0)，第二个元素是奇数 (1)，以此类推。</td></tr>
+		<tr><td>$("input[id][name$='man']:checked" )</td><td>标签加属性加条件选择器：带有 id 属性，并且 name 属性以 man 结尾的输入框</td></tr>
+		
+		
+		<tr><td>组合选择器</td><td></td></tr>
+		<tr><td>$(".intro, .demo")</td><td>组合选择器：选取 class="intro" 或 class="demo" 的元素</td></tr>
+		<tr><td>$("div.cls")</td><td>div 元素中class="cls"的 div 元素</td></tr>
+		<tr><td>$("div p")</td><td>div 元素的后代的所有 p 元素</td></tr>
+		<tr><td>$("div > p")</td><td>div 元素的直接子元素的所有 p 元素</td></tr>		
+		<tr><td>$("div ~ p")</td><td>div 元素同一层次的所有 p 元素</td></tr>
+		<tr><td>$("div + p")</td><td>div 元素相邻的下一个 p 元素</td></tr>
+		
+
+		<tr><td>高级选择器</td><td></td></tr>
+		<tr><td>$("input:not(:empty)")</td><td>所有不为空的输入元素</td></tr>
+		<tr><td>$(":animated")</td><td>所有动画元素</td></tr>
+		<tr><td>$(":focus")</td><td>当前具有焦点的元素</td></tr>
+		<tr><td>$(":contains('Hello')")</td><td>所有包含文本 "Hello" 的元素</td></tr>
+		<tr><td>$("div:has(p)")</td><td>所有包含有 &lt;p&gt; 元素在其内的 &lt;div&gt; 元素</td></tr>
+		<tr><td>$(":empty")</td><td>所有空元素</td></tr>
+		<tr><td>$(":parent")</td><td>匹配含有子元素或者文本的元素。</td></tr>
+		<tr><td>$("p:hidden")</td><td>所有隐藏的 &lt;p&gt; 元素</td></tr>
+		<tr><td>$("table:visible")</td><td>所有可见的表格</td></tr>
+		<tr><td>$(":root")</td><td>文档的根元素</td></tr>
+		<tr><td>$("p:lang(de)")</td><td>所有带有以 "de" 开头的 lang 属性值的 &lt;p&gt; 元素</td></tr>
+		<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+
+
+		
+		<tr><td>$("[href='default.htm']")</td><td>所有带有 href 属性且值等于 "default.htm" 的元素</td></tr>
+		<tr><td>$("[href!='default.htm']")</td><td>所有带有 href 属性且值不等于 "default.htm" 的元素</td></tr>
+		<tr><td>$("[href$='.jpg']")</td><td>所有带有 href 属性且值以 ".jpg" 结尾的元素</td></tr>
+		<tr><td>$("[title|='Tomorrow']")</td><td>所有带有 title 属性且值等于 'Tomorrow' 或者以 'Tomorrow' 后跟连接符作为开头的字符串</td></tr>
+		<tr><td>$("[title^='Tom']")</td><td>所有带有 title 属性且值以 "Tom" 开头的元素</td></tr>
+		<tr><td>$("[title~='hello']")</td><td>所有带有 title 属性且值包含单词 "hello" 的元素</td></tr>
+		<tr><td>$("[title*='hello']")</td><td>所有带有 title 属性且值包含字符串 "hello" 的元素</td></tr>
+		
+		</table>
+		<hr>
+		
+		<h2>jQuery 遍历方法</h2>
+		<table border="1px" style="border-collapse: collapse;">
+		<tr><th width="20%" align="left">方法</th><th width="80%" align="left">描述</th></tr>
+		<tr><td>add()</td><td>把元素添加到匹配元素的集合中</td></tr>
+		<tr><td>addBack()</td><td>把之前的元素集添加到当前集合中</td></tr>
+		<tr><td>children()</td><td>返回被选元素的所有直接子元素</td></tr>
+		<tr><td>closest()</td><td>返回被选元素的第一个祖先元素</td></tr>
+		<tr><td>contents()</td><td>返回被选元素的所有子元素（包含文本和注释节点）</td></tr>
+		<tr><td>each()</td><td>为每个匹配元素执行函数</td></tr>
+		<tr><td>end()</td><td>结束当前链中最近的一次筛选操作，并把匹配元素集合返回到前一次的状态</td></tr>
+		<tr><td>eq()</td><td>返回带有被选元素的指定索引号的元素</td></tr>
+		<tr><td>filter()</td><td>把匹配元素集合缩减为匹配选择器或匹配函数返回值的新元素</td></tr>
+		<tr><td>find()</td><td>返回被选元素的后代元素</td></tr>
+		<tr><td>first()</td><td>返回被选元素的第一个元素</td></tr>
+		<tr><td>has()</td><td>返回拥有一个或多个元素在其内的所有元素</td></tr>
+		<tr><td>is()</td><td>根据选择器/元素/jQuery 对象检查匹配元素集合，如果存在至少一个匹配元素，则返回 true</td></tr>
+		<tr><td>last()</td><td>返回被选元素的最后一个元素</td></tr>
+		<tr><td>map()</td><td>把当前匹配集合中的每个元素传递给函数，产生包含返回值的新 jQuery 对象</td></tr>
+		<tr><td>next()</td><td>返回被选元素的后一个同级元素</td></tr>
+		<tr><td>nextAll()</td><td>返回被选元素之后的所有同级元素</td></tr>
+		<tr><td>nextUntil()</td><td>返回介于两个给定参数之间的每个元素之后的所有同级元素</td></tr>
+		<tr><td>not()</td><td>从匹配元素集合中移除元素</td></tr>
+		<tr><td>offsetParent()</td><td>返回第一个定位的父元素</td></tr>
+		<tr><td>parent()</td><td>返回被选元素的直接父元素</td></tr>
+		<tr><td>parents()</td><td>返回被选元素的所有祖先元素</td></tr>
+		<tr><td>parentsUntil()</td><td>返回介于两个给定参数之间的所有祖先元素</td></tr>
+		<tr><td>prev()</td><td>返回被选元素的前一个同级元素</td></tr>
+		<tr><td>prevAll()</td><td>返回被选元素之前的所有同级元素</td></tr>
+		<tr><td>prevUntil()</td><td>返回介于两个给定参数之间的每个元素之前的所有同级元素</td></tr>
+		<tr><td>siblings()</td><td>返回被选元素的所有同级元素</td></tr>
+		<tr><td>slice()</td><td>把匹配元素集合缩减为指定范围的子集</td></tr>
+		</table>
+		<hr/>
+	</div>
+	
+
+	<div>
+		<h2>JQuery 标签的 增 删</h2>
+		前<br/>
+		<p id="dom1" style="background-color:rgb(127,0,0);padding:5px;">标签添加删除演示</p>
+		后<br/>添加：
+		<input type="button" id="dom2" value="在被选元素的结尾插入内容">
+		<input type="button" id="dom3" value="在被选元素的开头插入内容">
+		<input type="button" id="dom4" value="在被选元素之后插入内容">
+		<input type="button" id="dom5" value="在被选元素之前插入内容"><br/>
+		删除：
+		<input type="button" id="dom6" value="从被选元素中删除子元素">
+		<input type="button" id="dom7" value="删除被选元素（及其子元素）">
+		<script>
+		$(function(){
+			$("#dom2").click(function(){
+				$("#dom1").append("append!");
+			});
+			$("#dom3").click(function(){
+				$("#dom1").prepend("prepend!");
+			});
+			$("#dom4").click(function(){
+				$("#dom1").after("after!");
+			});
+			$("#dom5").click(function(){
+				$("#dom1").before("before!");
+			});
+			$("#dom6").click(function(){
+				$("#dom1").empty();
+			});
+			$("#dom7").click(function(){
+				$("#dom1").remove();
+			});
+		});
+		</script>
+		<hr>
+	</div>
+	
+	
+	<div>
+		<h2>JQuery 标签的 改</h2>
+		<p id="setget1"><i>我的天哪</i></p><br/>
+		<input id="setget10" type="text" value="Hello"/><br/>
+		<input id="setget2" type="button" value="获取标签内容,text()"/>
+		<input id="setget3" type="button" value="设置标签内容,text()"/>
+		<input id="setget4" type="button" value="获取标签内容,html()"/>
+		<input id="setget5" type="button" value="设置标签内容,html()"/>
+		<input id="setget8" type="button" value="获取<input>值,val()"/>
+		<input id="setget9" type="button" value="设置<input>值,html()"/>
+		<input id="setget6" type="button" value="获取属性值,attr()"/>
+		<input id="setget7" type="button" value="设置属性值,attr()"/>
+		<input id="setget11" type="button" value="设置属性值(multi),attr()"/>
+		<script>
+		$(document).ready(function(){
+			$("#setget2").click(function(){alert($("#setget1").text());});
+
+			$("#setget3").click(function(){$("#setget1").text("都很我给我看");});
+
+			$("#setget4").click(function(){alert($("#setget1").html());});
+
+			$("#setget5").click(function(){$("#setget1").html("<b>都很我给我看</b>");});
+
+			$("#setget8").click(function(){alert($("#setget10").val());});
+
+			$("#setget9").click(function(){$("#setget10").val("World");});
+
+			$("#setget6").click(function(){alert($("#setget10").attr("type"));});
+
+			$("#setget7").click(function(){$("#setget10").attr("value","Hello World!");});
+
+			$("#setget11").click(function(){$("#setget10").attr({"type":"number","value":"6"});});
+			
+			
+			/*
+			prop()函数的结果:
+                1.如果有相应的属性，返回指定属性值。
+                2.如果没有相应的属性，返回值是空字符串。
+            attr()函数的结果:
+                1.如果有相应的属性，返回指定属性值。
+                2.如果没有相应的属性，返回值是undefined。
+
+            对于HTML元素本身就带有的固有属性，在处理时，使用prop方法。
+            对于HTML元素我们自己自定义的DOM属性，在处理时，使用attr方法。
+            具有 true 和 false 两个属性的属性，如 checked, selected 或者 disabled 使用prop()
+            */
+			$("#id").is(".classname");  // 判断表签是否包含 classname 这个类名
+			$("#tty").prop("value"); // 返回 value 属性的值
+			$("#tty").prop({"value":"值", "href":"www.kasei.com",...});
+			$("#2args").removeAttr("disabled"); // 删除属性
+		});
+		</script>
+		<hr/>
+		
+		
+		<h2>JQuery CSS 操作</h2>
+		<p id="css1" style="background-color:#00ff00;font-size:100%">这是一个段落</p>
+		<button id="css3">css(),获取指定css属性</button>
+		<button id="css4">css(),修改CSS样式</button>
+		<button id="css5">addClass()</button>
+		<button id="css6">removeClass()</button>
+		<button id="css7">toggleClass()</button>
+		<script>
+		$(document).ready(function(){
+			$("#css3").click(function(){
+				alert($("#css1").css("background-color"));//css()获取指定css属性
+			});
+			
+			$("#css4").click(function(){
+			    $("#css2,#css1").css({"background-color":"yellow","font-size":"200%"});//css()修改css
+			});	
+			
+			$("#css5").click(function(){$("#css1").addClass("important blue");});//添加
+			$("#css6").click(function(){$("#css1").removeClass("important");});//删除
+			$("#css7").click(function(){$("#css1").toggleClass("blue");});//切换
+		});
+		</script>
+		<hr>
+
+		<h2>JQuery 尺寸</h2>
+		<div id="size1" style="width:300px; height:30px; background-color:rgb(0,200,0)"></div><br/>
+		<input id="size2" type="button" value="获取width()"></input>
+		<input id="size3" type="button" value="设置width()"></input>
+		<input id="size4" type="button" value="获取height()"></input>
+		<input id="size5" type="button" value="设置height()"></input>
+		<input id="size6" type="button" value="获取innerWidth()"></input>
+		<input id="size7" type="button" value="获取innerHeight()"></input>
+		<input id="size8" type="button" value="获取outerWidth()"></input>
+		<input id="size9" type="button" value="获取outerHeight()"></input>
+		<script>
+		$(document).ready(function(){
+			$("#size2").click(function(){alert("width="+$("#size1").width());});
+			$("#size3").click(function(){$("#size1").width("600px");});
+			$("#size4").click(function(){alert("height="+$("#size1").height());});
+			$("#size5").click(function(){$("#size1").height("100px");});
+			$("#size6").click(function(){alert("innerWidth="+$("#size1").innerWidth());});
+			$("#size7").click(function(){alert("innerHeight="+$("#size1").innerHeight());});
+			$("#size8").click(function(){alert("outerWidth="+$("#size1").outerWidth());});
+			$("#size9").click(function(){alert("outerHeight="+$("#size1").outerHeight());});
+		});
+		</script>
+		<hr>
+	</div>
+	
+	
+	
+	
+	<div>
+		<h2>JQuery 标签的 事件属性</h2>
+		<p id="future">
+			<input id="event" type="button" value="jquery 标签的事件属性"/><br/>
+			<b>鼠标放上来！</b>
+		</p>	
+		<script>
+		$(function(){
+			// 对已存在的标签做事件绑定
+			$("#event").click(function(){
+				alert("jquery 标签的事件属性");
+			});
+			
+			// 对还未存在，但将来可能存在的标签做事件绑定 
+			$("#future").off("mouseover","b").on("mouseover", "b", function(){  // 先解绑再绑定，防止多次绑定导致多次执行
+				$(this).html("jquery 中 this 对象的使用");
+				alert("对现有或未来可能存在的标签做事件绑定");
+				return false; // 必须是用 false 用于阻止事件冒泡
+			});
+		});	
+		</script>
+		<hr/>
+		
+		<h2>JQuery 事件</h2>
+		<table border="1px" style="border-collapse: collapse;">
+		<tr><th width="39%" align="center">方法</th><th width="61%" align="center">描述</th></tr>
+		<tr><td>bind()</td><td>向元素添加事件处理程序</td></tr>
+		<tr><td>blur()</td><td>添加/触发失去焦点事件</td></tr>
+		<tr><td>change()</td><td>添加/触发 change 事件</td></tr>
+		<tr><td>click()</td><td>添加/触发 click 事件</td></tr>
+		<tr><td>dblclick()</td><td>添加/触发 double click 事件</td></tr>
+		<tr><td>delegate()</td><td>向匹配元素的当前或未来的子元素添加处理程序</td></tr>
+		<tr><td>event.currentTarget</td><td>在事件冒泡阶段内的当前 DOM 元素</td></tr>
+		<tr><td>event.data</td><td>包含当前执行的处理程序被绑定时传递到事件方法的可选数据</td></tr>
+		<tr><td>event.delegateTarget</td><td>返回当前调用的 jQuery 事件处理程序所添加的元素</td></tr>
+		<tr><td>event.isDefaultPrevented()</td><td>返回指定的 event 对象上是否调用了 event.preventDefault()</td></tr>
+		<tr><td>event.isImmediatePropagationStopped()</td><td>返回指定的 event 对象上是否调用了 event.stopImmediatePropagation()</td></tr>
+		<tr><td>event.isPropagationStopped()</td><td>返回指定的 event 对象上是否调用了 event.stopPropagation()</td></tr>
+		<tr><td>event.namespace</td><td>返回当事件被触发时指定的命名空间</td></tr>
+		<tr><td>event.pageX</td><td>返回相对于文档左边缘的鼠标位置</td></tr>
+		<tr><td>event.pageY</td><td>返回相对于文档上边缘的鼠标位置</td></tr>
+		<tr><td>event.preventDefault()</td><td>阻止事件的默认行为</td></tr>
+		<tr><td>event.relatedTarget</td><td>返回当鼠标移动时哪个元素进入或退出</td></tr>
+		<tr><td>event.result</td><td>包含由被指定事件触发的事件处理程序返回的最后一个值</td></tr>
+		<tr><td>event.stopImmediatePropagation()</td><td>阻止其他事件处理程序被调用</td></tr>
+		<tr><td>event.stopPropagation()</td><td>阻止事件向上冒泡到 DOM 树，阻止任何父处理程序被事件通知</td></tr>
+		<tr><td>event.target</td><td>返回哪个 DOM 元素触发事件</td></tr>
+		<tr><td>event.timeStamp</td><td>返回从 1970 年 1 月 1 日到事件被触发时的毫秒数</td></tr>
+		<tr><td>event.type</td><td>返回哪种事件类型被触发</td></tr>
+		<tr><td>event.which</td><td>返回指定事件上哪个键盘键或鼠标按钮被按下</td></tr>
+		<tr><td>event.metaKey</td><td>事件触发时 META 键是否被按下</td></tr>
+		<tr><td>focus()</td><td>添加/触发 focus 事件</td></tr>
+		<tr><td>focusin()</td><td>添加事件处理程序到 focusin 事件</td></tr>
+		<tr><td>focusout()</td><td>添加事件处理程序到 focusout 事件</td></tr>
+		<tr><td>hover()</td><td>添加两个事件处理程序到 hover 事件</td></tr>
+		<tr><td>keydown()</td><td>添加/触发 keydown 事件</td></tr>
+		<tr><td>keypress()</td><td>添加/触发 keypress 事件</td></tr>
+		<tr><td>keyup()</td><td>添加/触发 keyup 事件</td></tr>
+		<tr><td>mousedown()</td><td>添加/触发 mousedown 事件</td></tr>
+		<tr><td>mouseenter()</td><td>添加/触发 mouseenter 事件</td></tr>
+		<tr><td>mouseleave()</td><td>添加/触发 mouseleave 事件</td></tr>
+		<tr><td>mousemove()</td><td>添加/触发 mousemove 事件</td></tr>
+		<tr><td>mouseout()</td><td>添加/触发 mouseout 事件</td></tr>
+		<tr><td>mouseover()</td><td>添加/触发 mouseover 事件</td></tr>
+		<tr><td>mouseup()</td><td>添加/触发 mouseup 事件</td></tr>
+		<tr><td>off()</td><td>移除通过 on() 方法添加的事件处理程序</td></tr>
+		<tr><td>on()</td><td>向元素添加事件处理程序</td></tr>
+		<tr><td>one()</td><td>向被选元素添加一个或多个事件处理程序。该处理程序只能被每个元素触发一次</td></tr>
+		<tr><td>$.proxy()</td><td>接受一个已有的函数，并返回一个带特定上下文的新的函数</td></tr>
+		<tr><td>ready()</td><td>规定当 DOM 完全加载时要执行的函数</td></tr>
+		<tr><td>resize()</td><td>添加/触发 resize 事件</td></tr>
+		<tr><td>scroll()</td><td>添加/触发 scroll 事件</td></tr>
+		<tr><td>select()</td><td>添加/触发 select 事件</td></tr>
+		<tr><td>submit()</td><td>添加/触发 submit 事件</td></tr>
+
+		<tr><td>trigger()</td><td>触发绑定到被选元素的所有事件</td></tr>
+		<tr><td>triggerHandler()</td><</tr>
+		<tr><td>unbind()</td><td>从被选元素上移除添加的事件处理程序</td></tr>
+		<tr><td>undelegate()</td><td>从现在或未来的被选元素上移除事件处理程序</td></tr>
+
+		<tr><td>contextmenu()</td><td>添加事件处理程序到 contextmenu 事件</td></tr>
+		<tr><td>$.holdReady()</td><td>用于暂停或恢复.ready() 事件的执行</td></tr>
+		</table>
+		<hr>
+		
+	</div>
+
+
+	<div>
+		<h2>JQuery 对象</h2>
+		<input id="mix2" type="button" value="将数据附加到 input 元素"/>
+		<input id="mix3" type="button" value="获取附加在 input 元素的数据"/>
+		<input id="mix4" type="button" value="移除附加在 input 元素的数据"/>
+		<script>
+		var str = '<div><b>采用 js 直接将 html 代码转化为 dom 对象</b></div>';
+		var jqueryObj = $(str); // 直接将 html 代码转换成 jquery 对象
+		
+		$(function(){
+			$("#mix2").click(function(){$("#mix1").data("greeting", "Hello World");});	// 将数据附加到 input 元素，数据key="greeting" value="Hello World"
+			$("#mix3").click(function(){alert($("#mix1").data("greeting"));});	// 获取附加在 input 元素上 key="greeting" 的数据
+			$("#mix4").click(function(){$("#mix1").removeData("greeting");});	// 移除附加在 input 元素上 key="greeting" 的数据
+			jqueryObj.data("data1", "i love u"); // 附加数据到转换生成的对象上
+		});
+		</script>
+		<hr/>
+	</div>
+
+	<div>
+		<h2>JQuery AJAX</h2>
+		<script>
+		$(document).ready(function(){
+			
+			var $this = $(this); // 坑：ajax 里面不能使用 $(this) 必须采用这行代码的形式
+			$.ajax({
+				global: true,// (默认: true) 是否触发全局 AJAX 事件
+				timeout: 1000, //设置请求超时时间（毫秒）。此设置将覆盖全局设置。
+				async: false,  // 取消异步	
+				cache: false, // 不从浏览器缓存中加载请求数据
+				ifModified: false,//(默认: false) 仅在服务器数据改变时获取新数据。使用 HTTP 包 Last-Modified 头信息判断。
+				
+				url: "http://www.kasei.com", // 	(默认: 当前页地址) 发送请求的地址。
+				type: "post", //请求方式 ("POST" 或 "GET")， 默认为 "GET"
+				data: {},// 类型（Object,String）data为空也一定要传"{}"；不然返回的是xml格式的。并提示parsererror.  发 送到服务器的数据。将自动转换为请求字符串格式。GET 请求中将附加在 URL 后。查看 processData 选项说明以禁止此自动转换。必须为 Key/Value 格式。如果为数组，jQuery 将自动为不同值对应同一个名称。如 {foo:["bar1", "bar2"]} 转换为 '&foo=bar1&foo=bar2'。
+				contentType: "application/x-www-form-urlencoded; charset=utf8", // "application/json; charset=utf-8" 发送信息至服务器时内容编码类型。默认类型就是当前写的类型
+				processData: false,// (默认: true) 默认情况下，发送的数据将被转换为对象(技术上讲并非字符串) 以配合默认内容类型 "application/x-www-form-urlencoded"。如果要发送 DOM 树信息或其它不希望转换的信息，请设置为 false。
+				dataType: "html", // 预计服务器返回的数据类型：xml html script json jsonp
+				
+				beforeSend: function(XMLHttpRequest){ 
+					//发送请求前可修改 XMLHttpRequest 对象的函数，如添加自定义 HTTP 头。	
+				},
+				success: function (returnData, textStatus) {
+					// data could be xmlDoc, jsonObj, html, text, etc...
+					this; // the options for this ajax request
+					$this;
+				},
+				error: function (XMLHttpRequest, textStatus, errorThrown) {
+					// 通常情况下textStatus和errorThown只有其中一个有值 
+					this; // the options for this ajax request
+					alert("The Ajax Encounter An Exception!");
+					XMLHttpRequest.readyState === 0; // 0 － （未初始化）还没有调用send()方法 
+					XMLHttpRequest.readyState === 1; // 1 － （载入）已调用send()方法，正在发送请求 
+					XMLHttpRequest.readyState === 2; // 2 － （载入完成）send()方法执行完成，已经接收到全部响应内容 
+					XMLHttpRequest.readyState === 3; // 3 － （交互）正在解析响应内容 
+					XMLHttpRequest.readyState === 4; // 4 － （完成）响应内容解析完成，可以在客户端调用了	
+				},
+				complete: function(XMLHttpRequest, textStatus){ 
+					//请求完成后回调函数 (请求成功或失败时均调用)。参数： XMLHttpRequest 对象，成功信息字符串。	
+				}
+			}); 
+			
+			
+			
+				
+			// 日常 ajax 使用
+			$.ajax({				
+				url: "http://www.kasei.com", 
+				type: "post", 
+				data: {},
+				contentType: false,
+				processData: false,
+				dataType: "json",
+				success: function (data, textStatus, jqXHR ) {
+
+				},
+				error: function (jqXHR, textStatus, errorThrown) {
+					alert("The Ajax Encounter An Exception!");
+				}
+			});
+		});	
+		
+		
+		// JQuery Ajax 所有参数列表
+		function ajaxFullParam(){
+		    jQuery.ajax({
+			accepts:{
+			    mycustomtype: 'application/x-some-custom-type' // 自定义数据类型
+			},
+			converters: {
+			    'text mycustomtype': function(result) { // 自定义数据类型的处理方式
+				// Do Stuff
+				return newresult;
+			    }
+			},
+			dataType: 'mycustomtype', // 表示数据类型
+			async:true, // false 取消异步
+			cache:true, // whether load data from browser cache when dataType is "script" or "jsonp"
+			contents:{},
+			contentType: "application/x-www-form-urlencoded; charset=utf8",// "application/json; charset=utf-8" 发送信息至服务器时内容编码类型。默认类型就是当前写的类型
+			context:{},
+			crossDomain: false,
+			data:{},
+			dataType:"html", // 预计服务器返回的数据类型：xml html script json jsonp
+			global:true, // 是否开启 ajax 全局 event 监听
+			headers:{},
+			ifModified:false,
+			isLocal:true,
+			jsonp:"",
+			method:"GET",
+			mimeTpe: "",
+			password:"",
+			processData:true,
+			scriptCharset:"",
+			statusCode:{},
+			timeout: 1000,
+			traditional:true,
+			type:"GET",
+			url:"",
+			username:"",
+			xhrFields:{},
+
+			xhr:function(){},
+			dataFilter:function(data, type){},
+			beforeSend:function(jqXHR, settings){},//发送请求前可修改 XMLHttpRequest 对象的函数，如添加自定义 HTTP 头。
+			complete:function(jqXHR, textStatus ){},// 请求完成后的回调函数，不管请求成功是否成功
+			success:function(data, textStatus, jqXHR ){},
+			error:function(jqXHR, textStatus, errorThrown ){},
+			jsonpCallback:function(){},
+		    });
+
+		}
+		</script>
+		<hr/>
+	</div>
+	
+	
+
+
+<h2>jQuery noConflict() 方法</h2>
+<p id="dom15">注意：这段代码执行上面所有jQuery代码失效！</p>
+<input type="button" id="dom16" value="点我">
+<script>
+/* noConflict() 方法会释放会 $ 标识符的控制，这样其他脚本就可以使用它了。
+ * 当然，您仍然可以通过全名替代简写的方式来使用 jQuery：
+ 
+$.noConflict();
+jQuery(document).ready(function(){
+  jQuery("#dom16").click(function(){
+    jQuery("#dom15").text("jQuery 仍然在工作!");
+  });
+});
+
+*/
+
+
+/* 您也可以创建自己的简写。noConflict() 可返回对 jQuery 的引用，
+ * 您可以把它存入变量，以供稍后使用。请看这个例子： 
+var jq=$.noConflict();
+jq(document).ready(function(){
+  jq("#dom16").click(function(){
+    jq("#dom15").text("jQuery 仍然在工作!");
+  });
+});
+*/
+
+
+
+/* 如果你的 jQuery 代码块使用 $ 简写，并且您不愿意改变这个快捷方式，那么您可以把 $ 符号作为变量传递给 ready 方法。
+ * 这样就可以在函数内使用 $ 符号了 - 而在函数外，依旧不得不使用 "jQuery"：
+$.noConflict();
+jQuery(document).ready(function($){
+  $("#dom16").click(function(){
+    $("#dom15").text("jQuery 仍然在工作!");
+  });
+});
+*/
+</script>
+<hr>
+
+
+</body>
+</html>

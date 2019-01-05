@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+    <style>
+        table {
+            border-collapse:collapse;
+        }
+
+        table,th, td {
+            border: 1px solid #0094ff;
+        }
+    </style>
+</head>
+<body>
+    <h2>DOM => Document Object Model</h2>
+
+    <pre>
+        文档对象模型分为三种： Browser DOM, HTML DOM, XML DOM; xml 和 html 没啥区别不讲了。
+        Browser DOM {
+            window
+            window.location
+            window.screen
+            window.navigator
+            window.document    // 这就是 HTML DOM 中的 document 对象
+        }
+
+        HTML DOM {
+            document  == window.document
+            element
+            attribute
+            event
+        }
+
+        html 文件中所有内容都是节点，每个节点对应一个 dom 对象，编程接口就是这个对象的属性和方法
+    </pre>
+
+    <table style="font-weight:900; font-size:130%">
+        <caption style="color:red;">一个节点对应一个对象</caption>
+        <tr>
+            <td>节点类型(nodeType)只读</td>
+            <td>节点名称(nodeName)只读</td>
+            <td>节点值(nodeValue)</td>
+        </tr>
+        <tr>
+            <td>文档节点（9）</td>
+            <td>始终是#document</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>元素节点（1）</td>
+            <td>与标签名相同</td>
+            <td>undefined/null</td>
+        </tr>
+        <tr>
+            <td>属性节点（2）</td>
+            <td>与属性名相同</td>
+            <td>属性值</td>
+        </tr>
+        <tr>
+            <td>文本节点（3）</td>
+            <td>始终是#text</td>
+            <td>文本本身</td>
+        </tr>
+        <tr>
+            <td>注释节点（8）</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+    <hr/>
+
+
+
+    <!------------------------------------------------ 以下讲解 DOM 跟 JavaScript 相关的知识 ------------------------------------->
+    <h2>注意：无论获取什么节点，首先要获取标签结节点，只有获取到标签节点，才能进行属性、文本节点的获取，切记，切记。</h2>
+    <h2>DOM Node</h2>
+    <script>
+        var parentNode;
+        var locationNode;
+        var beReplaceNode;
+        var beCloneNode;
+        var newNode;
+        var node;
+
+        // Add
+        newNode = document.createElement("");
+        newNode = document.createAttribute("");
+        newNode = document.createTextNode("text");
+        newNode = document.createComment("");
+        newNode = new DOMParser().parseFromString("<div>fdfa</div>");
+
+        parentNode.append(node);
+        parentNode.insertNode(node);
+        parentNode.insertBefore(newNode, locationNode);
+        parentNode.removeChild(newNode, beReplaceNode);
+        beCloneNode.clone();
+
+        // Remove
+        node.parentNode.removeChild(node);
+
+        // Query
+        node.nodeType;
+        node.nodeName;
+        node.nodeValue;
+
+    </script>
+
+    <h2>DOM Node Navigating</h2>
+    <script>
+        var beginDom = document.getElementById("");// 获取导航起始标签
+        var dom = beginDom.parentNode;// 导航到父节点，注意是节点，不是元素（标签）
+        var domAry = beginDom.childNodes;
+        var dom = beginDom.firstChild;
+        var dom = beginDom.lastChild;
+        var dom = beginDom.nextSibling;
+        var dom = beginDom.previousSibling;
+    </script>
+    <hr/>
+
+
+    <h2>JavaScript Get Element Node DOM</h2>
+    <div id="getDomById" class="getDomByClassName">getDomById & getDomByClassName</div><br/>
+    <div class="getDomByClassName">getDomByClassName</div><br/>
+    <input name="getDomByName" type="checkbox"/>getDomByName1<br/>
+    <input name="getDomByName" type="checkbox"/>getDomByName2<br/>
+    <s>getDomByTagName1</s><br/>
+    <s>getDomByTagName2</s><br/>
+    <input id="lookupGetDom" type="button" value="Look Up the Details in Console"/><br/>
+    <script>
+
+        var dom = document.getElementById("getDomById");
+        var domAry = document.getElementsByClassName("getDomByClassName");
+        var domAry2 = document.getElementsByName("getDomByName");
+        var domAry3 = document.getElementsByTagName("s");
+        document.getElementById("lookupGetDom").onclick = function (){
+            console.log(dom);
+            console.log(domAry);
+            console.log(domAry2);
+            console.log(domAry3);
+        };
+        
+        var dom = window.frames['iframeId'].document.getElementById(); // 父窗口取 iframe 中的元素
+        var childWindow = window.document.getElementById("iframeId").contentWindow; // 父窗口获取 iframe 中的 window 对象，注意 html 中的 js 方法是在 window 对象下面的
+        var dom = window.parent.document.getElementById(); // iframe 中获取 父窗口中的元素
+    </script>
+    <hr/>
+
+
+    <h2>Element Node DOM Operating</h2>
+    <script>
+        /* DOM add element node 方法一 */
+        document.write('<a href="http://www.baidu.com">直接写 html 代码<a>');
+
+        /* DOM add element node 方法二 */
+        var newElement = document.createElement("p");// 创建一个 p 标签
+        var parentElement = document.getElementById();// 获取一个 element 作为新创建标签的父标签
+        parentElement.appendChild(newElement);// 把新标签作为父标签的最后一个标签添加
+
+        var locationElement = document.getElementById("");// 获取一个用于定位的标签
+        parentElement.insertBefore(newElement, locationElement);// 在定位标签前面插入新标签
+
+
+        var beReplacedElement = document.getElementById("");// 获取一个被替换的标签
+        parentElement.replaceChild(newElement, beReplacedElement);// 用新标签替换老标签
+
+        /* DOM add element node 方法三 */
+        var text = "<book><title>Everyday Italian</title><author>Giada De Laurentiis</author><year>2005</year></book>";
+        var parser = new DOMParser();
+        var dom = parser.parseFromString(text,"text/xml");
+
+        /* DOM Remove Element Node */
+        var beRemovedElement = document.getElementById("");// 获取被删除的标签
+        beRemovedElement.parentNode.removeChild(beRemovedElement);// 从该标签的父标签中删除该表签
+
+        /* DOM Clone Element Node */
+        var beClonedElement = document.getElementById("");// 获取被克隆的标签
+        var newElement = beClonedElement.clone();// 返回克隆出来的标签
+
+        /* Element Node Get NodeName */
+        var element = document.getElementById("");
+        var nodeNameString = element.nodeName;// 获取节点类型，即标签名
+        var nodeTypeInteger = element.nodeType;// 获取节点类型
+        var nodeValue = elment.nodeValue;// 获取节点值 undefined/null
+    </script>
+  
+    <hr/>
+
+
+
+    <h1>获取 Tag 标签对象</h1>
+    <div id="byId"></div>
+
+    <a>google</a>
+
+    <div class="color"></div>
+    <div class="color"></div>
+
+    <input type="checkbox" name="gender" value="male"/>
+    <input type="checkbox" name="gender" value="female"/>
+    <script>
+        var obj = document.getElementById("byId");
+        var objAry = document.getElementsByTagName("a");
+        var objAry = document.getElementsByClassName("color");
+        var objAry = document.getElementsByName("gender");
+    </script>
+    <hr/>
+
+
+
+
+    <h1>新建 Tag 标签</h1>
+    <!-- 方法一：document.write() -->
+    <script>document.write('<a href="http://www.baidu.com">直接写 html 代码<a>');</script>
+
+    <!-- 方法二：创建一个 tag 标签，获取一个已经存在的标签作为该标签的父标签 -->
+    <script>
+        var newTag = document.createElement("p");// 创建一个 p 标签
+        var parentTag = document.getElementById();// 获取一个 element 作为新创建标签的父标签
+        parentTag.appendChild(newTag);// 把新标签作为父标签的最后一个标签添加
+
+        var locationTag = document.getElementById("");// 获取一个用于定位的标签
+        parentTag.insertBefore(newTag, locationTag);// 在定位标签前面插入新标签
+
+        var beReplacedTag = document.getElementById("");// 获取一个被替换的标签
+        parentTag.replaceChild(newTag, beReplacedTag);// 用新标签替换老标签
+        beReplacedTag.cloneNode();
+    </script>
+
+    <!-- 方法三：通过 tagObj.clone() 创建新标签 -->
+    <script>
+        var beClonedTag = document.getElementById("");// 获取被克隆的标签
+        var newTag = beClonedTag.clone();// 返回克隆出来的标签
+    </script>
+
+    <!-- 方法四：通过 new DOMParser().parseFromString(text,"text/xml"); -->
+    <script>
+        var str = "<book><title>Everyday Italian</title><author>Giada De Laurentiis</author><year>2005</year></book>";
+        var parser = new DOMParser();
+        var dom = parser.parseFromString(str,"text/xml");
+    </script>
+    <hr/>
+
+
+
+
+    <h1>删除 Tag 标签</h1>
+    <script>
+        var beRemovedTag = document.getElementById("");// 获取被删除的标签
+        beRemovedTag.parentNode.removeChild(beRemovedTag);// 从该标签的父标签中删除该表签
+    </script>
+    <hr/>
+
+
+
+
+    <h1>获取和修改 Tag 标签信息</h1>
+    <script>
+        var tagObj = document.getElementById("id");
+        var nodeNameString = tagObj.nodeName;// 获取节点类型，即标签名
+        var nodeTypeInteger = tagObj.nodeType;// 获取节点类型
+        var nodeValue = tagObj.nodeValue;// 获取节点值 undefined/null
+    </script>
+    <hr/>
+    
+    
+    
+
+
+    <!--------------------------- 以下讲解 Attribute 跟 JavaScript 相关的知识 ------------------------->
+    <div>
+        <h2>标签属性操作</h2>
+        <input id="attributeDemo" type="text" placeholder="请留下你的大名！" my="我的"/><br/>
+        <input type="button" value="获取官方定义的属性值" onclick="getAttributeValue();"/>
+        <input type="button" value="设置官方定义的属性值" onclick="setAttributeValue();"/>
+        <input type="button" value="获取自定义的属性值" onclick="getAttributeValueCustom();"/>
+        <input type="button" value="设置自定义的属性值" onclick="setAttributeValueCustom();"/>
+        <input type="button" value="设置不存在的的属性值" onclick="setAttributeValueNoExist();"/>
+        <input type="button" value="删除自定义的属性" onclick="removeAttributeCustom();"/>
+        <input type="button" value="查看当前标签代码" onclick="showCurrentTagCode();"/>  
+        <script>
+            function getAttributeValue(){
+                var tagNodeObj = document.getElementById("attributeDemo"); // 获取标签节点
+                var attrNodeValue = tagNodeObj.placeholder; // 获取官方定义的属性节点的值                
+                console.log(attrNodeValue);
+            }
+            function setAttributeValue(){
+                var tagNodeObj = document.getElementById("attributeDemo");
+                tagNodeObj.placeholder = "Kasei Haku"; // 设置官方定义的属性节点的值
+            }
+            
+            
+            function getAttributeValueCustom(){
+                var tagNodeObj = document.getElementById("attributeDemo");
+                var attrNodeValue = tagNodeObj.getAttribute("my"); // 获取自定义的属性节点的值
+                console.log(attrNodeValue);
+            }
+            function setAttributeValueCustom(){
+                var tagNodeObj = document.getElementById("attributeDemo");            
+                tagNodeObj.setAttribute("my", "sunck"); // 设置自定属性节点的值                       
+                
+            }
+            function setAttributeValueNoExist(){
+                var tagNodeObj = document.getElementById("attributeDemo");  
+                tagNodeObj.setAttribute("other", "sunck"); //注意：如果当属性不存在时，则变为添加属性  
+            }
+            function removeAttributeCustom(){
+                var tagNodeObj = document.getElementById("attributeDemo");                
+                tagNodeObj.removeAttribute("other");
+            }
+            
+            // 用于观察用的
+            function showCurrentTagCode(){
+                var tagNodeObj = document.getElementById("attributeDemo");
+                 console.log(tagNodeObj);
+            }
+            
+            // 特殊操作 style 属性
+            function css(){
+                document.getElementById("p2").style.color="blue";    // 设置或获取 css 属性值
+            }
+            
+            // 特殊操作 class 属性
+            function classOperate(){
+                document.getElementById("").classList.add(""); // 添加 class 属性中的一个值
+                document.getElementById("").classList.remove(""); // 删除 class 属性中的一个值
+            }
+        </script>
+    </div>
+
+
+    <h2>Text Node</h2>
+    <script>
+        var element = document.getElementById("");
+        var textNode= document.createTextNode("文本节点");// 创建文本节点
+        var textNode = element.childNodes[0]; // 文本节点没有获取函数或获取属性，只能通过遍历属性或者函数获取
+        textNode.insertData(0, "出入的数据");// 表示从下标为 0 的位置开始插入数据
+        textNode.nodeValue;// 获取文本值
+        element.innerText;// 文本值
+        element.innerHTML;// 标签内部的所有 html 代码
+    </script>
+    <hr/>
+
+
+
+    <!------------------------------------------------ 以下讲解 Event 跟 JavaScript 相关的知识 ------------------------------------->
+    <h2>Event</h2>
+    预备知识：每次 web 页面触发事件， window.event 对象就会捕获当前事件，事件函数原则上一般 return false;
+    window.event.stopPropagation();//停止该事件继续传播
+    window.event.target;// 返回最先触发事件的 element dom 对象
+    window.event.currentTarget;// 返回当前执行该事件的 element dom 对象
+    window.event.type;// 返回该事件的类型
+    <script>
+        var element = document.getElementById("");
+
+        /* 绑定事件方法一：跟 element node 绑定 */
+        element.onclick = function(){
+            console.log("事件绑定方法1");
+            return false; /** 事件函数最后返回值，原则上都是 false，阻止该事件触发其他事件，发生不必要的错误 */
+        };
+
+
+
+        /* 绑定事件方法二：以句柄的方式绑定标签事件 */
+        /** element.addEventListener(event, function, [false 冒泡|true 捕获]);
+         *  冒泡：指当子标签被点击时，先触发子标签的 click 事件，然后再触发父标签的 click 事件
+         *  捕获：只当子标签被点击时，先触发父标签的 click 事件，然后再触发子标签的 click 事件
+         */
+        function eventFunc(){
+            console.log("Author : Kasei Haku");
+            return false;
+        }
+        
+        /** 句柄绑定第三个参数详解 
+         * capture 表示是否采用捕获的方式触发事件
+         * passive 表示 listener 永远不会调用 preventDefault()。如果 listener 仍然调用了这个函数，客户端将会忽略它并抛出一个控制台警告
+         * once 表示 listener 只执行一次，调用后就会被删除
+         */
+        element.addEventListener("click", eventFunc, {capture: false, passive: true, once: false});  
+        element.addEventListener("click", eventFunc, false);// 添加事件监听        
+        element.removeEventListener("click", eventFunc, false);// 移除事件监听
+    </script>
+
+    <h2>为动态创建的标签绑定事件</h2>
+    <input id="dynamicTag" type="button" value="动态创建 li 标签" onclick="createTagy();"/><br/>
+    <ul id="dynamicDemo">
+    </ul>
+    <script>
+        var ul = document.getElementById("dynamicDemo");
+        function createTagy(){
+            var arrayli = ul.getElementsByTagName("li");
+
+            var li = document.createElement("li");
+            li.innerHTML="one" + arrayli.length+ '&nbsp;&nbsp;<a class="ac" href="javascript:;">删除</a>';
+            ul.appendChild(li);
+        }
+
+        /* 传统绑定法
+        ul.onclick = function() {
+            var e = window.event;
+            var t = e.target || e.srcElement;  //t:目标对象
+            var tagName = t.tagName;　//tagName标签名称，必须是大写
+            if( tagName == "A") {
+                this.removeChild(t.parentNode); //删除元素 this指oul
+            }
+        }
+         */
+        ul.addEventListener("click", eventDynamic, false);
+        function eventDynamic(){
+            var e = window.event;
+            var t = e.target || e.srcElement;  //t:目标对象
+            var tagName = t.tagName;　//tagName标签名称，必须是大写
+            if( tagName == "A") {
+                this.removeChild(t.parentNode); //删除元素 this指oul
+            }
+        }
+    </script>
+    <hr/>
+
+</body>
+</html>

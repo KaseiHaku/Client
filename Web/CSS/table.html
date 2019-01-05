@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        table {
+            border: 1px solid blue;
+            border-collapse: separate; /*设置是否把表格边框合并为单一的边框*/
+            border-spacing: 2px; /*设置分隔单元格边框的距离*/         
+            caption-side: top; /*设置表格标题的位置*/
+            empty-cells:hide; /*设置是否显示表格中的空单元格*/
+            table-layout: auto; /*设置显示单元、行和列的算法*/
+            
+            cellpadding: 1px; /*设置单元格内容与单元格 border 之间的距离*/
+            cellspacing：2px; /*设置单元格与单元格之间的距离*/
+        }
+
+        /*对 tr 标签 进行 border padding margin 等 css 设置不生效*/
+
+        th, td {
+            padding: 4px 8px 16px 32px ;
+            border: 5px dashed black; /*设置边框样式*/
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <caption>caption</caption>
+        <colgroup>
+            <col span="1" style="background-color:green" />
+            <col span="2" style="background-color:red" />
+        </colgroup>
+        <thead>
+            <tr><th>th1</th><th>th2</th><th>th3</th><th>th4</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>0,0</td><td>0,1</td><td>0,2</td><td>0,3</td></tr>
+            <tr><td>1,0</td><td>1,0</td><td>1,2</td><td>1,3</td></tr>
+            <tr><td>2,0</td><td>2,1</td><td>2,2</td><td>2,3</td></tr>
+        </tbody>
+        <tfoot>
+            <tr><td>tf1</td><td>tf2</td><td>tf3</td><td>tf4</td></tr>
+        </tfoot>
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+
+    <div id="demo" style="background-color: bisque">单击事件和双击事件冲突问题</div>
+
+</div>
+<script>
+    var demo =  document.getElementById("demo");
+    var singleDoubleClickConflictFlag = null;
+    demo.addEventListener("click", function(){
+        clearTimeout(singleDoubleClickConflictFlag); // 清除上次没有执行的事件
+        singleDoubleClickConflictFlag = setTimeout(function(){
+            console.log("单击");
+        }, 300); // 设置延时 300 毫秒触发事件
+    });
+    demo.addEventListener("dblclick", function(){
+        clearTimeout(singleDoubleClickConflictFlag);// 清除上次没有执行的事件
+        console.log("双击")
+    });
+</script>
+</body>
+</html>
