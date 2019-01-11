@@ -26,6 +26,17 @@ function DateUtil(){
     }
 }
 
+/** todo 让当前 js 代码循环执行 millisecond 毫秒 
+ * */
+function sleep(millisecond){
+    var startTime = new Date().getMilliseconds();
+    while(true){
+        var now = new Date().getMilliseconds();
+        if((now-startTime) > millisecond){
+            break;
+        }
+    }
+}
 
 
 
