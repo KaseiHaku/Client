@@ -1,16 +1,11 @@
 /****************************************** Download *********************************************/
-Get 方法：
-    浏览器地址栏直接输入资源 URL
-    JS 动态生成 <iframe> ，使 <iframe> 地址指向所要下载的文件的 URL
-    <a> 标签直接指向资源地址，点击即下载
-    JS 动态生成 <a> 标签
-    <form> 表单 Get 方法发送请求
-    JS 动态生成 <form>
-    
-Post 方法：
-    <form> 表单 Post 方法发送请求
-    JS 动态生成 <form>
-    访问一个 url ， 服务端修改 Content-Disposition 返回头 和 MIME 类型，采用流方式
+客户端：    
+    Get: 浏览器地址栏直接输入资源 URL
+    Get: JS 动态生成 <iframe> ，使 <iframe> 地址指向所要下载的文件的 URL
+    Get: <a> 标签直接指向资源地址，点击即下载
+    Get: JS 动态生成 <a> 标签
+    Get/Post: <form> 表单 Get 方法发送请求
+    Get/Post: JS 动态生成 <form>
 
 服务器端：
     返回服务器上的静态文件: 采用 URL 的方式下载
