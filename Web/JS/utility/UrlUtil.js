@@ -1,7 +1,18 @@
 /** URL 完整格式：
  * scheme:[//[user[:password]@]host[:port]][/path][?query][#fragment]
  * 协议：用户：密码@yum：端口/路径？参数#锚点
+ * URL 可用字符：[0-9a-zA-Z] 和 $-_.+*'() 及一些保留字，其他字符都需要编码后才能用于 URL
  * */
+
+function encode(url){
+    return encodeURI(url);
+}
+
+function decode(url){
+    return decodeURI(url);
+}
+
+
 function UrlUtil(){
 
     /**
