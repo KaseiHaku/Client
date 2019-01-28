@@ -242,6 +242,13 @@
         var parser = new DOMParser();
         var dom = parser.parseFromString(str,"text/xml");
     </script>
+    <!-- 方法五：通过 innerHTML 来解析 -->
+    <script>
+        var parent = document.getElementById("d");
+        var str = "<div>html code<span> innerHTML</span></div>";
+        parent.innerHTML = str;
+        var domObjs = parent.childNodes;
+    </script>
     <hr/>
 
 
