@@ -206,6 +206,18 @@ document.getElementById("id").innerHTML = "蛋疼"+params;	//写入到 HTML 元�
     }
     var max = findMax(1, 123, 500, 115, 44, 88);
 
+// switch
+switch(param){
+    case 1:
+        console.log(1);
+        break;
+    case 2:
+        console.log(2);
+        break;
+    default:
+        console.log(0);
+}
+
 
 // js 循环
 outer:
