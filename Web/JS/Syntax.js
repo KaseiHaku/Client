@@ -43,6 +43,22 @@
     with  
 */
 
+/** todo JS 原型链及构造函数相关的知识点
+ * 1. 函数实例： 由 function 关键字创建出来的实例
+ * 2. 普通实例： 由 new 关键字创建出来的实例
+ * */
+/* todo function 关键字创建函数实例 */
+var Func = function(){};
+console.log(Func.__proto__); // function 关键字穿件出来的函数实例，是特殊的实例，不存在该属性
+console.log(Func.constructor); // 输出 function Function(){}; 表示当前函数实例 Func 的构造函数; Function 实例是 JS 原生实例，是一开始就存在的，例如 function Object(){}
+console.log(Func.prototype.constructor); // 输出 function Func(){}; 表示用当前函数实例 new 出来的实例的构造函数
+
+/* todo new 关键字创建普通实例 */
+var ins = new Func(); // 使用 new 关键字创建一个实例
+console.log(ins.__proto__ === Func.prototype); // 输出 true
+console.log(ins.constructor); // 输出 function Func(){}
+console.log(ins.prototype); // new 关键字创建出来的普通实例，没有 prototype 属性
+
 
 
 /**************************************************************** js 基本概念：begin **********************************************************************************/
