@@ -1,4 +1,19 @@
-1. HTML DOM 事件动态处理
+/** todo  */
+    /**  */
+        /* todo */
+            /* */
+                // todo
+                    // 
+/** todo JS 防止污染全局变量的方法：只创建一个全局变量 kasei，然后将所有自己的变量全放在 kasei 实例的属性中 */
+    (function(){
+        window.kasei = new Object();
+        kasei.var1 = 1; // 所有需要暴露到全局的变量，都作为 kasei 的属性
+        var aa = "fdfa"; // 该实例 aa 在当前匿名函数执行完之后就会被释放
+    })();
+
+
+
+/** todo HTML DOM 事件动态处理 */
     1. 直接覆盖原来的事件函数，js 解析器会取同名函数中的最后一个作为实际处理函数，具体哪个跟 Html 解析顺序有关
 
     2. 耦合绑定到 onclick 属性上的
