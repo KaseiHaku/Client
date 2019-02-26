@@ -203,6 +203,7 @@ document.getElementById("id").innerHTML = "蛋疼"+params;	//写入到 HTML 元�
 
 //内嵌函数（嵌套类）:实际上，在 JavaScript 中，所有函数都能访问它们上一层的作用域。JavaScript 支持嵌套函数。嵌套函数可以访问上一层的函数变量。
     function add() {
+	kasei = "haku";  // 因为当前函数局部变量中不存在 kasei，所以会从外层找，如果到顶层（window 实例）还没有，那么在 window 实例中添加一个属性 kasei，即全局变量 kasei      
         var counter = 0;
         function plus() {counter += 1;}
         plus();    
