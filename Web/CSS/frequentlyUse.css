@@ -1,3 +1,8 @@
+* {
+    box-sizing: border-box;
+}
+
+
 textarea, td {
     word-break: break-all; /* 设置换行规则 */
     word-wrap: break-word; /* 允许长单词换行 */   
