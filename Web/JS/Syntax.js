@@ -13,34 +13,6 @@
     Identifier 标识符： 自身内存地址 + 所指对象的地址， 即 C 语言中的一级指针
     Object 对象： 自身内存地址 + 内容
     由于 JS 是完全面向对象的语言，所以 JS 中 变量名、数组名、函数名 都是标识符（即都是指针）
-    
-4. 关键字
-    break
-    case
-    catch
-    continue
-    debugger
-    default
-    delete
-    do
-    else
-    finally
-    for
-    function
-    if
-    in
-    instanceof
-    new
-    return
-    switch
-    this
-    throw
-    try
-    typeof
-    var
-    void
-    while
-    with  
 */
 
 /** todo JS 原型链及构造函数相关的知识点
@@ -85,10 +57,8 @@ JavaScript中的类都是以函数的形式进行声明的。
 // js 中除了基本类型，数组  对象  函数 都是传引用的
 // js 中同名函数，后定义的会覆盖先定义的
 
-/* js 中的根类 */
-function Object(){
-	
-}
+/* js 中的根实例，所有实例都是该实例的子实例 */
+Object.prototype;
 
 
 /* js 创建一个类 */
@@ -183,8 +153,6 @@ function Object(){
 /* JS 输出 */
 console.log("蛋疼"+params); 	//写入到浏览器的控制台。
 window.alert("蛋疼"+params); 	//弹出警告框
-document.write("蛋疼"+params); 	//方法将内容写到 HTML 文档中。
-document.getElementById("id").innerHTML = "蛋疼"+params;	//写入到 HTML 元素。
 	
 	
 // 创建对象， 变量命名规则：第一个字符必须是字母、下划线（_）或美元符号（$）
@@ -264,20 +232,26 @@ for(var i=0;;i++){
 
 /* JS 异常 */
 try{
-    // 注意： try catch 能检查的是代码的非法性，如果代码合法，只是逻辑真假，那么用 if 语句
-    throw new EvalError("Whoops!");
+    throw {message: 'throw 不继承自 Error 对象的异常对象'};
+    throw new Error('manually throw'); // 注意： try catch 能检查的是代码的非法性，如果代码合法，只是逻辑真假，那么用 if 语句
 } catch(error){
-    if(error instanceof TypeError){
-        console.log("捕获任意类型异常");
-    }    
+    if(error instanceof ReferenceError){
+	    console.log('捕获引用异常');
+    } else if(error instanceof Error){
+        console.log('捕获所有异常对象，因为 Error 是所有异常的祖先');
+        console.log('错误名称=' + error.name);
+        console.log('错误信息=' + error.message);
+        console.log('错误发生时的调用栈=' + error.stack);
+    } else {
+	    console.log('捕获普通对象： '+error.aa);
+    }
 } finally {
-    console.log("始终会执行这部分代码");
+    console.log('始终会执行这部分代码');
 }
+
 	
 /* JS 运算符 */	
-==      // 相对等于，先比较两个操作数的类型，如果类型相同，则用 === 判断，如果类型不同，则对一个操作数进行类型转换，转换后再用 === 判断是否相同
 ===     // 绝对等于（值和类型均相等）
-!=      // 相对不等于，跟相对等于类似
 !==     // 绝对不等于（值和类型有一个不相等，或两个都不相等）
 typeof "John"                // 返回 string 
 "attributeName" in obj      // 判断一个对象是否有这个属性
@@ -373,18 +347,35 @@ alert(oCar2.drivers);	//输出 "Mike,John"
 
 // 动态原型方法
 function Car(sColor,iDoors,iMpg) {
-  this.color = sColor;
-  this.doors = iDoors;
-  this.mpg = iMpg;
-  this.drivers = new Array("Mike","John");
+    this.color = sColor;
+    this.doors = iDoors;
+    this.mpg = iMpg;
+    this.drivers = new Array("Mike","John");
   
-  if (typeof Car._initialized == "undefined") {
-    Car.prototype.showColor = function() {
-      alert(this.color);
+    if (typeof Car._initialized == "undefined") {
+        Car.prototype.showColor = function() {
+            alert(this.color);
+        }
+        
+        // 采用字面量的形式，会出错，原因见下面
+        Car.prototype = {
+            showColor: function(){
+                alert(this.color);
+            }
+        };
+        
     };
-	
     Car._initialized = true;
   }
+}
+
+// new 操作符执行的过程，下面两个运算是等价的，可以用来解释动态原型中不能使用字面量的原因
+var car1 = new Car();
+var car1 = function newOperator(){
+    var obj = {};
+    obj.__proto__ = Car.prototype;
+    Car.call(obj);
+    return obj;
 }
 
 
