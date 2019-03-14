@@ -17,8 +17,8 @@
 
 /** todo JS 原型链及构造函数相关的知识点
  * JS 有两个原生实例： 
- *      Function == 所有函数实例的构造函数，Function自身的构造函数为自身
- *      
+ *      Function == 所有函数实例的构造函数，Function 本身的构造函数为 Function 函数实例本身
+ *      Object.prototype == 所有普通实例的原型， Object.prototype 本身的原型为 null，即 Object.prototype.__proto__ == null;
  * 1. 函数实例： 由 function 关键字创建出来的实例
  * 2. 普通实例： 由 new 关键字创建出来的实例
  * */
@@ -268,7 +268,7 @@ function KaseiError(message){
     this.message = message;
     this.stack = (new Error()).stack;
 }
-KaseiError.constructor = Error;
+KaseiError.prototype = Object.create(Error.prototype);
 KaseiError.prototype.constructor = KaseiError;
 
 
