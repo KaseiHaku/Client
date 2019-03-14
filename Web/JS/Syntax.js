@@ -16,13 +16,28 @@
 */
 
 /** todo JS 原型链及构造函数相关的知识点
+ * JS 有两个原生实例： 
+ *      Function == 所有函数实例的构造函数，Function自身的构造函数为自身
+ *      
  * 1. 函数实例： 由 function 关键字创建出来的实例
  * 2. 普通实例： 由 new 关键字创建出来的实例
  * */
+console.log(Function.constructor); // ƒ Function() { [native code] }
+console.log(Function.prototype); // ƒ () { [native code] } 注意跟上面输出的差别
+console.log(Function.__proto__); // ƒ () { [native code] }
+
+console.log(Object.constructor); // ƒ Function() { [native code] }
+console.log(Object.prototype);// {constructor: Object(), }
+console.log(Object.__proto__);// ƒ () { [native code] }
+
+
 /* todo function 关键字创建函数实例 */
 var Func = function(){};
-console.log(Func.__proto__); // function 关键字穿件出来的函数实例，是特殊的实例，不存在该属性
 console.log(Func.constructor); // 输出 function Function(){}; 表示当前函数实例 Func 的构造函数; Function 实例是 JS 原生实例，是一开始就存在的，例如 function Object(){}
+console.log(Func.constructor.constructor); // Function 函数实例，是 JS 原生实例，他的 constructor 还是自身
+console.log(Func.__proto__); // function 关键字创建出来的函数实例，是特殊的实例，不存在该属性
+console.log(Func.prototype); // function 关键字创建出来的函数实例的 prototype 属性表示：var ins = new Func(); 中 ins 普通实例的原型
+console.log(Func.prototype.__proto__); // 这个表示 ins 原型的原型，为 Object.prototype
 console.log(Func.prototype.constructor); // 输出 function Func(){}; 表示用当前函数实例 new 出来的实例的构造函数
 
 /* todo new 关键字创建普通实例 */
@@ -57,8 +72,6 @@ JavaScript中的类都是以函数的形式进行声明的。
 // js 中除了基本类型，数组  对象  函数 都是传引用的
 // js 中同名函数，后定义的会覆盖先定义的
 
-/* js 中的根实例，所有实例都是该实例的子实例 */
-Object.prototype;
 
 
 /* js 创建一个类 */
@@ -236,18 +249,30 @@ try{
     throw new Error('manually throw'); // 注意： try catch 能检查的是代码的非法性，如果代码合法，只是逻辑真假，那么用 if 语句
 } catch(error){
     if(error instanceof ReferenceError){
-	    console.log('捕获引用异常');
+        console.log('捕获引用异常');
     } else if(error instanceof Error){
         console.log('捕获所有异常对象，因为 Error 是所有异常的祖先');
         console.log('错误名称=' + error.name);
         console.log('错误信息=' + error.message);
         console.log('错误发生时的调用栈=' + error.stack);
     } else {
-	    console.log('捕获普通对象： '+error.aa);
+        console.log('捕获普通对象： '+error.aa);
     }
 } finally {
     console.log('始终会执行这部分代码');
 }
+
+// 自定义异常
+function KaseiError(message){
+    this.name = 'KaseiError';
+    this.message = message;
+    this.stack = (new Error()).stack;
+}
+KaseiError.constructor = Error;
+KaseiError.prototype.constructor = KaseiError;
+
+
+
 
 	
 /* JS 运算符 */	
