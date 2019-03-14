@@ -1,6 +1,23 @@
 /********************************* JavaScript 编程信条 *************************************/
-
 // 所有出来操作都在原对象上处理，也只返回处理后的原对象，如果需要新建对象，那么在元对象上提供 copy 方法
+/** todo 被掉函数出错尽量使用 throw 来抛出异常，而不是采用返回特定的值，来表示出错 */
+function beInvoke(param){
+    if(param === undefined || param === null || param === ''){
+        throw new Error('参数不能为空！');
+    }
+}
+function caller(){
+    try{
+        beInvoke();
+    } catch(e){
+        if(e instanceof Error){
+            alert(e.message);
+        }
+    } finally {
+        console.log('try-catch');
+    }
+}
+
 
 
 
