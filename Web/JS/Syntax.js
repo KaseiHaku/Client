@@ -265,7 +265,7 @@ try{
 // 自定义异常
 function KaseiError(message){
     this.name = 'KaseiError';
-    this.message = message;
+    this.message = message || 'Default Message';
     this.stack = (new Error()).stack;
 }
 KaseiError.prototype = Object.create(Error.prototype);
