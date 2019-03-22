@@ -233,8 +233,8 @@ for(var i=0;;i++){
 }
 
 	
-// void 是 JavaScript 中非常重要的关键字，该操作符指定要计算一个表达式但是不返回值。
-    JavaScript:void();
+// void 是 JavaScript 中非常重要的关键字，该操作符表示：计算一个表达式，但是不管结果如何都返回 undefined
+    JavaScript:void(0);
     a = void(5+7);//a == undefined
 	
 // eval() 函数
