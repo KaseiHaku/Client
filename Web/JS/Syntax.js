@@ -232,18 +232,14 @@ for(var i=0;;i++){
 	}
 }
 
-	
-// void 是 JavaScript 中非常重要的关键字，该操作符表示：计算一个表达式，但是不管结果如何都返回 undefined
-    JavaScript:void(0);
-    a = void(5+7);//a == undefined
-	
+
 // eval() 函数
     var stringTypeJsCode = "alert(true);"
     eval(stringTypeJsCode);     // 用法一： 执行字符串格式的 js 代码
     var jsonStr = '{"name":"kasei", "age": 22}';
     eval('(' + jsonStr + ')');  //用法二： 解析 JSON 字符串
 
-/* JS 异常 */
+/** JS 异常 *****************************************************/
 try{
     throw {message: 'throw 不继承自 Error 对象的异常对象'};
     throw new Error('manually throw'); // 注意： try catch 能检查的是代码的非法性，如果代码合法，只是逻辑真假，那么用 if 语句
@@ -271,11 +267,9 @@ function KaseiError(message){
 KaseiError.prototype = Object.create(Error.prototype);
 KaseiError.prototype.constructor = KaseiError;
 
-
-
-
 	
 /* JS 运算符 */	
+var a = void(5+7); // void 是 JavaScript 中非常重要的关键字，该操作符表示：计算一个表达式，但是不管结果如何都返回 undefined
 ===     // 绝对等于（值和类型均相等）
 !==     // 绝对不等于（值和类型有一个不相等，或两个都不相等）
 typeof "John"                // 返回 string 
