@@ -16,7 +16,7 @@ function StringUtil(){
             return str.replace(regexpSingle, delimiter);
         }
         var regexpMulti = new RegExp(delimiter, "g");
-        return str.replace(regexpMulti, delimiter + '\n');
+        return str.replace(regexpMulti, delimiter + '\r\n');  // 防止在 Mac OS 和 Linux 下不换行
     }
 
     
