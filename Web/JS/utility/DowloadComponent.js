@@ -15,7 +15,7 @@ function DownloadComponent(){
         var div = document.createElement("div");
         body.appendChild(div);
 
-        if(method === undefined || method === null || method === ""){
+        if(method === void(0) || method === null || method === ""){
             method = 'post';
         }
 
