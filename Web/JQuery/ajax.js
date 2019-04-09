@@ -1,6 +1,8 @@
 const jqXHR = $.ajax({
     url: '',
+    type: 'post',
     data: {}, 
+    timeout: 60*1000,
     dataType: 'json'
 });
 jqXHR.done(function(data, textStatus, jqXHR){
