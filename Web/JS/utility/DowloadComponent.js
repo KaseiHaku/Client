@@ -7,6 +7,7 @@ function DownloadComponent(){
      * @param method 表单提交的 http 方法
      * @param paramsObj 表单提交的参数， 如果是多值，使用数组形式
      * @param target 打开窗口的位置，默认值为 _self
+     * @trap 下载 method 必须为 post ，不然会覆盖 url 中自带的参数
      * */
     this.dynamicForm = function(url, method, paramsObj, target){
 
@@ -14,8 +15,11 @@ function DownloadComponent(){
         var div = document.createElement("div");
         body.appendChild(div);
 
+        if(method === undefined || method === null || method === ""){
+            method = 'post';
+        }
 
-        if (target == undefined || target == null) {
+        if (target === undefined || target === null) {
             target = "_self";
         }
         var formStr = '<form action="'+ url +'" method="'+ method +'" accept-charset="UTF-8" autocomplete="off" novalidate target="'+ target +'" name="KaseiHakuDynamicForm" enctype="application/x-www-form-urlencoded">';
