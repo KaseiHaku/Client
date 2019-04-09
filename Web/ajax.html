@@ -1,84 +1,150 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>AJAX</title>
+    <title>AJAX</title>
 </head>
-	
-	
 <body>
 <pre>
-XMLHttpRequest ¶ÔÏó {
+XMLHttpRequest å¯¹è±¡ {
 
-	ÊôĞÔ:		
-	readyState//´æÓĞ XMLHttpRequest µÄ×´Ì¬ĞÅÏ¢0: ÇëÇóÎ´³õÊ¼»¯1: ·şÎñÆ÷Á¬½ÓÒÑ½¨2: ÇëÇóÒÑ½ÓÊÕ3: ÇëÇó´¦ÀíÖĞ4: ÇëÇóÒÑÍê³É£¬ÇÒÏìÓ¦ÒÑ¾ÍĞ÷
-	onreadystatechange	´æ´¢º¯Êı£¨»òº¯ÊıµÄÃû³Æ£©ÔÚÃ¿´Î readyState ÊôĞÔ±ä»¯Ê±±»×Ô¶¯µ÷ÓÃ¡£
+	å±æ€§:
+	readyState//å­˜æœ‰ XMLHttpRequest çš„çŠ¶æ€ä¿¡æ¯0: è¯·æ±‚æœªåˆå§‹åŒ–1: æœåŠ¡å™¨è¿æ¥å·²å»º2: è¯·æ±‚å·²æ¥æ”¶3: è¯·æ±‚å¤„ç†ä¸­4: è¯·æ±‚å·²å®Œæˆï¼Œä¸”å“åº”å·²å°±ç»ª
+	onreadystatechange	å­˜å‚¨å‡½æ•°ï¼ˆæˆ–å‡½æ•°çš„åç§°ï¼‰åœ¨æ¯æ¬¡ readyState å±æ€§å˜åŒ–æ—¶è¢«è‡ªåŠ¨è°ƒç”¨ã€‚
 
-	responseText	»ñµÃ×Ö·û´®ĞÎÊ½µÄÏìÓ¦Êı¾İ¡£responseText ÊôĞÔ·µ»Ø×Ö·û´®ĞÎÊ½µÄÏìÓ¦£¬¡£
-	responseXML	Èç¹ûÀ´×Ô·şÎñÆ÷µÄÏìÓ¦ÊÇ XML£¬¶øÇÒĞèÒª×÷Îª XML ¶ÔÏó½øĞĞ½âÎö
-	status	·µ»Ø×´Ì¬Êı£¨ÀıÈç "404" Îª "Not Found" »ò "200" Îª "OK"£©¡£
-	statusText	·µ»Ø×´Ì¬ÎÄ±¾£¨Èç "Not Found" »ò "OK"£©¡£
-	
-	
-	·½·¨:
-	abort()	È¡Ïûµ±Ç°µÄÇëÇó¡£
-	getAllResponseHeaders()	·µ»ØÍ·ĞÅÏ¢¡£
-	getResponseHeader()	·µ»ØÖ¸¶¨µÄÍ·ĞÅÏ¢¡£
-	open(method,url,async,uname,pswd)	¹æ¶¨ÇëÇóµÄÀàĞÍ£¬URL£¬ÇëÇóÊÇ·ñÓ¦¸Ã½øĞĞÒì²½´¦Àí£¬ÒÔ¼°ÇëÇóµÄÆäËû¿ÉÑ¡ÊôĞÔ¡£ 
-						method£ºÇëÇóµÄÀàĞÍ£ºGET »ò POST
-						url£ºÎÄ¼şÔÚ·şÎñÆ÷ÉÏµÄÎ»ÖÃ
-						async£ºtrue£¨Òì²½£©»ò false£¨Í¬²½£©
-	send(string)	·¢ËÍÇëÇóµ½·şÎñÆ÷¡£string£º½öÓÃÓÚ POST ÇëÇó
-	setRequestHeader()	°Ñ±êÇ©/Öµ¶ÔÌí¼Óµ½Òª·¢ËÍµÄÍ·ÎÄ¼ş
+	responseText	è·å¾—å­—ç¬¦ä¸²å½¢å¼çš„å“åº”æ•°æ®ã€‚responseText å±æ€§è¿”å›å­—ç¬¦ä¸²å½¢å¼çš„å“åº”ï¼Œã€‚
+	responseXML	å¦‚æœæ¥è‡ªæœåŠ¡å™¨çš„å“åº”æ˜¯ XMLï¼Œè€Œä¸”éœ€è¦ä½œä¸º XML å¯¹è±¡è¿›è¡Œè§£æ
+	status	è¿”å›çŠ¶æ€æ•°ï¼ˆä¾‹å¦‚ "404" ä¸º "Not Found" æˆ– "200" ä¸º "OK"ï¼‰ã€‚
+	statusText	è¿”å›çŠ¶æ€æ–‡æœ¬ï¼ˆå¦‚ "Not Found" æˆ– "OK"ï¼‰ã€‚
+
+
+	æ–¹æ³•:
+	abort()	å–æ¶ˆå½“å‰çš„è¯·æ±‚ã€‚
+	getAllResponseHeaders()	è¿”å›å¤´ä¿¡æ¯ã€‚
+	getResponseHeader()	è¿”å›æŒ‡å®šçš„å¤´ä¿¡æ¯ã€‚
+	open(method,url,async,uname,pswd)	è§„å®šè¯·æ±‚çš„ç±»å‹ï¼ŒURLï¼Œè¯·æ±‚æ˜¯å¦åº”è¯¥è¿›è¡Œå¼‚æ­¥å¤„ç†ï¼Œä»¥åŠè¯·æ±‚çš„å…¶ä»–å¯é€‰å±æ€§ã€‚
+						methodï¼šè¯·æ±‚çš„ç±»å‹ï¼šGET æˆ– POST
+						urlï¼šæ–‡ä»¶åœ¨æœåŠ¡å™¨ä¸Šçš„ä½ç½®
+						asyncï¼štrueï¼ˆå¼‚æ­¥ï¼‰æˆ– falseï¼ˆåŒæ­¥ï¼‰
+	send(string)	å‘é€è¯·æ±‚åˆ°æœåŠ¡å™¨ã€‚stringï¼šä»…ç”¨äº POST è¯·æ±‚
+	setRequestHeader()	æŠŠæ ‡ç­¾/å€¼å¯¹æ·»åŠ åˆ°è¦å‘é€çš„å¤´æ–‡ä»¶
 }
 </pre>
-<script type="text/javascript"> 
+<script type="text/javascript">
 
-function ajaxDemo(){
-	var xmlhttp = new XMLHttpRequest();//1¡¢´´½¨ XMLHttpRequest ¶ÔÏó
-	xmlhttp.onreadystatechange = function(){ // 2¡¢ÉèÖÃ onreadystatechange º¯Êı
+    /** todo AJAX(XMLHttpRequest) ä½¿ç”¨æ¼”ç¤º
+     * */
+    function ajaxDemo(){
+        const xhr = new XMLHttpRequest(); // åˆ›å»º XMLHttpRequest å¯¹è±¡
+        console.log('readyState: UNSENT: XMLHttpRequest ä»£ç†å·²è¢«åˆ›å»ºï¼Œ ä½†å°šæœªè°ƒç”¨ open() æ–¹æ³•', xhr.readyState); // 0
 
-		if(xmlhttp.readyState == 4 && xmlhttp.status==200){
-			var result = xmlhttp.responseText; // 3¡¢»ñÈ¡·şÎñÆ÷·µ»ØµÄÊı¾İ
-			
-			
-			/*Êı¾İÀàĞÍÎªTXTÊ±*/
-			document.getElementById("demo15").innerHTML = receive;
-						
-			/*Êı¾İÀàĞÍÎªXMLÊ±
-			var xmlRoot = receive.documentElement;
-			try { 
-				var xmlItem = xmlRoot.getElementsByTagName("item"); 
-				alert(xmlItem.firstChild.nodeValue); 
-			} catch(e) { 
-				alert(e.message); 
-			} 
-			*/
-			
-			/* Êı¾İÀàĞÍÎªJSON×Ö·û´®Ê±
-			var obj = JSON.parse(receive); 
-			document.getElementById("fname").innerHTML="FirstName"+obj.employees[0].lastName;
-			document.getElementById("lname").innerHTML="LastName"+obj.employees[1].lastName;
-			*/
-		}
-	}
-	
-	/* //GETÇëÇó */
-	xmlhttp.open("GET",URI+"?q="+args+"&m=GET:",false);//true:±íÊ¾¸Ã ajax Òì²½Ìá½»£»false£º±íÊ¾Í¬²½Ìá½»
-	xmlhttp.send();
-		
-	/*  //POSTÇëÇó  
-	xmlhttp.open("POST",URI,true);
-	//ÉèÖÃContent-TypeÀàĞÍÎªaapplication/x-www-form-urlencoded,ÒÔ¸æÖª·şÎñÆ÷ÊµÌåÖĞÓĞ²ÎÊı
-	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xmlhttp.send("q="+args+"&m=POST:"); 
-	*/
-		
-	function2();
-	/* µ±ajaxÇëÇóÊÇÍ¬²½Ê±£ºxmlhttp.onreadystatechange = function(){};ÄÚ²¿Ö´ĞĞÍêºó²ÅÖ´ĞĞ function2();
-	 * µ±ajaxÇëÇóÊÇÒì²½Ê±£ºä¯ÀÀÆ÷²»µÈ xmlhttp.onreadystatechange = function(){}; Ö´ĞĞÍê¾ÍÖ´ĞĞ function2();
-	 */
-	
-}
+
+
+        /** XMLHttpRequest å®ä¾‹(xhr)äº‹ä»¶ */
+        xhr.onloadstart = function(){
+            console.log('Event: onloadstart');
+        };
+        xhr.onprogress = function () {
+            console.log('Event: onprogress');
+            console.log('readyState: LOADING', xhr.readyState); // readyState ä¸º 3
+        };
+        xhr.onabort = function(){
+            console.log('Event: onabort');
+        };
+        xhr.onerror = function(){
+            console.log('Event: onerror');
+        };
+        xhr.onload = function(){
+            console.log('Event: onload');
+            console.log('readyState: DONE', xhr.readyState); // readyState ä¸º 4
+        };
+        xhr.ontimeout = function(){
+            console.log('Event: ontimeout');
+        };
+        xhr.onloadend = function(){
+            console.log('Event: onloadend');
+        };
+        xhr.onreadystatechange = function(){ // 2ã€è®¾ç½® onreadystatechange å‡½æ•°
+            if(xhr.readyState === 4){
+                if(xhr.status === 200){
+                    var result = xhr.responseText; // 3ã€è·å–æœåŠ¡å™¨è¿”å›çš„æ•°æ®
+
+
+                    /*æ•°æ®ç±»å‹ä¸ºTXTæ—¶*/
+                    document.getElementById("demo15").innerHTML = receive;
+
+                    /*æ•°æ®ç±»å‹ä¸ºXMLæ—¶
+                    var xmlRoot = receive.documentElement;
+                    try {
+                        var xmlItem = xmlRoot.getElementsByTagName("item");
+                        alert(xmlItem.firstChild.nodeValue);
+                    } catch(e) {
+                        alert(e.message);
+                    }
+                    */
+
+                    /* æ•°æ®ç±»å‹ä¸ºJSONå­—ç¬¦ä¸²æ—¶
+                    var obj = JSON.parse(receive);
+                    document.getElementById("fname").innerHTML="FirstName"+obj.employees[0].lastName;
+                    document.getElementById("lname").innerHTML="LastName"+obj.employees[1].lastName;
+                    */
+                }
+            }
+        };
+
+        /** XMLHttpRequest å®ä¾‹(xhr)å±æ€§ */
+        /* xhr.readyState å„å€¼å«ä¹‰
+         * 0    UNSENT              XMLHttpRequest ä»£ç†å·²è¢«åˆ›å»ºï¼Œä½†å°šæœªè°ƒç”¨ open() æ–¹æ³•ã€‚
+         * 1    OPENED              open() æ–¹æ³•å·²ç»è¢«è§¦å‘ã€‚åœ¨è¿™ä¸ªçŠ¶æ€ä¸­ï¼Œå¯ä»¥é€šè¿‡  setRequestHeader() æ–¹æ³•æ¥è®¾ç½®è¯·æ±‚çš„å¤´éƒ¨ï¼Œ å¯ä»¥è°ƒç”¨ send() æ–¹æ³•æ¥å‘èµ·è¯·æ±‚
+         * 2    HEADERS_RECEIVED    send() æ–¹æ³•å·²ç»è¢«è°ƒç”¨ï¼Œå“åº”å¤´ä¹Ÿå·²ç»è¢«æ¥æ”¶
+         * 3    LOADING             å“åº”ä½“éƒ¨åˆ†æ­£åœ¨è¢«æ¥æ”¶ï¼Œå¦‚æœ responseType å±æ€§æ˜¯â€œtextâ€æˆ–ç©ºå­—ç¬¦ä¸²ï¼Œ responseText å°†ä¼šåœ¨è½½å…¥çš„è¿‡ç¨‹ä¸­æ‹¥æœ‰éƒ¨åˆ†å“åº”æ•°æ®
+         * 4    DONE                è¯·æ±‚æ“ä½œå·²ç»å®Œæˆã€‚è¿™æ„å‘³ç€æ•°æ®ä¼ è¾“å·²ç»å½»åº•å®Œæˆæˆ–å¤±è´¥
+         * */
+        xhr.readyState;
+        xhr.response;
+        xhr.responseText;
+        xhr.responseType;
+        xhr.responseURL;
+        xhr.responseXML;
+        xhr.status;
+        xhr.statusText;
+        xhr.timeout;
+        xhr.upload;
+        xhr.withCredentials;
+
+        /** XMLHttpRequest å®ä¾‹(xhr)æ–¹æ³• */
+        xhr.abort();
+        xhr.getAllResponseHeaders();
+        xhr.getResponseHeader("headerName");
+        xhr.open();
+        xhr.overrideMimeType();
+        xhr.send();
+        xhr.setRequestHeader("headerName", "headerValue");
+
+
+
+        /* //GETè¯·æ±‚ */
+        xhr.open("GET",URI+"?q="+args+"&m=GET:",false);//true:è¡¨ç¤ºè¯¥ ajax å¼‚æ­¥æäº¤ï¼›falseï¼šè¡¨ç¤ºåŒæ­¥æäº¤
+        console.log('readyState: OPENED: open() æ–¹æ³•å·²ç»è¢«è§¦å‘ã€‚åœ¨è¿™ä¸ªçŠ¶æ€ä¸­ï¼Œå¯ä»¥é€šè¿‡  setRequestHeader() æ–¹æ³•æ¥è®¾ç½®è¯·æ±‚çš„å¤´éƒ¨ï¼Œ å¯ä»¥è°ƒç”¨ send() æ–¹æ³•æ¥å‘èµ·è¯·æ±‚', xhr.readyState); // 1
+
+
+        xhr.send();
+        console.log('readyState: HEADERS_RECEIVED: send() æ–¹æ³•å·²ç»è¢«è°ƒç”¨ï¼Œå¹¶ä¸”å¤´éƒ¨å’ŒçŠ¶æ€å·²ç»å¯è·å¾—', xhr.readyState);
+
+
+        /*  //POSTè¯·æ±‚
+        xhr.open("POST",URI,true);
+        //è®¾ç½®Content-Typeç±»å‹ä¸ºaapplication/x-www-form-urlencoded,ä»¥å‘ŠçŸ¥æœåŠ¡å™¨å®ä½“ä¸­æœ‰å‚æ•°
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send("q="+args+"&m=POST:");
+        */
+
+        /** å½“ajaxè¯·æ±‚æ˜¯åŒæ­¥æ—¶ï¼šxhr.onreadystatechange = function(){};å†…éƒ¨æ‰§è¡Œå®Œåæ‰æ‰§è¡Œ function2();
+         * å½“ajaxè¯·æ±‚æ˜¯å¼‚æ­¥æ—¶ï¼šæµè§ˆå™¨ä¸ç­‰ xhr.onreadystatechange = function(){}; æ‰§è¡Œå®Œå°±æ‰§è¡Œ function2();
+         * */
+        (function(){
+            console.log('è‡ªåŠ¨æ‰§è¡Œå‡½æ•°');
+        })();
+    }
 </script>
 </body>
 </html>
