@@ -1,0 +1,33 @@
+Browser 解析 HTML 页面详解：
+    所使用的线程如下：
+        DOMTreeThread： 处理 HTML 标记并构建 DOM 树，主线程
+        CSSThread: 处理 CSS 标记并构建 CSSOM 树
+        RenderThread: 将 DOM 与 CSSOM 合并成一个渲染树，并根据渲染树来布局，以计算每个节点的几何信息，将各个节点绘制到屏幕上
+        JSThread: 执行 JS 代码
+    
+    资源下载：
+        并行下载标签：<link> <img> <iframe> 
+        阻塞下载标签：<script>
+    资源解析：
+        并行解析标签：<img> <iframe>
+        阻塞解析标签：<link> <script> 
+    
+    HTML 文件加载和解析流程：
+        1. 按字符流读取从服务器上获取的 HTML 文件，并逐字符开始解析并构建
+        2. 遇到同步标签（<style> <link> <script>）时，将暂停 RenderTreeThread 线程，先执行标签内，或者标签加载的内容，除非该标签声明为异步
+            <script> 标签比较特殊，连下载过程都会阻塞 RenderTreeThread 执行，
+            下载完成后会启动一个 JSThread 线程，执行 JS 代码，执行过程中会立即暂停 RenderTreeThread，
+            所以同步 JS 操作 DOM 或者CSSOM 不会立马看到效果，而是等 JS 执行结束之后才能看到，
+            而异步 JS （比如：AJAx）则不会暂停 RenderTreeThread
+        3. 遇到异步标签（<img> <iframe>）时，RenderTreeThread 线程不会暂停，会继续渲染后面的代码
+    
+    HTML 文件解析过程相关的事件：
+        document.onreadystatechange = function(){};   // 监听 document.readyState 值改变的事件   
+        // 当前 HTML 文件整个 DOM 树构建完成触发的事件，不需要等待 stylesheets, images, and subframes 完成加载或构建
+        document.addEventListener('DOMContentLoaded', (event) => { 
+            console.log('DOM fully loaded and parsed');
+        });
+        window.onload = function(){}; // 所有东西都加载构建完成后执行的代码
+    
+    
+    
