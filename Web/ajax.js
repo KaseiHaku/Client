@@ -50,8 +50,8 @@ function ajaxFileUpload(){
     xhr.upload.addEventListener('progress', xhrUploadProgerssHandler, false);
     function xhrUploadProgerssHandler(event){
         if(event.lengthComputable){
-            let precent = event.loaded / event.total * 100;
-            let str = precent.toFixed(2) + '%'; // 保留两位小数
+            let percent = event.loaded / event.total * 100;
+            let str = percent.toFixed(2) + '%'; // 保留两位小数
         } else {
             console.log('event.lengthComputable === false 时，event.total == 0 所以无法计算');
         }
