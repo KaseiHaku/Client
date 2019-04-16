@@ -51,3 +51,7 @@ window.console.dir(domObj);
     beRemovedElement.parentNode.removeChild(beRemovedElement);// 从该标签的父标签中删除该表签
 
 /** JS 修改 DOM 对象 */
+    /* todo 属性添加 */
+    /* todo 属性删除 */
+    /* todo 属性修改 */
+    /* todo 属性查询 */
