@@ -23,6 +23,14 @@
         <script>
             let cssSetDemo = document.getElementById('cssSetDemo');
             cssSetDemo.style.width = '400px'; // 设置宽度
+            cssSetDemo.style.cssText = 'width:400px; height:20px;'; // 覆盖原来的 CSS 样式
+            cssSetDemo.setAttribute('style', 'width:400px; height:20px;'); // 跟上面一样是覆盖
+
+            cssSetDemo.style.getPropertyValue('width');
+            cssSetDemo.style.setProperty('width', '100px', null);
+            cssSetDemo.style.removeProperty('width'); // 删除 CSS 样式，返回被删除的值
+
+
         </script>
     </div><hr/>
 </div>
