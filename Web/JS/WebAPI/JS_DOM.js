@@ -50,8 +50,28 @@ window.console.dir(domObj);
     let beRemovedElement = document.getElementById('ID');// 获取被删除的标签
     beRemovedElement.parentNode.removeChild(beRemovedElement);// 从该标签的父标签中删除该表签
 
-/** JS 修改 DOM 对象 */
-    /* todo 属性添加 */
-    /* todo 属性删除 */
-    /* todo 属性修改 */
+/** JS 修改 DOM 对象：属性节点 */
+     let attrDemo = document.getElementById("attributeDemo"); // 获取标签节点
     /* todo 属性查询 */
+    let attrNodeValue = attrDemo.getAttribute("my");
+    /* todo 属性添加及修改 */
+    attrDemo.setAttribute("my", "sunck"); // 设置自定属性节点的值 
+    /* todo 属性删除 */
+    attrDemo.removeAttribute("other");
+    /* todo 特殊属性操作 */
+        /* class 属性 */
+        document.getElementById("").classList.add(""); // 添加 class 属性中的一个值
+        document.getElementById("").classList.remove(""); // 删除 class 属性中的一个值
+        /* style 属性 */
+        document.getElementById("p2").style.color="blue";    // 设置或获取 css 属性值
+
+
+/** JS 修改 DOM 对象：文本节点 */
+    var element = document.getElementById("");
+    var textNode= document.createTextNode("文本节点");// 创建文本节点
+    var textNode = element.childNodes[0]; // 文本节点没有获取函数或获取属性，只能通过遍历属性或者函数获取
+    textNode.insertData(0, "出入的数据");// 表示从下标为 0 的位置开始插入数据
+    textNode.nodeValue;// 获取文本值
+    element.innerText;// 文本值
+    element.innerHTML;// 标签内部的所有 html 代码
+    
