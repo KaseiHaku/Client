@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS_DOM</title>
+</head>
+<body>
+<div id="root">
+    <div>
+        <h3>DOM(Document Object Model)基本概念</h3>
+        <table style="font-weight:600; font-size:100%; border-collapse:collapse; border: 1px solid #0094ff;">
+            <caption style="color:red;">一个节点对应一个对象</caption>
+            <tr><td>节点类型(nodeType)只读</td><td>节点名称(nodeName)只读</td><td>节点值(nodeValue)</td></tr>
+            <tr><td>文档节点（9）</td><td>始终是#document</td><td></td></tr>
+            <tr><td>元素节点（1）</td><td>与标签名相同</td><td>undefined/null</td></tr>
+            <tr><td>属性节点（2）</td><td>与属性名相同</td><td>属性值</td></tr>
+            <tr><td>文本节点（3）</td><td>始终是#text</td><td>文本本身</td></tr>
+            <tr><td>注释节点（8）</td><td></td><td></td></tr>
+        </table>
+    </div>
+    <div>
+        <h3>Element: JS 获取 DOM 对象（实例）</h3>
+        <div id="ID">普通元素</div>
+        <form name="formName"></form>
+        <iframe id="iframeId"></iframe>
+        <script>
+            let domObj = window.document.getElementById('ID');
+            let domObjs = window.document.getElementsByName('name');
+            let domObjs = window.document.getElementsByClassName('className');
+            let domObjs = window.document.getElementsByTagName('tagName');
+
+            let formDomObj = window.document.forms["formName"];
+            let domInForm = formDomObj['name']; // 获取表单中 name="name" 元素的对象，适用单个 input
+            let domsInForm = form1.elements["name"];// 获取表单中 name="name" 元素的对象数组，适用多个 input 组合的元素
+
+            let iframeDomObj = window.frames['iframeId']; // 获取 iframe 标签的 DOM 对象
+            let iframeWindow = window.document.getElementById("iframeId").contentWindow; // 父窗口获取 iframe 中的 window 对象，注意 html 中的 js 方法是在 window 对象下面的
+            let domInIframe = window.frames['iframeId'].document.getElementById('ID'); // 父窗口取 iframe 中的元素
+            let parentDomObj = window.parent.document.getElementById('ID'); // iframe 中获取 父窗口中的元素
+
+            /** JS 查看 DOM 对象的所有属性 */
+            window.console.dir(domObj);
+        </script>
+    </div><hr/>
+    <div>
+        <h3>Element: JS 创建 DOM 对象</h3>
+        <script type="application/javascript">
+            /* todo 方法一 */
+            document.write('<a href="http://www.baidu.com">直接写 html 代码<a>');
+
+            /* todo 方法二 */
+            let newElement = document.createElement("p");// 创建一个 p 标签
+            let parentElement = document.getElementById();// 获取一个 element 作为新创建标签的父标签
+            parentElement.appendChild(newElement);// 把新标签作为父标签的最后一个标签添加
+
+            let locationElement = document.getElementById("");// 获取一个用于定位的标签
+            parentElement.insertBefore(newElement, locationElement);// 在定位标签前面插入新标签
+
+            let beReplacedElement = document.getElementById("");// 获取一个被替换的标签
+            parentElement.replaceChild(newElement, beReplacedElement);// 用新标签替换老标签
+
+            /* todo 方法三: 通过 new DOMParser().parseFromString(text,"text/xml"); */
+            let str = "<book><title>Everyday Italian</title><author>Giada De Laurentiis</author><year>2005</year></book>";
+            let parser = new DOMParser();
+            let dom = parser.parseFromString(str,"text/xml");
+
+            /* todo 方法四：通过 innerHTML 来解析 */
+            let parent = document.getElementById("d");
+            let str = "<div>html code<span> innerHTML</span></div>";
+            parent.innerHTML = str;
+            let domObjs = parent.childNodes;
+        </script>
+    </div><hr/>
+    <div>
+        <h3>Element: JS 删除 DOM 对象</h3>
+        <script>
+            let beRemovedElement = document.getElementById('ID');// 获取被删除的标签
+            beRemovedElement.parentNode.removeChild(beRemovedElement);// 从该标签的父标签中删除该表签
+        </script>
+    </div><hr/>
+    <div>
+        <h3>Attribute: 查询</h3>
+        <div id="attrGetDemo"></div>
+        <script>
+            document.getElementById("attrGetDemo").getAttribute("customized");
+        </script>
+    </div><hr/>
+    <div>
+        <h3>Attribute: 添加及修改</h3>
+        <div id="attrSetDemo"></div>
+        <script>
+            document.getElementById("attrSetDemo").setAttribute("customized", "suck");
+        </script>
+    </div><hr/>
+    <div>
+        <h3>Attribute: 删除</h3>
+        <div id="attrRemoveDemo" customized="customized attribute"></div>
+        <script>
+            document.getElementById("attrRemoveDemo").removeAttribute("customized");
+        </script>
+    </div><hr/>
+    <div>
+        <h3>Attribute: 特殊属性 style</h3>
+        <div id="styleAttrDemo"></div>
+        <script>
+            let styleAttrDemo = document.getElementById("styleAttrDemo");
+            styleAttrDemo.style.color = 'blue';
+        </script>
+    </div><hr/>
+    <div>
+        <h3>Attribute: 特殊属性 class</h3>
+        <div id="classAttrDemo"></div>
+        <script>
+            let classAttrDemo = document.getElementById("classAttrDemo");
+            classAttrDemo.classList.add("haku"); // 添加 class 属性中的一个值
+            classAttrDemo.classList.remove("haku"); // 删除 class 属性中的一个值
+        </script>
+    </div><hr/>
+    <div>
+        <h3>TextNode</h3>
+        <div id="textNodeDemo"></div>
+        <script>
+            let textNodeDemo = document.getElementById("textNodeDemo");
+            let textNode= textNodeDemo.createTextNode("文本节点");// 创建文本节点
+            let textNode = textNodeDemo.childNodes[0]; // 文本节点没有获取函数或获取属性，只能通过遍历属性或者函数获取
+            textNode.insertData(0, "出入的数据");// 表示从下标为 0 的位置开始插入数据
+            textNode.nodeValue;// 获取文本值
+            element.innerText;// 文本值
+            element.innerHTML;// 标签内部的所有 html 代码
+        </script>
+    </div><hr/>
+</div>
+</body>
+</html>
