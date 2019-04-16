@@ -16,14 +16,15 @@
                 alert('静态标签绑定事件:方法一');
             }
 
-
             function staticElementBindEventHandlerMethod2(){
                 alert('静态标签绑定事件:方法二');
+                return false;  // 所有事件处理函数最好都 return false; 阻止浏览器默认事件
             }
             document.getElementById('btn2').onclick = staticElementBindEventHandlerMethod2;
 
             function staticElementBindEventHandlerMethod3(){
                 alert('静态标签绑定事件:方法三');
+                return false;
             }
             /** 句柄绑定第三个参数详解
              * capture 表示是否采用捕获的方式触发事件
