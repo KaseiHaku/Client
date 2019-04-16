@@ -1,77 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>JS_Event</title>
 </head>
 <body>
-    <h2>Event</h2>
-    预备知识：每次 web 页面触发事件， window.event 对象就会捕获当前事件，事件函数原则上一般 return false;
-    window.event.stopPropagation();//停止该事件继续传播
-    window.event.target;// 返回最先触发事件的 element dom 对象
-    window.event.currentTarget;// 返回当前执行该事件的 element dom 对象
-    window.event.type;// 返回该事件的类型
-    <script>
-        var element = document.getElementById("");
-        /* 绑定事件方法一：直接写在 HTML 代码中，例如：<input onclick="func(); return false;" /> */
-        /* 绑定事件方法一：跟 element node 绑定 */
-        element.onclick = function(){
-            console.log("事件绑定方法1");
-            return false; /** 事件函数最后返回值，原则上都是 false，阻止该事件触发其他事件，发生不必要的错误 */
-        };
-        /* 绑定事件方法二：以句柄的方式绑定标签事件 */
-        /** element.addEventListener(event, function, [false 冒泡|true 捕获]);
-         *  冒泡：指当子标签被点击时，先触发子标签的 click 事件，然后再触发父标签的 click 事件
-         *  捕获：只当子标签被点击时，先触发父标签的 click 事件，然后再触发子标签的 click 事件
-         */
-        function eventFunc(){
-            console.log("Author : Kasei Haku");
-            return false;
-        }
-        
-        /** 句柄绑定第三个参数详解 
-         * capture 表示是否采用捕获的方式触发事件
-         * passive 表示 listener 永远不会调用 preventDefault()。如果 listener 仍然调用了这个函数，客户端将会忽略它并抛出一个控制台警告
-         * once 表示 listener 只执行一次，调用后就会被删除
-         */
-        element.addEventListener("click", eventFunc, {capture: false, passive: true, once: false});  
-        element.addEventListener("click", eventFunc, false);// 添加事件监听        
-        element.removeEventListener("click", eventFunc, false);// 移除事件监听
-    </script>
+<div id="root">
+    <div>
+        <h2>为静态标签绑定事件</h2>
+        <button type="button" id="btn1" onclick="staticElementBindEventHandlerMethod1(); return false;">方法一</button>
+        <button type="button" id="btn2">方法二</button>
+        <button type="button" id="btn3">方法三</button>
+        <script type="application/javascript">
+            function staticElementBindEventHandlerMethod1(){
+                alert('静态标签绑定事件:方法一');
+            }
 
-    <h2>为动态创建的标签绑定事件</h2>
-    <input id="dynamicTag" type="button" value="动态创建 li 标签" onclick="createTagy();"/><br/>
-    <ul id="dynamicDemo">
-    </ul>
-    <script>
-        var ul = document.getElementById("dynamicDemo");
-        function createTagy(){
-            var arrayli = ul.getElementsByTagName("li");
-            var li = document.createElement("li");
-            li.innerHTML="one" + arrayli.length+ '&nbsp;&nbsp;<a class="ac" href="javascript:;">删除</a>';
-            ul.appendChild(li);
-        }
-        /* 传统绑定法
-        ul.onclick = function() {
-            var e = window.event;
-            var t = e.target || e.srcElement;  //t:目标对象
-            var tagName = t.tagName;　//tagName标签名称，必须是大写
-            if( tagName == "A") {
-                this.removeChild(t.parentNode); //删除元素 this指oul
+
+            function staticElementBindEventHandlerMethod2(){
+                alert('静态标签绑定事件:方法二');
             }
-        }
-         */
-        ul.addEventListener("click", eventDynamic, false);
-        function eventDynamic(){
-            var e = window.event;
-            var t = e.target || e.srcElement;  //t:目标对象
-            var tagName = t.tagName;　//tagName标签名称，必须是大写
-            if( tagName == "A") {
-                this.removeChild(t.parentNode); //删除元素 this指oul
+            document.getElementById('btn2').onclick = staticElementBindEventHandlerMethod2;
+
+            function staticElementBindEventHandlerMethod3(){
+                alert('静态标签绑定事件:方法三');
             }
-        }
-    </script>
-    <hr/>
+            /** 句柄绑定第三个参数详解
+             * capture 表示是否采用捕获的方式触发事件
+             * passive 表示 listener 永远不会调用 preventDefault()。如果 listener 仍然调用了这个函数，客户端将会忽略它并抛出一个控制台警告
+             * once 表示 listener 只执行一次，调用后就会被删除
+             */
+            document.getElementById('btn3').addEventListener('click', staticElementBindEventHandlerMethod3, {capture: false, passive: true, once: false});
+            // document.getElementById('btn3').removeEventListener("click", staticElementBindEventHandlerMethod3);// 移除事件监听
+        </script>
+    </div><hr/>
+    <div>
+        <h2>为动态创建的标签绑定事件</h2>
+        <input id="dynamicTag" type="button" value="动态创建 li 标签" onclick="createTagy();"/><br/>
+        <ul id="dynamicDemo"></ul>
+        <script>
+            let ul = document.getElementById("dynamicDemo");
+
+            function createTagy() {
+                let arrayli = ul.getElementsByTagName("li");
+                let li = document.createElement("li");
+                li.innerHTML = "one" + arrayli.length + '&nbsp;&nbsp;<a class="ac" href="javascript:;">删除</a>';
+                ul.appendChild(li);
+            }
+
+            /* 传统绑定法
+            ul.onclick = function() {
+                let e = window.event;
+                let t = e.target || e.srcElement;  //t:目标对象
+                let tagName = t.tagName;　//tagName标签名称，必须是大写
+                if( tagName == "A") {
+                    this.removeChild(t.parentNode); //删除元素 this指oul
+                }
+            }
+             */
+            ul.addEventListener("click", eventDynamic, false);
+
+            function eventDynamic() {
+                let e = window.event;
+                let t = e.target || e.srcElement;  //t:目标对象
+                let tagName = t.tagName;　//tagName标签名称，必须是大写
+                if (tagName == "A") {
+                    this.removeChild(t.parentNode); //删除元素 this指oul
+                }
+            }
+        </script>
+    </div><hr/>
+</div>
 </body>
 </html>
-
-
