@@ -18,6 +18,30 @@ function StringUtil(){
         var regexpMulti = new RegExp(delimiter, "g");
         return str.replace(regexpMulti, delimiter + '\r\n');  // 防止在 Mac OS 和 Linux 下不换行
     }
+    
+    
+    /** todo 删除带有分隔符的字符串中的一个元素
+     * @param original 原来的字符串
+     * @param item 要删除的元素
+     * @param delimiter 分隔符
+     * @trap item 最好不要带有分隔符
+     * */
+    function removeItemFromDelimiterStr(original, item, delimiter){
+        let res = null;
+        if(original === void(0) || original === null || original === ''){
+            return res;
+        }
+
+        let middle = new RegExp( '[\\s'+delimiter+']*'+delimiter+'[\\s'+delimiter+']*', 'g');
+        let tail = new RegExp( '[\\s'+delimiter+']*'+delimiter+'[\\s'+delimiter+']*$', 'g');
+        let head = new RegExp( '^[\\s'+delimiter+']*'+delimiter+'[\\s'+delimiter+']*', 'g');
+        res = original.replace(item, '');
+        res = res.replace(middle, delimiter);
+        res = res.replace(tail, '');
+        res = res.replace(head, '');
+
+        return res;
+    }
 
     
 }
