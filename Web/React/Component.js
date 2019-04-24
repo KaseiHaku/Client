@@ -3,6 +3,13 @@ class ComponentName extends React.Component {
     constructor(props){
         super(props);
         this.state = {};        // 该属性是必须要存在的，保存当前组件的状态，且修改该属性只能通过 this.setState() 方法
+        this.handleClick = this.handleClick.bind(this); //手动绑定，防止出现下面 a 标签的问题
+        this.handleClick2 = function(){
+            console.log(this);
+        }.bind(this);
+        this.handleClick3 = ()=>{       // 箭头函数相当于上面的 handleClick2
+            console.log(this);
+        };
     }
     
     setState(){};               // 该方法是从父类继承过来的，不需要自己实现，直接用，并且不能覆写
