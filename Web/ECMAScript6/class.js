@@ -28,7 +28,7 @@
 
     /** ES6 */
     let methodName = 'getArea';
-    class Person6 {
+    class Person6 extends Animal {
         static staticAttribute = `类属性`;
         dynamicAttribute = `类的实例属性`;
         static staticFunction(){ // 类方法
@@ -45,6 +45,7 @@
         Y: null,
 
         constructor(x, y){  // 该方法等价于 ES5 中的 Person.prototype.constructor
+            super(); // 子类构造函数必须先调用父类构造函数
             this.x = x;
             this.y = y;
             this.attr = {
