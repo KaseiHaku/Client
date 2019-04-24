@@ -30,6 +30,8 @@ class ComponentName extends React.Component {
         return [        // 适合返回多个标签
             <a onClick={this.setState({})}></a>     // 这里会报 setState() 方法未定义，原因是因为 onclick 属性中 this 指向的是 a 标签了，而不是 ComponentName 创建出来的实例   
             <label></label>
+            <button onClick={this.handleClick.bind(this)}></button> // 这中方法可行，但是会影响 React 的性能优化
+            <button onClick={(e) => this.handleClick(e)}></button> // 这中方法可行，但是会影响 React 的性能优化
         ];
     }
     
