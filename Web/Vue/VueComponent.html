@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Component</title>
+</head>
+<body>
+<div id="root">
+    <div>
+        <h3>Compose Component（组合组件）</h3>
+    </div><hr/>
+
+    <div>
+        <h4>最基本的组件</h4>
+        <div id="basicComponent">
+            <ol>
+                <basic-component></basic-component>
+                <basic-component></basic-component>
+                <basic-component></basic-component>
+            </ol>
+        </div>
+    </div><hr/>
+
+    <div>
+        <h4>带参数的组件</h4>
+        <div id="paramComponent">
+            <ol>
+                <param-component v-for="item in arg1" v-bind:param1="item" v-bind:param2="arg2" v-bind:id="item.id"></param-component>
+            </ol>
+        </div>
+    </div><hr/>
+    <div>
+        <h4></h4>
+        <div id="">
+
+        </div>
+    </div><hr/>
+    <div>
+        <h4></h4>
+        <div id="">
+
+        </div>
+    </div><hr/>
+    <div>
+        <h4></h4>
+        <div id="">
+
+        </div>
+    </div><hr/>
+
+
+
+
+
+
+</div>
+<script src="../frame/vue-2.6.10/vue.min.js"></script>
+<script>
+    /** todo 最基本的组件 */
+    Vue.component('basic-component', {
+        template: '<li>最基本的模板，不带任何动态参数</li>', // HTML 模板
+    });
+    let basicComponent = new Vue({
+        el: '#basicComponent',
+    });
+
+    /** todo 带参数的组件 */
+    Vue.component('param-component', {
+        props: ['param1', 'param2'],
+        template: '<li>{{ param1.text + param2 }}</li>',
+    });
+    let paramComponent = new Vue({
+        el: '#paramComponent',
+        data: {
+            arg1: [
+                { id: 1, text: 'A'},
+                { id: 2, text: 'B'},
+                { id: 3, text: 'C'}
+            ],
+            arg2: ' 后缀',
+        },
+    });
+
+    /** todo 自带静态属性的组件 */
+    Vue.component('button-counter', {
+        data: function () {
+            return {
+                count: 0
+            }
+        },
+        template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+    });
+
+
+
+</script>
+</body>
+</html>
