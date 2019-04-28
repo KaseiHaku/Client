@@ -30,14 +30,14 @@
         </div>
     </div><hr/>
     <div>
-        <h4></h4>
-        <div id="">
-
+        <h4>自带 data 属性的组件</h4>
+        <div id="dataComponent">
+            <data-component></data-component>
         </div>
     </div><hr/>
     <div>
         <h4></h4>
-        <div id="">
+        <div id="standardComponent">
 
         </div>
     </div><hr/>
@@ -56,6 +56,13 @@
 </div>
 <script src="../frame/vue-2.6.10/vue.min.js"></script>
 <script>
+
+    /** todo Vue 组件定义规则
+     * 组件名必须是多个单词
+     * data 必须是个 function
+     *
+     * */
+
     /** todo 最基本的组件 */
     Vue.component('basic-component', {
         template: '<li>最基本的模板，不带任何动态参数</li>', // HTML 模板
@@ -63,7 +70,6 @@
     let basicComponent = new Vue({
         el: '#basicComponent',
     });
-
     /** todo 带参数的组件 */
     Vue.component('param-component', {
         props: ['param1', 'param2'],
@@ -80,9 +86,8 @@
             arg2: ' 后缀',
         },
     });
-
-    /** todo 自带静态属性的组件 */
-    Vue.component('button-counter', {
+    /** todo 自带 data 属性的组件 */
+    Vue.component('data-component', {
         data: function () {
             return {
                 count: 0
@@ -90,8 +95,40 @@
         },
         template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
     });
+    let dataComponent = new Vue({
+        el: '#dataComponent',
+    });
 
 
+    /** todo 组件定义标准 */
+    Vue.component('standard-component', {
+        props: {
+            param1: {
+                type: String,
+                required: true,
+                validator: function (value) {
+                    return [
+                        'syncing',
+                        'synced',
+                        'version-conflict',
+                        'error'
+                    ].indexOf(value) !== -1
+                }
+            },
+            param2: {
+
+            }
+        },
+        data: function () {
+            return {
+                count: 0
+            }
+        },
+        template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+    });
+    let standardComponent = new Vue({
+        el: '#standardComponent',
+    });
 
 </script>
 </body>
