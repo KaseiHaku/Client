@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Component</title>
+</head>
+<body>
+<div id="root">
+    <ul>
+        <tree-node v-bind:nodeobj="nodeobj"></tree-node>
+    </ul>
+
+
+</div>
+<script src="../frame/vue-2.6.10/vue.min.js"></script>
+<script>
+    var obj = {
+        id: 'root',
+        name: 'root',
+        agree: null,
+        childNode: [
+            {
+                id: '01', name: '01', agree: null,
+                childNode: [
+                    {id: '01-01', name: '01-01', agree: null, childNode: []},
+                    {id: '01-02', name: '01-02', agree: null, childNode: []},
+                    {id: '01-03', name: '01-03', agree: null, childNode: []},
+                    {id: '01-04', name: '01-04', agree: null, childNode: []},
+                    {id: '01-05', name: '01-05', agree: null, childNode: []},
+                ]
+            },
+            {
+                id: '02', name: '02', agree: null, childNode: [
+                    {
+                        id: '02-01', name: '02-01', agree: null, childNode: [
+                            {id: '02-01-01', name: '02-01-01', agree: null, childNode: []},
+                            {id: '02-01-02', name: '02-01-02', agree: null, childNode: []},
+                            {
+                                id: '02-01-03', name: '02-01-03', agree: null, childNode: [
+                                    {id: '02-01-02-01', name: '02-01-02-01', agree: null, childNode: []},
+                                ]
+                            },
+                        ]
+                    },
+                    {id: '02-02', name: '02-02', agree: null, childNode: []},
+                    {id: '02-03', name: '02-03', agree: null, childNode: []},
+                ]
+            },
+            {id: '03', name: '03', agree: null, childNode: []}
+        ]
+    };
+
+
+    Vue.component('tree-node', {
+        props: {
+            nodeobj: Object,
+        },
+        computed: {
+            hasChild: function(){
+                return this.nodeobj.childNode === void(0) || this.nodeobj.childNode === null || this.nodeobj.childNode.length === 0
+            }
+        },
+        methods: {
+            radioChangeTrue: function(){
+                this.nodeobj.agree = true;
+            },
+            radioChangeFalse: function(){
+                this.nodeobj.agree = false;
+            }
+        },
+        template: `
+            <li v-bind:key="nodeobj.id">
+                <div>
+                    <label>{{ nodeobj.id }}</label>&#160;
+                    <label>{{ nodeobj.name }}</label>&#160;
+                    <input type="radio" v-bind:checked="nodeobj.agree === null ? null : nodeobj.agree" v-on:click="radioChangeTrue"/><label>同意</label>
+                    <input type="radio" v-bind:checked="nodeobj.agree === null ? null : !nodeobj.agree" v-on:click="radioChangeFalse"/><label>不同意</label>
+                </div>
+                <ul v-if="!hasChild">
+                    <tree-node v-for="item in nodeobj.childNode" v-bind:nodeobj="item"></tree-node>
+                </ul>
+            </li>
+        `,
+
+    });
+
+    let root = new Vue({
+        el: '#root',
+        data: {
+            nodeobj: obj,
+        },
+
+
+    });
+
+
+
+</script>
+</body>
+</html>
