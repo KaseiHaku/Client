@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="root">
+    <textarea style="overflow: scroll; white-space: nowrap;"></textarea>
+</div>
+<script>
+    let el = document.querySelector('textarea');
+    function adjust(){
+
+        if(el.clientHeight < el.scrollHeight){
+            el.style.height = el.offsetHeight-el.clientHeight+el.scrollHeight + 'px';
+        }
+    }
+</script>
+</body>
+</html>
