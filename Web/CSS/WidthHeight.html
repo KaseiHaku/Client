@@ -68,15 +68,20 @@
         scrollY: null,
 
         /** resize */
-        resizeDivClientWidth: null,
+        resizeDivClientWidth: null,  // 视口的宽度，不包含滚动条的宽度
         resizeDivClientHeight: null,
-        resizeDivClientLeft: null, // 不包含外边距和内边距
+        resizeDivClientLeft: null, // 视口到达窗口左边的宽度，不包含外边距和内边距
         resizeDivClientTop: null, // 不包含外边距和内边距
 
-        resizeDivScrollWidth: null,
+        resizeDivScrollWidth: null, // 可滚动部分的宽度
         resizeDivScrollHeight: null,
-        resizeDivScrollLeft: null,
+        resizeDivScrollLeft: null,  // 可以滚动的宽度
         resizeDivScrollTop: null,
+        
+        resizeDivOffsetWidth: null, // 整个控件的宽度，包括滚动条
+        resizeDivOffsetHeight: null,
+        resizeDivOffsetLeft: null, // 控件到达窗口左边的宽度
+        resizeDivOffsetTop: null,
 
         /** 以下是自身宽高及定位参数 */
         styleObj: {
