@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Position</title>
+    <style type="text/css">
+        * { box-sizing: border-box; }
+    </style>
+</head>
+<body>
+<div id="root">
+
+    <div id="vueContainer" v-bind:style="[styleObj, computedStyleObj]">
+        <label>outerWidth=</label><span>{{ outerWidth }}</span>
+        <label>outerHeight=</label><span>{{ outerHeight }}</span><br/>
+        <label>innerWidth=</label><span>{{ innerWidth }}</span>
+        <label>innerHeight=</label><span>{{ innerHeight }}</span><br/>
+        <label>screenLeft=</label><span>{{ screenLeft }}</span><br/>
+        <label>screenTop=</label><span>{{ screenTop }}</span><br/>
+        <label>scrollX=</label><span>{{ scrollX }}</span><br/>
+        <label>scrollY=</label><span>{{ scrollY }}</span><br/>
+        <!-- 以下是 Element 元素的 -->
+        <label>resizeDivClientWidth=</label><span>{{ resizeDivClientWidth }}</span><br/>
+        <label>resizeDivClientHeight=</label><span>{{ resizeDivClientHeight }}</span><br/>
+        <label>resizeDivClientLeft=</label><span>{{ resizeDivClientLeft }}</span><br/>
+        <label>resizeDivClientTop=</label><span>{{ resizeDivClientTop }}</span><br/>
+
+        <label>resizeDivScrollWidth=</label><span>{{ resizeDivScrollWidth }}</span><br/>
+        <label>resizeDivScrollHeight=</label><span>{{ resizeDivScrollHeight }}</span><br/>
+        <label>resizeDivScrollLeft=</label><span>{{ resizeDivScrollLeft }}</span><br/>
+        <label>resizeDivScrollTop=</label><span>{{ resizeDivScrollTop }}</span><br/>
+    </div>
+    <div id="resizeDiv" style="resize: both; border: 1px solid black; background-color: #0c7cd5; min-width: 50px; min-height: 50px; overflow: scroll;">
+        abcdefgasdfawefasdfasdfqwefqwekjgpqiuwhefpnweiuhr23jnaowf8a7sd9f23r2sfaweq324sdfgbymhaefddf<br/>
+        1234567asdfq23wefasdfq234234rwe<br/>
+        我是可以用户修改大小的<br/>
+        我是可以用户修改大小的<br/>
+        我是可以用户修改大小的<br/>
+        我是可以用户修改大小的<br/>
+        我是可以用户修改大小的<br/>
+        我是可以用户修改大小的<br/>
+        我是可以用户修改大小的<br/>
+        我是可以用户修改大小的<br/>
+        我是可以用户修改大小的<br/>
+        我是可以用户修改大小的<br/>
+        我是可以用户修改大小的<br/>
+        我是可以用户修改大小的<br/>
+        我是可以用户修改大小的<br/>
+        我是可以用户修改大小的<br/>
+        我是可以用户修改大小的<br/>
+        我是可以用户修改大小的<br/>
+        我是可以用户修改大小的<br/>
+        我是可以用户修改大小的<br/>
+        我是可以用户修改大小的<br/>
+    </div>
+    <div style="width: 3000px; height: 3000px;"></div>
+</div>
+<script src="../frame/vue-2.6.10/vue.min.js"></script>
+<script>
+    const position = {
+        outerWidth: null,
+        outerHeight: null,
+        innerWidth: null,
+        innerHeight: null,
+        screenLeft: null,
+        screenTop: null,
+        scrollX: null,
+        scrollY: null,
+
+        /** resize */
+        resizeDivClientWidth: null,
+        resizeDivClientHeight: null,
+        resizeDivClientLeft: null, // 不包含外边距和内边距
+        resizeDivClientTop: null, // 不包含外边距和内边距
+
+        resizeDivScrollWidth: null,
+        resizeDivScrollHeight: null,
+        resizeDivScrollLeft: null,
+        resizeDivScrollTop: null,
+
+        /** 以下是自身宽高及定位参数 */
+        styleObj: {
+            width: '600px',
+            height: '200px',
+            backgroundColor: 'rgba(126,45,66,0.5)',
+            position: 'fixed',
+        },
+
+
+    };
+
+    let vueContainer = new Vue({
+        el: '#vueContainer',
+        data: position,
+        computed:{
+            computedStyleObj: function(){
+                return {
+                    left: (this.innerWidth - window.parseInt(this.styleObj.width.substring(0, this.styleObj.width.length-2)))/2 + 'px',
+                    top: (this.innerHeight - window.parseInt(this.styleObj.height.substring(0, this.styleObj.height.length-2)))/2 + 'px',
+                };
+            },
+
+        }
+    });
+
+    window.setInterval(function(){
+        vueContainer.outerWidth = window.outerWidth;
+        vueContainer.outerHeight = window.outerHeight;
+        vueContainer.innerWidth = window.innerWidth;
+        vueContainer.innerHeight = window.innerHeight;
+        vueContainer.screenLeft =  window.screenX;
+        vueContainer.screenTop = window.screenY;
+        vueContainer.scrollX = window.scrollX;
+        vueContainer.scrollY = window.scrollY;
+
+        vueContainer.resizeDivClientWidth = document.getElementById('resizeDiv').clientWidth;
+        vueContainer.resizeDivClientHeight = document.getElementById('resizeDiv').clientHeight;
+        vueContainer.resizeDivClientLeft =  document.getElementById('resizeDiv').clientLeft;
+        vueContainer.resizeDivClientTop = document.getElementById('resizeDiv').clientTop;
+
+        vueContainer.resizeDivScrollWidth = document.getElementById('resizeDiv').scrollWidth;
+        vueContainer.resizeDivScrollHeight = document.getElementById('resizeDiv').scrollHeight;
+        vueContainer.resizeDivScrollLeft = document.getElementById('resizeDiv').scrollLeft;
+        vueContainer.resizeDivScrollTop = document.getElementById('resizeDiv').scrollTop;
+
+    }, 200);
+
+
+</script>
+</body>
+</html>
