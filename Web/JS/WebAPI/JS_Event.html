@@ -69,6 +69,12 @@
                     this.removeChild(t.parentNode); //删除元素 this指oul
                 }
             }
+            
+            /** 代码触发事件 */
+            let myEvent = new Event('myEvent'); // 创建时间实例，放入到事件容器中
+            document.querySelector('#root').addEventListener('myEvent', function(){}); // 添加事件监听，用户用户触发事件
+            document.querySelector('#root').dispatchEvent(myEvent); // 用于代码手工触发事件
+            
         </script>
     </div><hr/>
 </div>
