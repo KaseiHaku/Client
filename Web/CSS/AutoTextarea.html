@@ -10,12 +10,28 @@
 </div>
 <script>
     let el = document.querySelector('textarea');
-    function adjust(){
 
-        if(el.clientHeight < el.scrollHeight){
-            el.style.height = el.offsetHeight-el.clientHeight+el.scrollHeight + 'px';
+    function textareaAdjustHandler(el){
+        function adjustTextareaHeight(){
+            if(el.clientHeight < el.scrollHeight){
+                el.style.height = el.offsetHeight-el.clientHeight+el.scrollHeight + 'px';
+            }
         }
+        function adjustTextareaWidth(){
+            if(el.clientWidth < el.scrollWidth){
+                el.style.width = el.offsetWidth-el.clientWidth+el.scrollWidth + 'px';
+            }
+        }
+        el.addEventListener('input', adjustTextareaHeight, false);
+        el.addEventListener('input', adjustTextareaWidth, false);
+        el.addEventListener('past', adjustTextareaHeight, false);
+        el.addEventListener('past', adjustTextareaWidth, false);
     }
+
+
+
+
+    textareaAdjustHandler(el);
 </script>
 </body>
 </html>
