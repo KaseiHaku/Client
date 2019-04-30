@@ -71,7 +71,7 @@
             }
             
             /** 代码触发事件 */
-            let myEvent = new Event('myEvent'); // 创建时间实例，放入到事件容器中
+            let myEvent = new Event('myEvent'); // 创建时间实例，并放入到事件容器中
             document.querySelector('#root').addEventListener('myEvent', function(){}); // 添加事件监听，用户用户触发事件
             document.querySelector('#root').dispatchEvent(myEvent); // 用于代码手工触发事件
             
