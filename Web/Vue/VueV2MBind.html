@@ -14,36 +14,70 @@
     <div>
         <h4>Text</h4>
         <div id="textBind">
+            <input v-model="msg" placeholder="触发 input 事件"/><span style="white-space: pre;">{{ msg }}</span><span>|边界</span>
+            <br/>
+            <input v-model.lazy="msg2" placeholder="触发 change 事件"/><span style="white-space: pre;">{{ msg2 }}</span><span>|边界</span>
+            <br/>
+            <input v-model.number="age" type="number" placeholder="将值用 parseFloat() 转成 number 类型"><span style="white-space: pre;">{{ age }}</span><span>|边界</span>
+            <br/>
+            <input v-model.trim="trim"  placeholder="将值用 trim() 出来"><span style="white-space: pre;">{{ trim }}</span><span>|边界</span>
+        </div>
+    </div><hr/>
 
+
+    <div>
+        <h4>Textarea</h4>
+        <div id="textareaBind">
+            <p style="white-space: pre-line;">{{ msg }}</p>
+            <textarea v-model="msg" placeholder="add multiple lines"></textarea>
         </div>
     </div><hr/>
 
     <div>
         <h4>Radio</h4>
-        <div id="">
-
+        <div id="radioBind">
+            <input type="radio" id="one" v-model="picked" v-bind:value="valueBind"><label for="one">One</label>
+            <br>
+            <input type="radio" id="two" value="Two" v-model="picked"><label for="two">Two</label>
+            <br>
+            <span>Picked: {{ picked }}</span>
         </div>
     </div><hr/>
 
     <div>
         <h4>Checkbox</h4>
-        <div id="">
-
+        <div id="checkboxBind">
+            <div>
+                <input type="checkbox" id="singleCheckbox" v-model="singleChecked" true-value="valueBind:ok" false-value="valueBind:not ok"><label for="singleCheckbox">{{ singleChecked }}</label>
+            </div>
+            <div>
+                <input type="checkbox" id="jack" value="Jack" v-model="checkedNames"><label for="jack">Jack</label>
+                <input type="checkbox" id="john" value="John" v-model="checkedNames"><label for="john">John</label>
+                <input type="checkbox" id="mike" value="Mike" v-model="checkedNames"><label for="mike">Mike</label>
+                <br>
+                <span>Checked names: {{ checkedNames }}</span>
+            </div>
         </div>
     </div><hr/>
 
 
     <div>
         <h4>Select</h4>
-        <div id="">
-
+        <div id="selectBind">
+            <select v-model="selected">
+                <option disabled value="">Please select one</option>
+                <option>A</option>
+                <option>B</option>
+                <option v-bind:value="valueBind">C</option>
+            </select>
+            <span>Selected: {{ selected }}</span>
         </div>
     </div><hr/>
 
     <div>
-        <h4></h4>
-        <div id="">
-
+        <h4>Component</h4>
+        <div id="templateBind">
+            <custom-input v-model="searchText"></custom-input><span style="white-space: pre;">{{ searchText }}</span>
         </div>
     </div><hr/>
 
@@ -52,7 +86,63 @@
 </div>
 <script src="../frame/vue-2.6.10/vue.min.js"></script>
 <script>
+    let textBind = new Vue({
+        el: '#textBind',
+        data: {
+            msg: 'textBind',
+            msg2: '',
+            age: 0,
+            trim: '',
+        },
+    });
 
+    let textareaBind = new Vue({
+        el: '#textareaBind',
+        data: {
+            msg: 'textareaBind',
+        },
+    });
+
+    let radioBind = new Vue({
+        el: '#radioBind',
+        data: {
+            picked: '',
+            valueBind: '值绑定：基本类型',
+        },
+    });
+
+    let checkboxBind = new Vue({
+        el: '#checkboxBind',
+        data: {
+            singleChecked: true,
+            checkedNames: []
+        },
+    });
+
+    let selectBind = new Vue({
+        el: '#selectBind',
+        data: {
+            selected: '',
+            valueBind: { name: '值绑定：对象'},
+        },
+    });
+
+
+    Vue.component('custom-input', {
+        props: ['value'],
+        template: `
+            <input
+              v-bind:value="value"
+              v-on:input="$emit('input', $event.target.value)"
+            />
+        `,
+    });
+    let templateBind = new Vue({
+        el: '#templateBind',
+        data: {
+            searchText: '组件中使用 v-model',
+        },
+    });
 
 
 
