@@ -128,7 +128,7 @@
                 </div>
             </div>
 
-            <div>
+            <!--<div>
 
                 <template v-if="loginType === 'username'">
                     <label>Username</label>
@@ -142,14 +142,14 @@
 
                 <template v-if="loginType === 'username'">
                     <label>Username</label>
-                    <input placeholder="Enter your username" key="username-input"><!-- 加 key 表示跟下面的 input 是不可复用的 -->
+                    <input placeholder="Enter your username" key="username-input">&lt;!&ndash; 加 key 表示跟下面的 input 是不可复用的 &ndash;&gt;
                 </template>
                 <template v-else>
                     <label>Email</label>
                     <input placeholder="Enter your email address" key="email-input">
                 </template>
 
-            </div>
+            </div>-->
         </div>
     </div><hr/>
 
@@ -159,6 +159,18 @@
             <ol>
                 <li v-for="item in valueAry">{{ item.text }}</li>
             </ol>
+        </div>
+    </div><hr/>
+
+    <div>
+        <h4>循环条件渲染</h4>
+        <div id="loopConditionRender">
+            <ol>
+                <li v-for="item in valueAry" v-if="item.text !== 'A'">{{ item.text }}</li><!-- 可以这么写，但是不推荐-->
+            </ol>
+            <ul>
+               <li v-for="item in shouldShowItemAry">{{ item.text }}</li><!-- 推荐方式-->
+            </ul>
         </div>
     </div><hr/>
 
@@ -191,8 +203,6 @@
             staticProp: '静态属性',
         }
     });
-
-
     /** todo 计算属性绑定 */
     let computePropsBind = new Vue({
         el: '#computePropsBind',
@@ -205,8 +215,6 @@
             }
         }
     });
-
-
     /** todo 冻结属性 */
     let freezeProps = {
         freezeProp: '冻结属性'
@@ -216,8 +224,6 @@
         el: '#freezePropsBind',
         data: freezeProps,
     });
-
-
     /** todo 标签属性绑定 */
     let tagAttrBind = new Vue({
         el: '#tagAttrBind',
@@ -226,7 +232,6 @@
             tagAttrShorthand: '标签属性绑定简写模式',
         },
     });
-
     /** todo 直接填充 HTML 代码到 DOM 树 */
     let slotHtml2DomTree = new Vue({
         el: '#slotHtml2DomTree',
@@ -234,7 +239,6 @@
             rawHtml: '<span style="color: red;">Red Word</span>',
         },
     });
-
     /** todo 事件绑定 */
     let eventBind = new Vue({
         el: '#eventBind',
@@ -247,8 +251,6 @@
             }
         }
     });
-
-
     /** todo 动态属性、动态事件绑定 */
     let dynamicPropsEventBind = new Vue({
         el: '#dynamicPropsEventBind',
@@ -262,33 +264,43 @@
             }
         }
     });
-
     /** todo 命令修饰符 */
     let directModifier = new Vue({
         el: '#directModifier',
         data: {
-
         },
     });
-
-
     /** todo Class and Style Bind */
     let classAndStyleBind = new Vue({
         el: '#classAndStyleBind',
         data: {
+            /** Class */
             isActive: true,
             hasError: false,
+            activeClass: 'active',
+            errorClass: 'text-danger',
             classObject: {
                 active: true,
                 'text-danger': false
             },
+
+
+
+            /** Style */
+            activeColor: '#rgba(255,0,0,1)',
+            fontSize: '40',
             styleObject: {
                 color: 'red',
                 fontSize: '13px'
             },
+            baseStyles: {
+                backgroundColor: '#rgba(255,0,0,1)',
+            },
+            overridingStyles: {
+                borderColor: '#rgba(255,0,0,1)',
+            },
         },
     });
-
     /** todo 条件渲染 */
     let conditionRender = new Vue({
         el: '#coditionRender',
@@ -302,7 +314,6 @@
     window.setInterval(function(){
         conditionRender.ifelse = Math.random();
     }, 1000);
-
     /** todo 循环渲染 */
     let loopRender = new Vue({
         el: '#loopRender',
@@ -314,10 +325,26 @@
             ],
         },
     });
-
-
-
-
+    /** todo 循环条件渲染 */
+    let loopConditionRender = new Vue({
+        el: '#loopConditionRender',
+        data: {
+            valueAry: [
+                { text: 'A' },
+                { text: 'B' },
+                { text: 'C' }
+            ],
+        },
+        computed: {
+            shouldShowItemAry: function(){
+                return this.valueAry.filter(item => {
+                    if(item.text !== 'A'){
+                       return item;
+                    }
+                });
+            }
+        }
+    });
     /** todo 综合 */
     let comprehensiveData = {
         name: '劫',
@@ -332,24 +359,20 @@
          * '#comprehensiveM2V' <==> document.querySelector('#comprehensiveM2V');  或 document.querySelectorAll('#comprehensiveM2V');
          * */
         el: '#comprehensiveM2V',
-
         /**
          * 静态属性：data 属性绑定所有当前实例（comprehensiveM2V）对应 HTML 标签的属性
          * Vue 会同步 Vue 实例的属性值 和 data 实例的属性值， 即 comprehensiveM2V.attr = 1; 等价于 data.attr = 1;
          * */
         data: comprehensiveData,
-
         /**
          * 当该属性存在时，把模板编译成为一个 render function
          * 当该属性不存在时， 把 el 中所选中的所有元素的 outerHtml 编译成一个模板
          * */
         template: '',
-
         /**
          * 当为模板时，用于接受标签传过来的参数
          * */
         props: ['param1', 'param2'],
-
         /**
          * 计算属性： 保存需要经过计算的属性
          * */
@@ -368,7 +391,6 @@
                 }
             }
         },
-
         /**
          * 自定义函数
          * */
@@ -377,7 +399,6 @@
                 return this.msg.split('').reverse().join('');
             }
         },
-
         /**
          * 当指定属性改变时执行的函数
          * */
@@ -389,7 +410,6 @@
                 this.fullName = this.firstName + ' ' + val
             }
         },
-
         /** Vue LifeCycle Hook（生命周期中的钩子函数）实例声明周期中可以自定义编辑代码的方法 */
         create: function(){},       // 此处不能使用 ()=>{} 箭头函数
         mounted: function(){},
@@ -401,13 +421,6 @@
     comprehensiveM2V.$watch('name', function (newValue, oldValue) {
         // This callback will be called when `comprehensiveM2V.name` changes
     });
-
-
-
-
-
-
-
 </script>
 </body>
 </html>
