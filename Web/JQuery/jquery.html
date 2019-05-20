@@ -81,7 +81,7 @@ jquery 为动态生成的元素绑定事件：$("#现有元素").off("click", "#
    			var $objChildren =  $(this).children("p"); // 获取当前元素所有的 p 直接子元素
    			var $objFind = $(this).find("p"); // 获取当前元素下所有的 p 元素，包括直接子元素和级联子元素
    			var $obj = $("#iframeId").contents().find("#iframe中的Id").val(); // 父窗口中获取 iframe 中的元素
-   			var $obj = $("#id", window.frames["iframeName"].document).val();// 父窗口中获取 iframe 中的元素
+   			var $obj = $("#id", window.frames["iframeName"]).val();// 父窗口中获取 iframe 中的元素
    			var $obj = $("#id", parent.document).val(); // 在 iframe 中获取父窗口的元素
    			
    			// 获取一个节点的文本节点
