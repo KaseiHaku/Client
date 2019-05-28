@@ -16,11 +16,13 @@
                 alert('静态标签绑定事件:方法一');
             }
 
+
             function staticElementBindEventHandlerMethod2(){
                 alert('静态标签绑定事件:方法二');
                 return false;  // 所有事件处理函数最好都 return false; 阻止浏览器默认事件
             }
             document.getElementById('btn2').onclick = staticElementBindEventHandlerMethod2;
+
 
             function staticElementBindEventHandlerMethod3(){
                 alert('静态标签绑定事件:方法三');
@@ -36,19 +38,17 @@
         </script>
     </div><hr/>
     <div>
-        <h3>为动态创建的标签绑定事件</h3>
+        <h3>事件委托：为动态创建的标签绑定事件</h3>
         <input id="dynamicTag" type="button" value="动态创建 li 标签" onclick="createTagy();"/><br/>
         <ul id="dynamicDemo"></ul>
         <script>
             let ul = document.getElementById("dynamicDemo");
-
             function createTagy() {
                 let arrayli = ul.getElementsByTagName("li");
                 let li = document.createElement("li");
                 li.innerHTML = "one" + arrayli.length + '&nbsp;&nbsp;<a class="ac" href="javascript:;">删除</a>';
                 ul.appendChild(li);
             }
-
             /* 传统绑定法
             ul.onclick = function() {
                 let e = window.event;
@@ -60,23 +60,69 @@
             }
              */
             ul.addEventListener("click", eventDynamic, false);
-
             function eventDynamic() {
                 let e = window.event;
                 let t = e.target || e.srcElement;  //t:目标对象
                 let tagName = t.tagName;　//tagName标签名称，必须是大写
                 if (tagName == "A") {
-                    this.removeChild(t.parentNode); //删除元素 this指oul
+                    this.removeChild(t.parentNode); //删除元素 this 指 ul
                 }
             }
-            
+
             /** 代码触发事件 */
             let myEvent = new Event('myEvent'); // 创建时间实例，并放入到事件容器中
             document.querySelector('#root').addEventListener('myEvent', function(){}); // 添加事件监听，用户用户触发事件
             document.querySelector('#root').dispatchEvent(myEvent); // 用于代码手工触发事件
-            
+
         </script>
     </div><hr/>
+    <div>
+        <h3>代码触发事件</h3>
+        <button id="codeTriggerEvent1" onclick="alert('代码触发事件1'); return false;">code trigger 1</button>
+        <button id="codeTriggerEvent2" onclick="alert('代码触发事件2'); return false;">code trigger 2</button>
+        <script>
+            document.querySelector('#codeTriggerEvent1').click();
+
+
+            let mouseEvent = new MouseEvent('click', {
+                screenX: 100,
+                screenY: 200,
+            });
+            document.querySelector('#codeTriggerEvent2').dispatchEvent(mouseEvent);
+
+            let customEvent = new customEvent('customEvent', {
+                detail: {
+                    // 任何类型
+                },
+                bubbles: false,
+                cancelable: false,
+                composed: false,
+            });
+            document.querySelector('#codeTriggerEvent3').dispatchEvent(customEvent);
+
+            document.querySelector('#codeTriggerEvent3').matches()
+
+
+        </script>
+    </div>
+    <div>
+        <h3>剪贴板事件</h3>
+        <script>
+            let clipboardEvent = new ClipboardEvent('copy', {
+                clipboardData: new DataTransfer(),
+                dataType: 'MIME-Type',
+                data: '',
+            });
+
+            var selection = window.getSelection(); // 所有的选中
+            var range = selObj.getRangeAt(0); // 一个选中区域
+            document.execCommand('copy'); // 执行一个 copy 命令
+        </script>
+    </div>
+
+
+
+
 </div>
 </body>
 </html>
