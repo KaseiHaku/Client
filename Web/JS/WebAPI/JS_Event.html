@@ -60,12 +60,9 @@
             }
              */
             ul.addEventListener("click", eventDynamic, false);
-            function eventDynamic() {
-                let e = window.event;
-                let t = e.target || e.srcElement;  //t:目标对象
-                let tagName = t.tagName;　//tagName标签名称，必须是大写
-                if (tagName == "A") {
-                    this.removeChild(t.parentNode); //删除元素 this 指 ul
+            function eventDynamic(e) {
+                if(e.target.matches('div')){
+                    // do something
                 }
             }
 
