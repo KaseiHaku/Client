@@ -81,7 +81,9 @@ function getClipboardData(event){
     return result;
 }
 
-/** todo 点击按钮复制文本到剪贴板 */
+/** todo 点击按钮复制文本到剪贴板 
+ * @return false: 命令不支持或者执行失败
+ * */
 function insertStr2Clipboard(str){
 
     let selection = window.getSelection();      // 获取当前用户 选中（拖蓝） 的实例
@@ -94,9 +96,10 @@ function insertStr2Clipboard(str){
 
     textarea.select();      // 把 textarea 的内容变为 选中 状态
 
-    document.execCommand("copy", false, null);  // 执行浏览器复制命令，相当于 Ctrl+C 或者 右键复制
+    let result = document.execCommand("copy", false, null);  // 执行浏览器复制命令，相当于 Ctrl+C 或者 右键复制
 
     textarea.parentElement.removeChild(textarea); // 删除临时插入的元素
+    return result;
 }
 
 
