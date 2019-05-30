@@ -1,3 +1,6 @@
+/** todo Conclusion: JS 所有异步异常，如果需要捕获，那只能在异步代码内部才能捕获到
+ * */
+
 /** todo 捕获 代码异常 及 资源加载异常 */
 window.addEventListener('error', function(event){
     console.log(event);
