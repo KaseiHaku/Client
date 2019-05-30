@@ -12,6 +12,31 @@ window.addEventListener('unhandledrejection', function(){
 });
 
 
+/** todo Promise 异常处理 demo */
+let promise = new Promise(function(resolve, reject) {
+    setTimeout(function() {
+        resolve('congratulation succeed');
+        reject(new Error('.... error'));
+    }, 300);
+});
+promise.then(function(successValue) {
+  console.log(value);
+}, function(failureReason){
+    
+}).finally(function(obj){
+}).catch(function(error){
+});
+
+
+Promise.all([promise1, promise2, promise3]).then(function(values) {
+    console.log(values);
+});
+Promise.race([promise1, promise2]).then(function(value) {
+    console.log(value);
+    // Both resolve, but promise2 is faster
+});
+
+
 /** todo 捕获 同步代码异常 */
 try{
 
