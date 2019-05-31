@@ -3,13 +3,13 @@
 
 /** todo 捕获 代码异常 及 资源加载异常 */
 window.addEventListener('error', function(event){
-    console.log(event);
-    return true; // 返回 true 将会阻止执行浏览器默认的错误处理函数
+    alert(event.error.message);
 });
 
 
 /** todo 捕获 Promise reject 异常 */
 window.addEventListener('unhandledrejection', function(event){
+    alert(event.reason.message);   // reject(new Error());  或者 throw new Error(); 必须是一个 Error 实例
     // 在使用 Promise 的时候，如果没有声明 catch 代码块，Promise 的异常会被抛出。
     // 只能通过这个方法或者 window.onunhandledrejection 才能捕获到该异常
 });
