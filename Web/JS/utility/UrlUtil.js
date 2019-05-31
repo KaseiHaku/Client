@@ -28,7 +28,7 @@ function UrlUtil(){
         if(typeof caseSensitive ==="boolean" && caseSensitive === false){
             modifier = "ig";
         }
-        var regExp  = new RegExp("(?<=(^|\\?|&)"+name+"=)([^&#]*)(?=$|#|&)", modifier);
+        var regExp  = new RegExp('(?<=(^|\\?|&)'+name+'=)([^&#]*)(?=$|#|&)', modifier);
         console.log(regExp.toString());
         console.log(url.match(regExp));
         return url.match(regExp);
