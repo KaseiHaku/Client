@@ -37,6 +37,7 @@
     var obj = {};
     indirectCall.call(obj, x, y); // 间接调用，
     indirectCall.apply(obj, [x, y]);
-    
+    let bindedFunc = indirectCall.bind(obj); // bind 返回一个函数备用
+
     
     
