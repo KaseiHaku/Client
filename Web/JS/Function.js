@@ -40,4 +40,17 @@
     let bindedFunc = indirectCall.bind(obj); // bind 返回一个函数备用
 
     
+
+
+    /** todo JS 命名函数、匿名函数、箭头函数的区别
+     * 命名函数：在函数定义的时候就绑定了函数的执行环境（Context），执行环境可以被 call() apply() bind()  let newFun = namedFunc; 改变
+     * 匿名函数：在函数运行时才绑定函数的执行环境，相当于 let newFun = function(){}; 绑定的时机在 newFun(); 的时候
+     * 箭头函数：在函数定义时绑定的是父级语法环境中的 this，如果父级 this 改变，那么箭头函数的 this 随之改变
+     * */
+    
+
+
+
+
+
     
