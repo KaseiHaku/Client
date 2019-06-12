@@ -70,7 +70,18 @@ JavaScript中的类都是以函数的形式进行声明的。
  * 指的是函数可以使用函数之外定义的变量，相当于函数的环境变量，但是该环境变量是根据函数创建时的词法环境决定的。
  * 词法环境：就是代码环境，即函数创建语句所在的代码位置能访问到的所有变量
  * */
-
+function closureB(){
+    alert(msg);
+}
+function closureA(){
+    let msg = 'fa';
+    function closureC(){
+        alert(msg);
+    }
+    
+    closureC(); // 正确，因为 C 函数的定义语句的词法环境就能访问 msg 变量
+    closureB(); // 报错，因为 B 函数的定义语句的词法环境无法访问 msg 变量
+}
 
 
 // 闭包（closure）,无论该函数被嵌套了多少层，闭包是由函数以及创建该函数的词法环境组合而成
