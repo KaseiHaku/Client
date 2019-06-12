@@ -54,18 +54,26 @@ console.log(ins.prototype); // new 关键字创建出来的普通实例，没有
 js 是完全面向对象的语言，语言里面的所有东西都是对象：
 
 js 原生类：Object、Function、Array、String、Boolean、Number、Date、RegExp、Error、SyntaxError
-js 内建类：Global、Math、Arguments  											// 内建类是由原生类组合而成的类
-js 宿主对象：window、navigator、screen、history、location、event、document		// 指由 js 运行宿主提供的对象，Web 的话就是浏览器提供的对象
+js 内建类：Global、Math、Arguments                                              // 内建类是由原生类组合而成的类
+js 宿主对象：window、navigator、screen、history、location、event、document        // 指由 js 运行宿主提供的对象，Web 的话就是浏览器提供的对象
 js 自定义类：
 
 js 中的继承就是用我梦寐以求的组合来实现的，不过 js 中一个函数就是一个类会让人有点费解
 JavaScript中的类都是以函数的形式进行声明的。
-	因为JavaScript中没有其他语言中类似class ClassName{ }形式的类声明，
-	而是把函数当作类来使用，函数名就是类名，函数本身就是类的构造函数，
-	并且可以使用new关键字来创建一个实例对象。
+    因为JavaScript中没有其他语言中类似class ClassName{ }形式的类声明，
+    而是把函数当作类来使用，函数名就是类名，函数本身就是类的构造函数，
+    并且可以使用new关键字来创建一个实例对象。
 */
 
-// 闭包（closure）,指的是函数可以使用函数之外定义的变量。就是说可以使用环境变量，无论该函数被嵌套了多少层
+
+/** todo Closure 闭包
+ * 指的是函数可以使用函数之外定义的变量，相当于函数的环境变量，但是该环境变量是根据函数创建时的词法环境决定的。
+ * 词法环境：就是代码环境，即函数创建语句所在的代码位置能访问到的所有变量
+ * */
+
+
+
+// 闭包（closure）,无论该函数被嵌套了多少层，闭包是由函数以及创建该函数的词法环境组合而成
 
 
 // js 中 null 和 undefined 的区别：null 表示：当前标识符已经跟内存地址绑定，但内存中没有数据 [0000ffff, ""]   undefined 表示：当前这个标识符是什么鬼，我tm都没见过
@@ -80,11 +88,11 @@ JavaScript中的类都是以函数的形式进行声明的。
 
     // 方式2：直接定义一个类
     function Kasei(){
-        this.prototype;			/* 默认存在，该字段保存的是 Kasei 这个类，父类的对象
+        this.prototype;            /* 默认存在，该字段保存的是 Kasei 这个类，父类的对象
                                  *（即 this.prototype = new Object();），该对象是所有用 Kasei 类创建的 kasei 对象共用的对象，相当于 java 中的静态字段
                                  */
 
-        this.constructor;  		/* 默认存在，该字段保存的是 创建该对象的类的引用 
+        this.constructor;          /* 默认存在，该字段保存的是 创建该对象的类的引用 
                                  *（即：this.constructor = function(){}  function Kasei(){}  constructor 完全等价于 Kasei）
                                  * 调用 this.constructor() 相当于调用 Kasei()
                                  * */
@@ -122,7 +130,7 @@ JavaScript中的类都是以函数的形式进行声明的。
         age:50, 
         cars:[1,4.9,"Nissan"],
 
-        setName:function(name){	 
+        setName:function(name){     
 
             this.name = name;
             return 0;
@@ -159,41 +167,45 @@ JavaScript中的类都是以函数的形式进行声明的。
 /* js 中删除对象的属性和方法 */
     delete xiaoming.name; // 删除实例 xiaoming 的 name 属性
 
-	
+    
 /*******************************************************************js 基本概念：end ***************************************************************************/
 
 
 /* JS 输出 */
-console.log("蛋疼"+params); 	//写入到浏览器的控制台。
-window.alert("蛋疼"+params); 	//弹出警告框
-	
-	
+console.log("蛋疼"+params);     //写入到浏览器的控制台。
+window.alert("蛋疼"+params);     //弹出警告框
+    
+    
 // 创建对象， 变量命名规则：第一个字符必须是字母、下划线（_）或美元符号（$）
-    var x;		//x = undefined
-    var _x = null;	//表示变量为空
-    var $x = 5;		//x 是数字
-    var x = "str''ing";	//x 是字符串
+    var x;        //x = undefined
+    var _x = null;    //表示变量为空
+    var $x = 5;        //x 是数字
+    var x = "str''ing";    //x 是字符串
     var x = 'str""ing';
-    var x = "str\"ing";	//x 是字符串
+    var x = "str\"ing";    //x 是字符串
     var x = 'str\'ing';
     var x = true;
     var myAry = new Array();
     var myAry = new Array(1, 2, 3, 4);
     var myAry = ["Saab","Volvo","BMW"];
-		
+        
 
 //内嵌函数（嵌套类）:实际上，在 JavaScript 中，所有函数都能访问它们上一层的作用域。JavaScript 支持嵌套函数。嵌套函数可以访问上一层的函数变量。
     function add() {
-	kasei = "haku";  // 因为当前函数局部变量中不存在 kasei，所以会从外层找，如果到顶层（window 实例）还没有，那么在 window 实例中添加一个属性 kasei，即全局变量 kasei      
+    kasei = "haku";  // 因为当前函数局部变量中不存在 kasei，所以会从外层找，如果到顶层（window 实例）还没有，那么在 window 实例中添加一个属性 kasei，即全局变量 kasei      
         var counter = 0;
         function plus() {counter += 1;}
         plus();    
         return counter; 
     }
-	
+    
 //自调用函数（匿名内部类）
     (function(arg_0){})(arg_1);//解释：前半部定义一个未命名的函数，然后最后的括号表示直接调用这个未命名函数,arg_1是实参，值传递给arg_0
-	
+
+
+
+
+
 //arguments对象
     function findMax() {
 
@@ -223,13 +235,13 @@ switch(param){
 // js 循环
 outer:
 for(var i=0;;i++){
-	inter:
-	for(var j=0;;j++){
-		break inter;
-		break outer;
-		continue inter;
-		continue outer;
-	}
+    inter:
+    for(var j=0;;j++){
+        break inter;
+        break outer;
+        continue inter;
+        continue outer;
+    }
 }
 
 
@@ -267,8 +279,8 @@ function KaseiError(message){
 KaseiError.prototype = Object.create(Error.prototype);
 KaseiError.prototype.constructor = KaseiError;
 
-	
-/* JS 运算符 */	
+    
+/* JS 运算符 */    
 var a = void(5+7); // void 是 JavaScript 中非常重要的关键字，该操作符表示：计算一个表达式，但是不管结果如何都返回 undefined
 ===     // 绝对等于（值和类型均相等）
 !==     // 绝对不等于（值和类型有一个不相等，或两个都不相等）
@@ -296,21 +308,21 @@ var Obj = new Object();
 Obj.name = '"Haku"';
 Obj.age = 22;
 Obj.setName = function(name){
-	this.name = name;
+    this.name = name;
 }
 
 // 工厂方式
 function createObj(name, age){
-	var Obj = new Object;
-	Obj.name = '"Haku"';
-	Obj.age = 22;
-	Obj.setName = setName;
-	
-	return Obj;	
+    var Obj = new Object;
+    Obj.name = '"Haku"';
+    Obj.age = 22;
+    Obj.setName = setName;
+    
+    return Obj;    
 }
 
 function setName(name){
-	this.name = name;
+    this.name = name;
 }
 
 var obj1 = createObj('"Haku"', 22);
@@ -318,11 +330,11 @@ var obj2 = createObj("Miku", 16);
 
 // 构造函数方式
 function Obj(name, age){
-	this.name = name;
-	this.age = age;
-	this.setName = function(name){
-		this.name = name;
-	}
+    this.name = name;
+    this.age = age;
+    this.setName = function(name){
+        this.name = name;
+    }
 }
 
 var obj1 = new Obj('"Haku"', 22);
@@ -360,8 +372,8 @@ var oCar2 = new Car("blue",3,25);
 
 oCar1.drivers.push("Bill");
 
-alert(oCar1.drivers);	//输出 "Mike,John,Bill"
-alert(oCar2.drivers);	//输出 "Mike,John"
+alert(oCar1.drivers);    //输出 "Mike,John,Bill"
+alert(oCar2.drivers);    //输出 "Mike,John"
 
 
 // 动态原型方法
@@ -410,4 +422,4 @@ var car1 = function newOperator(){
 
 
 
-			
+            
