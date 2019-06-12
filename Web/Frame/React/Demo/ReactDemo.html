@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ReactDemo</title>
+    <style type="text/css" href="../css/ReactDemo.css"></style>
+
+    <script src="../../frame/react/react.development.js"></script>
+    <script src="../../frame/react/react-dom.development.js"></script>
+    <!-- babel 编译器简介
+        babel 编译器的作用：
+            1. 将 ES6 语法编译成 ES5 语法，使 ES6 代码能在老版本的浏览器中运行
+            2. 编译 React 的 JSX 格式的代码，因为 JSX 不是 JS 标准语法，不能直接在浏览器中运行，如果不编译，那么 JSX 格式的代码无法运行
+        坑：
+            1. 最新版本的 babel 编译器（6.0.0+），已经不支持在浏览器端编译代码了，所以要在浏览器端编译代码必须使用 6.0.0 以下版本， 5.8.38 版本是 6 以下最高的版本
+            2. JS 代码中包含 ES6 代码 或者 JSX 代码，那么必须使用如下的 <script> 标签形式： <script type="text/babel"> ES6 or JSX </script>
+    -->
+    <script src="../../frame/babel/browser-5.8.38.js"></script>
+    <script type="text/babel" src="../js/ReactDemo.js"></script><!--用 JSX 语法写的 js 文件 -->
+</head>
+<body>
+
+
+
+    <div id="errors" style="
+      background: #c00;
+      color: #fff;
+      display: none;
+      margin: -20px -20px 20px;
+      padding: 20px;
+      white-space: pre-wrap;
+    "></div>
+    <div id="root"></div>
+    <script>
+        window.addEventListener('mousedown', function(e) {
+            document.body.classList.add('mouse-navigation');
+            document.body.classList.remove('kbd-navigation');
+        });
+        window.addEventListener('keydown', function(e) {
+            if (e.keyCode === 9) {
+                document.body.classList.add('kbd-navigation');
+                document.body.classList.remove('mouse-navigation');
+            }
+        });
+        window.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A' && e.target.getAttribute('href') === '#') {
+                e.preventDefault();
+            }
+        });
+        window.onerror = function(message, source, line, col, error) {
+            var text = error ? error.stack || error : message + ' (at ' + source + ':' + line + ':' + col + ')';
+            errors.textContent += text + '\n';
+            errors.style.display = '';
+        };
+        console.error = (function(old) {
+            return function error() {
+                errors.textContent += Array.prototype.slice.call(arguments).join(' ') + '\n';
+                errors.style.display = '';
+                old.apply(this, arguments);
+            }
+        })(console.error);
+    </script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

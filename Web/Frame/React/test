@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="root"></div>
+<script src="../../frame/react/react.development.js"></script>
+<script src="../../frame/react/react-dom.development.js"></script>
+<script src="../../frame/babel/browser-5.8.38.js"></script>
+<script type="text/babel">
+
+    class Node extends React.Component {
+
+        constructor(props){
+            super(props);
+            this.state = {
+                name: '阿道夫',
+                isAgree: true
+
+            };
+            this.changeTrue = this.changeTrue.bind(this);
+            this.changeFalse = this.changeFalse.bind(this);
+
+        }
+        componentDidMount() {
+            console.log('组件生成时调用的方法，React 术语叫做 挂载 ');
+        }
+        componentWillUnmount() {
+            console.log('组件删除时调用的方法，React 术语叫做 卸载 ');
+        }
+
+        changeTrue(){
+            this.setState({isAgree: true}, null);
+        }
+        changeFalse(){
+            this.setState({name:'啊我发', isAgree: false}, null);
+        }
+
+        render(){
+            return (
+                <div>
+                    <lable>{this.state.name}:</lable>
+                    <input type="radio" checked={this.state.isAgree} onClick={this.changeTrue}/>同意
+                    <input type="radio" checked={!this.state.isAgree} onClick={this.changeFalse}/>不同意
+                </div>
+            );
+        }
+    }
+    const root = document.querySelector('#root');
+    ReactDOM.render(<Node />, root);
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

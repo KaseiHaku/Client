@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue M2V Bind</title>
+</head>
+<body>
+<div id="root">
+    <div>
+        <h3>模型（数据源） 到 视图（用户界面）：即渲染</h3>
+    </div><hr/>
+
+    <div>
+        <h4>静态属性绑定</h4>
+        <div id="staticPropsBind">
+            {{ staticProp }}
+        </div>
+    </div><hr/>
+
+    <div>
+        <h4>计算属性绑定</h4>
+        <div id="computePropsBind">
+            {{ computeProp }}
+        </div>
+    </div><hr/>
+
+    <div>
+        <h4>冻结属性</h4>
+        <div id="freezePropsBind">
+            {{ freezeProp }}
+        </div>
+    </div><hr/>
+
+
+    <div>
+        <h4>标签属性绑定</h4>
+        <div id="tagAttrBind">
+            <input v-bind:value="initialValue"/>
+            <input :value="tagAttrShorthand"/>
+        </div>
+    </div><hr/>
+
+    <div>
+        <h4>直接填充 HTML 代码到 DOM 树</h4>
+        <div id="slotHtml2DomTree">
+            <p>Using mustaches: {{ rawHtml }}</p>
+            <p>Using v-html directive: <span v-html="rawHtml"></span></p><!-- 直接将 HTML 代码填充到 v-html 所在的标签内部 -->
+        </div>
+    </div><hr/>
+
+
+    <div>
+        <h4>事件绑定</h4>
+        <div id="eventBind">
+            <p>{{ msg }}</p>
+            <button v-on:click="reserveMsg">反转</button>
+            <button @click="reserveMsg">反转</button>
+        </div>
+    </div><hr/>
+
+
+    <div>
+        <h4>动态属性、动态事件绑定</h4>
+        <div id="dynamicPropsEventBind">
+            <a v-bind:[myattribute]="'https://www.baidu.com'">动态属性绑定</a>
+            <a v-on:[myevent]="doSomething">动态事件绑定</a>
+            <a :[myattribute]="'https://www.baidu.com'">动态属性绑定，简写模式</a>
+            <a @[myevent]="doSomething">动态事件绑定，简写模式</a>
+
+        </div>
+    </div><hr/>
+
+
+    <div>
+        <h4>Directives 指令（命令）修饰符： v-*="" 格式的都是指令</h4>
+        <div id="directModifier">
+            <form v-on:submit.prevent="onSubmit">v-on:submit.prevent 相当于 event.preventDefault() </form>
+        </div>
+    </div><hr/>
+
+
+    <div>
+        <h4>Class And Style Bind</h4>
+        <div id="classAndStyleBind">
+            <div v-bind:class="{ active: isActive }"></div>
+            <div class="static" v-bind:class="{ active: isActive, 'text-danger': hasError }"></div>
+            <div v-bind:class="classObject"></div>
+            <div v-bind:class="[activeClass, errorClass]"></div>
+            <div v-bind:class="[isActive ? activeClass : '', errorClass]"></div>
+            <div v-bind:class="[{ active: isActive }, errorClass]"></div>
+
+            <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
+            <div v-bind:style="styleObject"></div>
+            <div v-bind:style="[baseStyles, overridingStyles]"></div>
+        </div>
+    </div><hr/>
+
+
+
+
+    <div>
+        <h4>条件渲染</h4>
+        <div id="coditionRender">
+            <div>
+                <p v-if="trueValue">看得到</p>
+                <p v-if="falseValue">看不到</p>
+            </div>
+            <div>
+                <div v-if="ifelse > 0.5">
+                    Now you see me
+                </div>
+                <div v-else>
+                    Now you don't
+                </div>
+            </div>
+            <div>
+                <div v-if="type === 'A'">
+                    A
+                </div>
+                <div v-else-if="type === 'B'">
+                    B
+                </div>
+                <div v-else-if="type === 'C'">
+                    C
+                </div>
+                <div v-else>
+                    Not A/B/C
+                </div>
+            </div>
+
+            <!--<div>
+
+                <template v-if="loginType === 'username'">
+                    <label>Username</label>
+                    <input placeholder="Enter your username">
+                </template>
+                <template v-else>
+                    <label>Email</label>
+                    <input placeholder="Enter your email address">
+                </template>
+                <hr/>
+
+                <template v-if="loginType === 'username'">
+                    <label>Username</label>
+                    <input placeholder="Enter your username" key="username-input">&lt;!&ndash; 加 key 表示跟下面的 input 是不可复用的 &ndash;&gt;
+                </template>
+                <template v-else>
+                    <label>Email</label>
+                    <input placeholder="Enter your email address" key="email-input">
+                </template>
+
+            </div>-->
+        </div>
+    </div><hr/>
+
+    <div>
+        <h4>循环渲染</h4>
+        <div id="loopRender">
+            <ol>
+                <li v-for="item in valueAry">{{ item.text }}</li>
+            </ol>
+        </div>
+    </div><hr/>
+
+    <div>
+        <h4>循环条件渲染</h4>
+        <div id="loopConditionRender">
+            <ol>
+                <li v-for="item in valueAry" v-if="item.text !== 'A'">{{ item.text }}</li><!-- 可以这么写，但是不推荐-->
+            </ol>
+            <ul>
+               <li v-for="item in shouldShowItemAry">{{ item.text }}</li><!-- 推荐方式-->
+            </ul>
+        </div>
+    </div><hr/>
+
+
+
+    <div>
+        <h4>MV 综合</h4>
+        <div id="comprehensiveMV">
+
+        </div>
+    </div><hr/>
+
+    <div>
+        <h4></h4>
+        <div id="">
+
+        </div>
+    </div><hr/>
+
+
+
+
+</div>
+<script src="../frame/vue-2.6.10/vue.min.js"></script>
+<script>
+    /** todo 静态属性绑定 */
+    let staticPropsBind = new Vue({
+        el: '#staticPropsBind',
+        data: {
+            staticProp: '静态属性',
+        }
+    });
+    /** todo 计算属性绑定 */
+    let computePropsBind = new Vue({
+        el: '#computePropsBind',
+        data: {
+            msg: '1234567',
+        },
+        computed: {
+            computeProp: function(){
+                return this.msg.split('').reverse().join('');
+            }
+        }
+    });
+    /** todo 冻结属性 */
+    let freezeProps = {
+        freezeProp: '冻结属性'
+    };
+    Object.freeze(freezeProps);     // 使用该方法，让 freezeComponent 组件的 data 属性不可改变
+    let freezePropsBind = new Vue({
+        el: '#freezePropsBind',
+        data: freezeProps,
+    });
+    /** todo 标签属性绑定 */
+    let tagAttrBind = new Vue({
+        el: '#tagAttrBind',
+        data: {
+            initialValue: '初始值',
+            tagAttrShorthand: '标签属性绑定简写模式',
+        },
+    });
+    /** todo 直接填充 HTML 代码到 DOM 树 */
+    let slotHtml2DomTree = new Vue({
+        el: '#slotHtml2DomTree',
+        data: {
+            rawHtml: '<span style="color: red;">Red Word</span>',
+        },
+    });
+    /** todo 事件绑定 */
+    let eventBind = new Vue({
+        el: '#eventBind',
+        data: {
+            msg: '12345',
+        },
+        methods: {
+            reserveMsg: function(){
+                this.msg = this.msg.split('').reverse().join('');
+            }
+        }
+    });
+    /** todo 动态属性、动态事件绑定 */
+    let dynamicPropsEventBind = new Vue({
+        el: '#dynamicPropsEventBind',
+        data: {
+            myattribute: 'href',
+            myevent: 'click',
+        },
+        methods: {
+            doSomething: function(){
+                alert(2);
+            }
+        }
+    });
+    /** todo 命令修饰符 */
+    let directModifier = new Vue({
+        el: '#directModifier',
+        data: {
+        },
+    });
+    /** todo Class and Style Bind */
+    let classAndStyleBind = new Vue({
+        el: '#classAndStyleBind',
+        data: {
+            /** Class */
+            isActive: true,
+            hasError: false,
+            activeClass: 'active',
+            errorClass: 'text-danger',
+            classObject: {
+                active: true,
+                'text-danger': false
+            },
+
+
+
+            /** Style */
+            activeColor: '#rgba(255,0,0,1)',
+            fontSize: '40',
+            styleObject: {
+                color: 'red',
+                fontSize: '13px'
+            },
+            baseStyles: {
+                backgroundColor: '#rgba(255,0,0,1)',
+            },
+            overridingStyles: {
+                borderColor: '#rgba(255,0,0,1)',
+            },
+        },
+    });
+    /** todo 条件渲染 */
+    let conditionRender = new Vue({
+        el: '#coditionRender',
+        data: {
+            trueValue: true,
+            falseValue: false,
+            ifelse: 0,
+            type: 'T',
+        },
+    });
+    window.setInterval(function(){
+        conditionRender.ifelse = Math.random();
+    }, 1000);
+    /** todo 循环渲染 */
+    let loopRender = new Vue({
+        el: '#loopRender',
+        data: {
+            valueAry: [
+                { text: 'A' },
+                { text: 'B' },
+                { text: 'C' }
+            ],
+        },
+    });
+    /** todo 循环条件渲染 */
+    let loopConditionRender = new Vue({
+        el: '#loopConditionRender',
+        data: {
+            valueAry: [
+                { text: 'A' },
+                { text: 'B' },
+                { text: 'C' }
+            ],
+        },
+        computed: {
+            shouldShowItemAry: function(){
+                return this.valueAry.filter(item => {
+                    if(item.text !== 'A'){
+                       return item;
+                    }
+                });
+            }
+        }
+    });
+    /** todo 综合 */
+    let comprehensiveData = {
+        name: '劫',
+        msg: '1234567',
+        firstName: 'Foo',
+        lastName: 'Bar',
+        fullName: 'Foo Bar',
+    };
+    let comprehensiveM2V = new Vue({
+        /**
+         * el 属性表示要封装成 Vue 实例的 DOM 对象，即 Vue 能操作 DOM 树的根或者说容器
+         * '#comprehensiveM2V' <==> document.querySelector('#comprehensiveM2V');  或 document.querySelectorAll('#comprehensiveM2V');
+         * */
+        el: '#comprehensiveM2V',
+        /**
+         * 静态属性：data 属性绑定所有当前实例（comprehensiveM2V）对应 HTML 标签的属性
+         * Vue 会同步 Vue 实例的属性值 和 data 实例的属性值， 即 comprehensiveM2V.attr = 1; 等价于 data.attr = 1;
+         * */
+        data: comprehensiveData,
+        /**
+         * 当该属性存在时，把模板编译成为一个 render function
+         * 当该属性不存在时， 把 el 中所选中的所有元素的 outerHtml 编译成一个模板
+         * */
+        template: '',
+        /**
+         * 当为模板时，用于接受标签传过来的参数
+         * */
+        props: ['param1', 'param2'],
+        /**
+         * 计算属性： 保存需要经过计算的属性
+         * */
+        computed: {
+            reserveMsg: function(){
+                return this.msg.split('').reverse().join('');
+            },
+            fullName:{
+                get: function () { // 属性取值和赋值的拦截代码
+                    return this.firstName + ' ' + this.lastName
+                },
+                set: function (newValue) {
+                    var names = newValue.split(' ')
+                    this.firstName = names[0]
+                    this.lastName = names[names.length - 1]
+                }
+            }
+        },
+        /**
+         * 自定义函数
+         * */
+        methods: {
+            reserveMsgMethod: function(){
+                return this.msg.split('').reverse().join('');
+            }
+        },
+        /**
+         * 当指定属性改变时执行的函数
+         * */
+        watch: {
+            firstName: function (val) {
+                this.fullName = val + ' ' + this.lastName
+            },
+            lastName: function (val) {
+                this.fullName = this.firstName + ' ' + val
+            }
+        },
+        /** Vue LifeCycle Hook（生命周期中的钩子函数）实例声明周期中可以自定义编辑代码的方法 */
+        create: function(){},       // 此处不能使用 ()=>{} 箭头函数
+        mounted: function(){},
+        update: function(){},
+        destroyed: function(){},
+    });
+    comprehensiveM2V.$el === document.querySelector('#comprehensiveM2V'); // => ture
+    comprehensiveM2V.$data === comprehensiveData; // => true
+    comprehensiveM2V.$watch('name', function (newValue, oldValue) {
+        // This callback will be called when `comprehensiveM2V.name` changes
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Component</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        table{
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            margin: 0;
+            border-width: 0 0 0 0;
+        }
+        th, td {
+            margin: 0;
+            padding: 0;
+            border-width: 0 1px 1px 0;
+            border-style: dotted;
+            width: 33%;
+        }
+
+        .upFontWeight {
+            font-weight: 900;
+        }
+
+    </style>
+</head>
+<body>
+<div id="root">
+    <div id="howManyRadio">
+        <tree-node v-bind:node-obj="nodeObj"></tree-node>
+    </div>
+
+</div>
+<script src="../frame/vue-2.6.10/vue.min.js"></script>
+<script>
+    let jsonString = `
+{
+  "name": "Root",
+  "branchRadio": 0,
+  "isCollapse": true,
+  "remark": "",
+  "isBranch": true,
+  "children": [
+    {
+      "name": "产品认证申请 CheckList 非 RF（针对所有产品，都不为“否”才可以提交，“免需要说明理由”）",
+      "branchRadio": 0,
+      "isCollapse": true,
+      "remark": "",
+      "isBranch": true,
+      "children": [
+        {
+          "name": "1. 产品 EMC TR4A 测试已经完成并全部通过",
+          "branchRadio": 0,
+          "isCollapse": true,
+          "remark": "",
+          "isBranch": true,
+          "children": [
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（1）Radiated Emissions（RE）" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（2）Conducted Emissions（CE）" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（3）Current Harmonics Emissions（Harmonics）" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（4）Voltage fluctuations and flickers（fluctuations and flickers）" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（5）Immunity To Radiated Electromagnetic Fields（RS）" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（6）Immunity To Continuous Conducted Interference（CS）" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（7）Immunity To Electrical Fast Transient Bursts（EFT）" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（8）Immunity To Surges（SURGE)" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（9）Immunity To Electrostatic Discharge（ESD）" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（10）Immunity To Continuous Voltage Dips And Short Interruption（DIP）" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（11）Resistibility To Power Induction" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（12）Resistibility To Power Contact" }
+          ]
+        },
+        {
+          "name": "2. 产品的安规 TR4A 测试已经完成并全部通过",
+          "branchRadio": 0,
+          "isCollapse": true,
+          "remark": "",
+          "isBranch": true,
+          "children": [
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（1）输入电流/功率" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（2）温升/异常温升" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（3）过载测试" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（4）放电测试" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（5）TNV电路测试" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（6）冲击测试" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（7）机械强度测试" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（8）稳定性测试" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（9）绝缘电阻测试" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（10）抗电强度（耐压）" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（11）漏电流 " },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（12）燃烧测试" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（13）元器件开路短路测试" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（14）接地连续性测试" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（15）激光辐射测试" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（16）结构检视" }
+          ]
+        },
+        {
+          "name": "3. 产品的环境 TR4A测试已经完成并全部通过",
+          "branchRadio": 0,
+          "isCollapse": true,
+          "remark": "",
+          "isBranch": true,
+          "children": [
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（1）低温贮存" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（2）高温贮存" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（3）低温工作" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（4）高温工作" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（5）交变湿热" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（6）低温极限试验" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（7）高温极限试验" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（8）包装跌落试验" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（9）包装随机振动" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（10）包装冲击试验" }
+          ]
+        },
+        {
+          "name": "4. 产品的RF TR4A测试已经完成并全部通过",
+          "branchRadio": 0,
+          "isCollapse": true,
+          "remark": "",
+          "isBranch": true,
+          "children": [
+            {
+              "name": "CE标准要求－2.4G产品",
+              "branchRadio": 0,
+              "isCollapse": true,
+              "remark": "",
+              "isBranch": true,
+              "children": [
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（1）有效发射功率" },
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（2）最大功率谱密度" },
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（3）频率范围" },
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（4）发射机杂散发射和接收机杂散发射" }
+              ]
+            },
+            {
+              "name": "CE标准要求－5G产品",
+              "branchRadio": 0,
+              "isCollapse": true,
+              "remark": "",
+              "isBranch": true,
+              "children": [
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（5） 载波频率" },
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（6）射频输出功率、发送功率控制和功率密度" },
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（7） 5G RLAN带外发射机无用信号发射" },
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（8） 5G RLAN带内发射机无用信号发射" },
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（9） 接收机杂散发射" },
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（10） 动态频率选择" }
+              ]
+            },
+            {
+              "name": "FCC标准要求－2.4G产品",
+              "branchRadio": 0,
+              "isCollapse": true,
+              "remark": "",
+              "isBranch": true,
+              "children": [
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（1） AC电源传导发射" },
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（2） 辐射发射" },
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（3） 6dB带宽" },
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（4） 最大峰值输出功率" },
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（5） 功率谱密度" },
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（6） 频带边界" },
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（7） 天线要求" },
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（8） 射频暴露评估" }
+              ]
+            },
+            {
+              "name": "FCC标准要求－5G产品",
+              "branchRadio": 0,
+              "isCollapse": true,
+              "remark": "",
+              "isBranch": true,
+              "children": [
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（1） 无用辐射" },
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（2） 最大传导输出功率" },
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（3） 峰值功率谱密度" },
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（4） 最大传导输出功率的峰值偏移包络率" },
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（5） 杂散发射" },
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（6） 发射功率控制" },
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（7） 动态频率选择" },
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（8） 频率稳定度" },
+                { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（9） 射频暴露评估" }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "5. 产品的安规关键件是否已完成相关认证并取得证书和报告",
+          "branchRadio": 0,
+          "isCollapse": true,
+          "remark": "",
+          "isBranch": true,
+          "children": [
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（1） AC/DC电源" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（2） DC/DC电源" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（3） PCB" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（4） 风扇" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（5） 塑料外壳" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（6） 电源开关" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（7） 熔断器" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（8） 光模块" }
+          ]
+        },
+        {
+          "name": "6. 产品认证所需物料及资料是否已经全部备齐",
+          "branchRadio": 0,
+          "isCollapse": true,
+          "remark": "",
+          "isBranch": true,
+          "children": [
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（1）样品及辅助设施" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（2）物料清单" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（3）技术手册、安装手册（或用户手册）（中文、外文）" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（4）完整的（电）原理图" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（5）电气结构方块图及说明（英文）Block Diagram of the EUT" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（6）配电图及说明（英文）" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（7）测试组网/配置方案（英文）" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "产品认证申请 CheckList RF（仅针对 Wireless 产品，都不为“否”才可以提交，“免”需要说明理由）",
+      "branchRadio": 0,
+      "isCollapse": true,
+      "remark": "",
+      "isBranch": true,
+      "children": [
+        {
+          "name": "1. CE标准要求－2.4G产品",
+          "branchRadio": 0,
+          "isCollapse": true,
+          "remark": "",
+          "isBranch": true,
+          "children": [
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（1）有效发射功率" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（2）最大功率谱密度" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（3）频率范围" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（4）发射机杂散发射和接收机杂散发射" }
+          ]
+        },
+        {
+          "name": "2. CE标准要求－5G产品",
+          "branchRadio": 0,
+          "isCollapse": true,
+          "remark": "",
+          "isBranch": true,
+          "children": [
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（5） 载波频率" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（6）射频输出功率、发送功率控制和功率密度" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（7） 5G RLAN带外发射机无用信号发射" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（8） 5G RLAN带内发射机无用信号发射" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（9） 接收机杂散发射" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（10） 动态频率选择" }
+          ]
+        },
+        {
+          "name": "3. FCC标准要求－2.4G产品",
+          "branchRadio": 0,
+          "isCollapse": true,
+          "remark": "",
+          "isBranch": true,
+          "children": [
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（1） AC电源传导发射" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（2） 辐射发射" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（3） 6dB带宽" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（4） 最大峰值输出功率" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（5） 功率谱密度" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（6） 频带边界" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（7） 天线要求" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（8） 射频暴露评估" }
+          ]
+        },
+        {
+          "name": "4. FCC标准要求－5G产品",
+          "branchRadio": 0,
+          "isCollapse": true,
+          "remark": "",
+          "isBranch": true,
+          "children": [
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（1） 无用辐射" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（2） 最大传导输出功率" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（3） 峰值功率谱密度" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（4） 最大传导输出功率的峰值偏移包络率" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（5） 杂散发射" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（6） 发射功率控制" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（7） 动态频率选择" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（8） 频率稳定度" },
+            { "remark":"", "leafRadio": 0, "isBranch": false, "isCollapse": false,  "name": "（9） 射频暴露评估" }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+    `;
+
+
+    let jsonObj = JSON.parse(jsonString);
+
+
+    Vue.component('tree-node', {
+        props: {
+            nodeObj: Object,
+        },
+        computed: {
+            hasChild: function(){
+                return this.nodeObj.children === void(0) || this.nodeObj.children === null || this.nodeObj.children.length === 0
+            }
+        },
+        methods: {
+            branchRadioTo1: function(){
+                this.nodeObj.branchRadio = 1;
+            },
+            branchRadioTo2: function(){
+                this.nodeObj.branchRadio = 2;
+            },
+            leafRadioTo1: function(){
+                this.nodeObj.leafRadio = 1;
+            },
+            leafRadioTo2: function(){
+                this.nodeObj.leafRadio = 2;
+            },
+            leafRadioTo3: function(){
+                this.nodeObj.leafRadio = 3;
+            }
+        },
+        template: `
+            <table>
+                <tr>
+                    <td v-bind:class="{upFontWeight: nodeObj.isBranch}"><span v-on:click="nodeObj.isCollapse = !nodeObj.isCollapse">{{ '['+ (nodeObj.isCollapse ? '+' : '-') +']' }}</span>{{ nodeObj.name }}</td>
+                    <td>
+                        <div v-if="nodeObj.isBranch">
+                        <input type="radio" v-bind:checked="nodeObj.branchRadio === 1 ? true : false" v-on:click="branchRadioTo1"/><label>全是</label>
+                        <input type="radio" v-bind:checked="nodeObj.branchRadio === 2 ? true : false" v-on:click="branchRadioTo2"/><label>全免</label>
+                        </div>
+                        <div v-else >
+                            <input type="radio" v-bind:checked="nodeObj.leafRadio === 1 ? true : false" v-on:click="leafRadioTo1"/><label>是</label>
+                            <input type="radio" v-bind:checked="nodeObj.leafRadio === 2 ? true : false" v-on:click="leafRadioTo2"/><label>否</label>
+                            <input type="radio" v-bind:checked="nodeObj.leafRadio === 3 ? true : false" v-on:click="leafRadioTo3"/><label>免</label>
+                        </div>
+                    </td>
+                    <td>
+                        <input type="text" v-model="nodeObj.remark" placeholder=""/>
+                    </td>
+                </tr>
+                <tr v-if="!hasChild && !nodeObj.isCollapse">
+                    <td colspan="3">
+                        <tree-node v-for="item in nodeObj.children" v-bind:node-obj="item"></tree-node>
+                    </td>
+                </tr>
+            </table>
+        `,
+
+    });
+
+    let howManyRadio = new Vue({
+        el: '#howManyRadio',
+        data: {
+            nodeObj: jsonObj,
+        },
+
+
+    });
+
+
+
+
+
+
+</script>
+</body>
+</html>
