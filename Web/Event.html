@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS_Event</title>
+</head>
+<body>
+<div id="root">
+    <div>
+        <h3>为静态标签绑定事件</h3>
+        <button type="button" id="btn1" onclick="staticElementBindEventHandlerMethod1(); return false;">方法一</button>
+        <button type="button" id="btn2">方法二</button>
+        <button type="button" id="btn3">方法三</button>
+        <script type="application/javascript">
+            function staticElementBindEventHandlerMethod1(){
+                alert('静态标签绑定事件:方法一');
+            }
+            function staticElementBindEventHandlerMethod2(){
+                alert('静态标签绑定事件:方法二');
+                return false;  // 所有事件处理函数最好都 return false; 阻止浏览器默认事件
+            }
+            document.getElementById('btn2').onclick = staticElementBindEventHandlerMethod2;
+            function staticElementBindEventHandlerMethod3(){
+                alert('静态标签绑定事件:方法三');
+                return false;
+            }
+            /** 句柄绑定第三个参数详解
+             * capture 表示是否采用捕获的方式触发事件
+             * passive 表示 listener 永远不会调用 preventDefault()。如果 listener 仍然调用了这个函数，客户端将会忽略它并抛出一个控制台警告
+             * once 表示 listener 只执行一次，调用后就会被删除
+             */
+            document.getElementById('btn3').addEventListener('click', staticElementBindEventHandlerMethod3, {capture: false, passive: true, once: false});
+            // document.getElementById('btn3').removeEventListener("click", staticElementBindEventHandlerMethod3);// 移除事件监听
+        </script>
+    </div><hr/>
+    <div>
+        <h3>事件委托：为动态创建的标签绑定事件</h3>
+        <input id="dynamicTag" type="button" value="动态创建 li 标签" onclick="createTagy();"/><br/>
+        <ul id="dynamicDemo"></ul>
+        <script>
+            let ul = document.getElementById("dynamicDemo");
+            function createTagy() {
+                let arrayli = ul.getElementsByTagName("li");
+                let li = document.createElement("li");
+                li.innerHTML = "one" + arrayli.length + '&nbsp;&nbsp;<a class="ac" href="javascript:;">删除</a>';
+                ul.appendChild(li);
+            }
+            /* 传统绑定法
+            ul.onclick = function() {
+                let e = window.event;
+                let t = e.target || e.srcElement;  //t:目标对象
+                let tagName = t.tagName;　//tagName标签名称，必须是大写
+                if( tagName == "A") {
+                    this.removeChild(t.parentNode); //删除元素 this指oul
+                }
+            }
+             */
+            ul.addEventListener("click", eventDynamic, false);
+            function eventDynamic(e) {
+                if(e.target.matches('div')){
+                    // do something
+                }
+            }
+            /** 代码触发事件 */
+            let myEvent = new Event('myEvent'); // 创建时间实例，并放入到事件容器中
+            document.querySelector('#root').addEventListener('myEvent', function(){}); // 添加事件监听，用户用户触发事件
+            document.querySelector('#root').dispatchEvent(myEvent); // 用于代码手工触发事件
+        </script>
+    </div><hr/>
+    <div>
+        <h3>代码触发事件</h3>
+        <button id="codeTriggerEvent1" onclick="alert('代码触发事件1'); return false;">code trigger 1</button>
+        <button id="codeTriggerEvent2" onclick="alert('代码触发事件2'); return false;">code trigger 2</button>
+        <script>
+            document.querySelector('#codeTriggerEvent1').click();
+            let mouseEvent = new MouseEvent('click', {
+                screenX: 100,
+                screenY: 200,
+            });
+            document.querySelector('#codeTriggerEvent2').dispatchEvent(mouseEvent);
+            let customEvent = new customEvent('customEvent', {
+                detail: {
+                    // 任何类型
+                },
+                bubbles: false,
+                cancelable: false,
+                composed: false,
+            });
+            document.querySelector('#codeTriggerEvent3').dispatchEvent(customEvent);
+            document.querySelector('#codeTriggerEvent3').matches()
+        </script>
+    </div>
+    <div>
+        <h3>剪贴板事件</h3>
+        <script>
+            let clipboardEvent = new ClipboardEvent('copy', {
+                clipboardData: new DataTransfer(),
+                dataType: 'MIME-Type',
+                data: '',
+            });
+            var selection = window.getSelection(); // 所有的选中
+            var range = selObj.getRangeAt(0); // 一个选中区域
+            document.execCommand('copy'); // 执行一个 copy 命令
+        </script>
+    </div>
+
+
+
+
+</div>
+</body>
+</html>
+
+
+
+
+/** todo 查询一个元素的所有事件 */
+
+
+/** todo 为元素的添加事件 */
+    document.querySelectorAll('.className').forEach(function(item){
+        item.addEventListener('change', function(){
+            elictricDiagramInstructRender();
+        });
+    });
+
+
+/** todo 动态生成的标签添加事件 */
+
+
+/** todo 代码触发事件 */
+    document.querySelector('#codeTriggerEvent1').click();
+    let mouseEvent = new MouseEvent('click', {
+        screenX: 100,
+        screenY: 200,
+    });
+    document.querySelector('#codeTriggerEvent2').dispatchEvent(mouseEvent);
+    let customEvent = new customEvent('customEvent', {
+        detail: {
+            // 任何类型
+        },
+        bubbles: false,
+        cancelable: false,
+        composed: false,
+    });
+    document.querySelector('#codeTriggerEvent3').dispatchEvent(customEvent);
+    document.querySelector('#codeTriggerEvent3').matches()
+
+
+/** todo 删除元素的事件 */
+
+
+/** todo 具体事件案例 */
+    /** Clipboard Event */
+        let clipboardEvent = new ClipboardEvent('copy', {
+            clipboardData: new DataTransfer(),
+            dataType: 'MIME-Type',
+            data: '',
+        });
+        var selection = window.getSelection(); // 所有的选中
+        var range = selObj.getRangeAt(0); // 一个选中区域
+        document.execCommand('copy'); // 执行一个 copy 命令
