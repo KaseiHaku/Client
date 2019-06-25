@@ -24,7 +24,7 @@ function nativeAjax(){
     xhr.addEventListener('progress', function(){}, false);
     xhr.addEventListener('error', function(){}, false);
     xhr.addEventListener('abort', function(){}, false);
-    xhr.addEventListener('timeour', function(){}, false);
+    xhr.addEventListener('timeout', function(){}, false);
 
     /** method */
     xhr.abort();
@@ -36,28 +36,4 @@ function nativeAjax(){
     xhr.setRequestHeader("headerName", "headerValue");
 }
 
-function ajaxFileUpload(){
-    let fd = new FormData(document.getElementById('formTagId'));
-    fd.append('file', document.getElementById('fileInputId').files[0]);
-    let xhr = new XMLHttpRequest();
 
-    xhr.timeout = 60*1000;
-    xhr.responseType = 'json';
-    xhr.addEventListener('load', xhrLoadHandler, false);
-    function xhrLoadHandler(event){
-        let jsonObj = event.target.response;
-    }
-    xhr.upload.addEventListener('progress', xhrUploadProgerssHandler, false);
-    function xhrUploadProgerssHandler(event){
-        if(event.lengthComputable){
-            let percent = event.loaded / event.total * 100;
-            let str = percent.toFixed(2) + '%'; // 保留两位小数
-        } else {
-            console.log('event.lengthComputable === false 时，event.total == 0 所以无法计算');
-        }
-    }
-
-
-    xhr.open('post', 'url', true);
-    xhr.send(fd);
-}
