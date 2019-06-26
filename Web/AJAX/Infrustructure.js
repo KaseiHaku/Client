@@ -14,10 +14,11 @@ function nativeAjaxPostWithoutFile(url, params, async){
 
     xhr.open('post', url, async);
     xhr.responseType = 'text'; // values = ['text', 'json', 'document', 'blob', 'arraybuffer']
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=utf-8');
-    xhr.setRequestHeader('Content-Type', 'application/octet-stream');  // 表示未知二进制文件
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=utf-8');   // 常规 <form> 表单提交，后端使用 request.getParameter() 取参数
+    xhr.setRequestHeader('Content-Type', 'multipart/form-data; charset=utf-8; boundary=--------kaseihaku'); // <form enctype="multipart/form-data"> 表单提交， 后端使用 ServletFileUpload 取参数
+    xhr.setRequestHeader('Content-Type', 'application/octet-stream');  // 表示未知二进制文件，后端使用 request.getInputStream() 取参数
+    xhr.setRequestHeader('Content-Type', 'application/json'); // 表示时 JSON 字符串    
     xhr.setRequestHeader('Content-Type', 'text/plain');  // 表示纯文本
-
     xhr.send(params);
 }
 
