@@ -1,4 +1,4 @@
-/************************ JavaScript Native Class *****************************/ 
+/************************ JavaScript Native Class *****************************/
 // function Object(){}
 
 // function Function(){}
@@ -56,13 +56,14 @@ ary.toString();// 转换成 字符串
 
 
 
-    encodeURI()  方法不会对下列字符编码  ASCII字母、数字、~!@#$&*()=:/,;?+'
-    encodeURIComponent() 方法不会对下列字符编码 ASCII字母、数字、~!*()'
-    所以encodeURIComponent比encodeURI编码的范围更大。
-    encodeURI("http://www.cnblogs.com/season-huang/some other thing"); = "http://www.cnblogs.com/season-huang/some%20other%20thing";
-    encodeURIComponent("http://www.cnblogs.com/season-huang/some other thing"); = "http%3A%2F%2Fwww.cnblogs.com%2Fseason-huang%2Fsome%20other%20thing"
-    看到了区别吗，连 "/" 都被编码了，整个URL已经没法用了。
-    所以 encodeURIComponent() 仅适合编码 url 后面的参数
+
+
+
+window.encodeURI();     // 该方法不会对 ASCII字母、数字、~!@#$&*()=:/,;?+' 等字符编码，适用场景： URI 路径中包含中文字符
+window.encodeURIComponent();  // 该方法不会对 ASCII字母、数字、~!*()' 等字符编码，使用场景： URI 参数包含中文字符
+JSON.stringify(obj);
+JSON.parse(json);
+
 
 // function Boolean(){}
 
@@ -97,29 +98,13 @@ regexp2.toString(); // 返回 正则表达式 的模式串
 
 
 // function Error(){}
-Error:
-
-EvalError: raised when an error occurs executing code in eval()  
-EvalError：当一个错误发生在 eval（）执行的代码
-
-RangeError: raised when a numeric variable or parameter is outside of its valid range
-RangeError：当一个数值变量或参数的有效范围之外
-
-ReferenceError: raised when de-referencing an invalid reference
-ReferenceError：当德引用无效的参考
-
-SyntaxError: raised when a syntax error occurs while parsing code in eval() 
-SyntaxError：当发生语法错误在（）解析代码，而
-
-TypeError: raised when a variable or parameter is not a valid type 
-TypeError：当一个变量或参数不是一个有效的类型
-
-URIError: raised when encodeURI() or decodeURI() are passed invalid parameters   
-当encodeuri urierror提出：（）或（）的参数是通过decodeuri无效
-
-// function SyntaxError(){}
-
-
+let error = new Error();            // JS 所有错误的接口
+let error = new EvalError();        // 使用 eval(js) 执行 js 代码出错时的报错
+let error = new RangeError();       // 当一个数值变量或参数的有效范围之外
+let error = new ReferenceError();   // 引用无效
+let error = new SyntaxError();      // 语法错误
+let error = new TypeError();        // 变量或参数类型错误
+let error = new URIError();         // encodeURI() or decodeURI() 两个方法的参数非法时
 
 
 

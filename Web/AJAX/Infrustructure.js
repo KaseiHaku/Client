@@ -1,3 +1,60 @@
+/** todo 原生 ajax post 不带文件
+ * @param params 请求参数，格式： key1=val1&ke2=val2  值必须先用 window.encodeURIComponent(val) 编码
+ *
+ * */
+function nativeAjaxPostWithoutFile(url, params, async){
+    let xhr = new XMLHttpRequest();
+    xhr.addEventListener('load', xhrLoadHandler);
+    function xhrLoadHandler(event){
+        if(this.readyState === XMLHttpRequest.DONE && this.status === 200){
+            //
+        }
+    }
+
+
+    xhr.open('post', url, async);
+    xhr.responseType = 'text'; // values = ['text', 'json', 'document', 'blob', 'arraybuffer']
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=utf-8');
+    xhr.setRequestHeader('Content-Type', 'application/octet-stream');  // 表示未知二进制文件
+    xhr.setRequestHeader('Content-Type', 'text/plain');  // 表示纯文本
+
+    xhr.send(params);
+}
+
+/** todo 原生 ajax post 带附件
+ * @param formdata FormData 类型的数据， Content-Type 必须是 multipart/form-data
+ * @trap 后端要使用 ServletFileUpload 类去取参数，不能使用 request.getParameter() 取
+ * */
+function nativeAjaxPostWithoutFile(url, formdata, async){
+    let xhr = new XMLHttpRequest();
+
+
+    xhr.open('post', url, async);
+    xhr.responseType = 'text';
+    xhr.setRequestHeader('Content-Type', 'multipart/form-data; charset=utf-8; boundary=----------------kaseihaku');
+    xhr.send(params);
+}
+
+
+/** todo 原生 ajax get 方法发送请求
+ * @param url 请求地址
+ * @param async 是否异步
+ * */
+function nativeAjaxGet(url, async){
+    let xhr = new XMLHttpRequest();
+
+    xhr.open('get', url, async);
+
+
+}
+
+
+
+
+
+
+
+
 /** todo 原生 AJAX 属性 方法 事件介绍
  * */
 function nativeAjax(){
@@ -35,5 +92,13 @@ function nativeAjax(){
     xhr.send();
     xhr.setRequestHeader("headerName", "headerValue");
 }
+
+
+
+
+
+
+
+
 
 
