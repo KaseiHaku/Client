@@ -1,33 +1,37 @@
 /** todo file download by ajax
  * @param downloadUrl 文件上传，后端处理代码 url 路径
- * @param formdata 一个 FormData 类型的参数
+ * @param twoDimensionalAry 一个二维数组 
  * */
-function downloadByAjax(downloadUrl, formdata){
+function downloadByAjax(downloadUrl, twoDimensionalAry){
 
     /** 创建 XMLHttpRequest 对象，并配置好属性及监听事件 */
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'blob';  // values = ['text', 'json', 'document', 'blob', 'arraybuffer']
 
     xhr.addEventListener('load', function(event){
-        let strHeaderVal = this.getResponseHeader('content-disposition');
-        let regexp = new RegExp('(?<=filename\\=).*$', 'i');
-        let matchAry = strHeaderVal.match(regexp);
-        let fileName = 'DownloadByAjax';
+        var strHeaderVal = this.getResponseHeader('content-disposition');
+        var regexp = new RegExp('(?<=filename\\=).*$', 'i');
+        var matchAry = strHeaderVal.match(regexp);
+        var fileName = 'DownloadByAjax';
         if (matchAry !== null) {
-            fileName = matchAry[0];
+            fileName = window.decodeURIComponent(matchAry[0]);
         }
 
 
-        let blob = xhr.response;
-        let str = window.URL.createObjectURL(blob);
-        const link = document.createElement('a');
+        var blob = xhr.response;
+        var str = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        document.body.appendChild(link);
         link.href = str;
         link.download = fileName;
         link.click();
+        document.body.removeChild(link); 
         window.URL.revokeObjectURL(link.href);
+        unmask();
     });
 
-    xhr.open('post', uploadUrl, true);
-    xhr.send(formdata);
+    xhr.open('post', downloadUrl, true);
+    xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
+    xhr.send(JSON.stringify(json));
 }
 
