@@ -58,16 +58,17 @@
 <script src="../frame/vue-2.6.10/vue.min.js"></script>
 <script>
     const position = {
-        outerWidth: null,
+        /** window 属性 */
+        outerWidth: null,   
         outerHeight: null,
         innerWidth: null,
         innerHeight: null,
-        screenLeft: null,
+        screenLeft: null,  
         screenTop: null,
         scrollX: null,
         scrollY: null,
 
-        /** resize */
+        /** Element 属性 */
         resizeDivClientWidth: null,  // 视口的宽度，不包含滚动条的宽度
         resizeDivClientHeight: null,
         resizeDivClientLeft: null, // 视口到达窗口左边的宽度，不包含外边距和内边距
