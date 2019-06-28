@@ -10,6 +10,14 @@
 JSON.stringify(obj);
 JSON.parse(json);
 
+let blob = new Blob(new String('1234567890abcdefg'), {type: 'text/plain; charset=utf8', endings: 'transparent'});
+let fileReader = new FileReader();
+fileReader.readAsText(blob);
+fileReader.onload = function(e){
+    let content = this.result;
+    console.log(content);
+};
+
 
 /** todo JS Parasitic Object: 宿主对象
  * [window, navigator, screen, history, location, event, document]

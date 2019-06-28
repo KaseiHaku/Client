@@ -10,10 +10,10 @@ function nativeAjaxPostWithoutFile(url, params, async){
         }   
     });
     xhr.addEventListener('error', function(event){
-        //alert(false);
+        alert('ajax encount an error');
     });
     xhr.addEventListener('loadend', function(event){
-        unmask();
+        alert('ajax request finished')
     });
 
 
