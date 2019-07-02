@@ -2,6 +2,11 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%; /* 让 html 和 body 标签的高度自适应屏幕高度 */
+}
+
+
 
 textarea, td {
     word-break: break-all; /* 设置换行规则 */

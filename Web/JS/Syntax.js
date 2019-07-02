@@ -21,6 +21,12 @@
  *      Object.prototype == 所有普通实例的原型， Object.prototype 本身的原型为 null，即 Object.prototype.__proto__ == null;
  * 1. 函数实例： 由 function 关键字创建出来的实例
  * 2. 普通实例： 由 new 关键字创建出来的实例
+ 函数实例链：
+NativeCode - new NativeCode('Function') === Function -> new Function('Object') === Object 
+                                                     -> new Function('Custom') === Custom
+普通实例链：null -> Object.prototype - new Object() === Custom.prototype -> new Custom
+                                     - Function
+                                     - Object
  * */
 console.log(Function.constructor); // ƒ Function() { [native code] }
 console.log(Function.prototype); // ƒ () { [native code] } 注意跟上面输出的差别
