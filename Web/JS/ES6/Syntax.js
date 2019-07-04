@@ -1,6 +1,21 @@
-/** todo Keyword */
-    break case catch continue default delete do else finally for function if in instanceof 
-    new return switch this throw try typeof var void while with
+/** todo ES6 主要知识点 
+ * 反引号字符串
+ * 解构
+ * Iterator Generator yield Thunk for...of
+ * Promise
+ * Proxy: 元编程
+ * Reflect
+ * async 函数
+ * Class
+ * Module
+ * */
+
+
+
+
+
+
+
 /** todo Reserved word */  
     
 /** todo Variable: let, const, class 声明的变量不再是 window 对象的属性 */
@@ -100,6 +115,38 @@
     }
     // first is hello
     // second is world
+
+/** todo iterate 迭代语法 */
+    /** ES5 语法：定义一个迭代器生成函数 */
+    function customNewGenerator(array) {
+        var nextIndex = 0;
+        return {
+            next: function() {             // 由于 JS 闭包，该方法能访问定义时词法环境的上下文，即 nextIndex 变量
+                return nextIndex < array.length ?
+                    {value: array[nextIndex++], done: false} :
+                    {value: undefined, done: true};
+            }
+        };
+    }
+
+
+    /** ES6 语法：定义一个迭代器生成函数 */
+    function* createNewGenerator(){
+        /** yield 关键字详解
+         * result === iterator.next() === {value: val, done: false}
+         * nextParm: 表示的是  iterator.next(param); 中的参数 param
+         * */
+        let nextParam = yield result;  
+        let nextParam = yield* [1,2,3]; // yield* 后面必须跟实现了 Iterator 接口的类型
+    }
+
+    /** 原生迭代器生成函数存在位置 */
+    let ary = [1,2,3];
+    let iter = ary[Symbol.iterator]();  // 获取一个原生对象的迭代器，相当于上面的迭代器生成函数
+    let iter = createNewGenerator();
+    let iter = customNewGenerator(ary);
+
+    /**  */
 
 
 
