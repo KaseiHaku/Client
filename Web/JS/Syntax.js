@@ -15,42 +15,18 @@
     由于 JS 是完全面向对象的语言，所以 JS 中 变量名、数组名、函数名 都是标识符（即都是指针）
 */
 
+
 /** todo JS 原型链及构造函数相关的知识点
- * JS 有两个原生实例： 
- *      Function == 所有函数实例的构造函数，Function 本身的构造函数为 Function 函数实例本身
- *      Object.prototype == 所有普通实例的原型， Object.prototype 本身的原型为 null，即 Object.prototype.__proto__ == null;
- * 1. 函数实例： 由 function 关键字创建出来的实例
- * 2. 普通实例： 由 new 关键字创建出来的实例
- 函数实例链：
-NativeCode - new NativeCode('Function') === Function -> new Function('Object') === Object 
-                                                     -> new Function('Custom') === Custom
-普通实例链：null -> Object.prototype - new Object() === Custom.prototype -> new Custom
-                                     - Function
-                                     - Object
+ * NativeCode: 汇编（或者其他较低级语言，比如 C，C++），因为汇编可以直接映射成 01 机器码，所以汇编就相当于机器码，以下 NativeCode1 都是同一份代码
+ * JS 有两种实例类型：1. 函数实例：由 function 关键字定义；2. 普通实例：由 字面量 或者 new 关键字创建
  * */
-console.log(Function.constructor); // ƒ Function() { [native code] }
-console.log(Function.prototype); // ƒ () { [native code] } 注意跟上面输出的差别
-console.log(Function.__proto__); // ƒ () { [native code] }
+                .constructor                .prototype                  .__proto__              instanceType
+Function        Function                    [NativeCode1]               [NativeCode1]           function
+Object          Function                    {}                          [NativeCode1]           function
+{}              Object                      undefined                   Object.prototype        new
+Array           Function                    []                          [NativeCode1]           function
+[]              Array                       undefined                   Array.prototype         new
 
-console.log(Object.constructor); // ƒ Function() { [native code] }
-console.log(Object.prototype);// {constructor: Object(), }
-console.log(Object.__proto__);// ƒ () { [native code] }
-
-
-/* todo function 关键字创建函数实例 */
-var Func = function(){};
-console.log(Func.constructor); // 输出 function Function(){}; 表示当前函数实例 Func 的构造函数; Function 实例是 JS 原生实例，是一开始就存在的，例如 function Object(){}
-console.log(Func.constructor.constructor); // Function 函数实例，是 JS 原生实例，他的 constructor 还是自身
-console.log(Func.__proto__); // function 关键字创建出来的函数实例，是特殊的实例，不存在该属性
-console.log(Func.prototype); // function 关键字创建出来的函数实例的 prototype 属性表示：var ins = new Func(); 中 ins 普通实例的原型
-console.log(Func.prototype.__proto__); // 这个表示 ins 原型的原型，为 Object.prototype
-console.log(Func.prototype.constructor); // 输出 function Func(){}; 表示用当前函数实例 new 出来的实例的构造函数
-
-/* todo new 关键字创建普通实例 */
-var ins = new Func(); // 使用 new 关键字创建一个实例
-console.log(ins.__proto__ === Func.prototype); // 输出 true
-console.log(ins.constructor); // 输出 function Func(){}
-console.log(ins.prototype); // new 关键字创建出来的普通实例，没有 prototype 属性
 
 
 
