@@ -11,6 +11,7 @@
 <div id="root">
 
     <div id="vueContainer" v-bind:style="[styleObj, computedStyleObj]">
+        <label>Browser Window</label><br/>
         <label>outerWidth=</label><span>{{ outerWidth }}</span>
         <label>outerHeight=</label><span>{{ outerHeight }}</span><br/>
         <label>innerWidth=</label><span>{{ innerWidth }}</span>
@@ -19,7 +20,13 @@
         <label>screenTop=</label><span>{{ screenTop }}</span><br/>
         <label>scrollX=</label><span>{{ scrollX }}</span><br/>
         <label>scrollY=</label><span>{{ scrollY }}</span><br/>
-        <!-- 以下是 Element 元素的 -->
+
+
+        <label>HTML Document</label><br/>
+        <label>htmlScrollHeight=</label><span>{{ htmlScrollHeight }}</span><br/>
+
+
+        <label>HTML Element</label><br/>
         <label>resizeDivClientWidth=</label><span>{{ resizeDivClientWidth }}</span><br/>
         <label>resizeDivClientHeight=</label><span>{{ resizeDivClientHeight }}</span><br/>
         <label>resizeDivClientLeft=</label><span>{{ resizeDivClientLeft }}</span><br/>
@@ -29,8 +36,21 @@
         <label>resizeDivScrollHeight=</label><span>{{ resizeDivScrollHeight }}</span><br/>
         <label>resizeDivScrollLeft=</label><span>{{ resizeDivScrollLeft }}</span><br/>
         <label>resizeDivScrollTop=</label><span>{{ resizeDivScrollTop }}</span><br/>
+
+        <label>resizeDivOffsetWidth=</label><span>{{ resizeDivOffsetWidth }}</span><br/>
+        <label>resizeDivOffsetHeight=</label><span>{{ resizeDivOffsetHeight }}</span><br/>
+        <label>resizeDivOffsetLeft=</label><span>{{ resizeDivOffsetLeft }}</span><br/>
+        <label>resizeDivOffsetTop=</label><span>{{ resizeDivOffsetTop }}</span><br/>
     </div>
-    <div id="resizeDiv" style="resize: both; border: 1px solid black; background-color: #0c7cd5; min-width: 50px; min-height: 50px; overflow: scroll;">
+    <div id="resizeDiv" style="
+            margin: 1px;
+            border-width: 2px;
+            border-style: solid;
+            padding: 3px;
+            box-sizing: border-box;
+            resize: both; background-color: #0c7cd5; min-width: 50px; min-height: 50px; overflow: scroll;
+            "
+    >
         abcdefgasdfawefasdfasdfqwefqwekjgpqiuwhefpnweiuhr23jnaowf8a7sd9f23r2sfaweq324sdfgbymhaefddf<br/>
         1234567asdfq23wefasdfq234234rwe<br/>
         我是可以用户修改大小的<br/>
@@ -59,35 +79,33 @@
 <script>
     const position = {
         /** window 属性 */
-        outerWidth: null,   
+        outerWidth: null,
         outerHeight: null,
         innerWidth: null,
         innerHeight: null,
-        screenLeft: null,  
+        screenLeft: null,
         screenTop: null,
         scrollX: null,
         scrollY: null,
-        
-        
+
+
         /** <html> 标签属性 */
-        htmlScrollHeight = document.documentElement.scrollHeight
+        htmlScrollHeight: document.documentElement.scrollHeight,
 
         /** Element 属性 */
         resizeDivClientWidth: null,  // 视口的宽度，不包含滚动条的宽度
         resizeDivClientHeight: null,
         resizeDivClientLeft: null, // 视口到达窗口左边的宽度，不包含外边距和内边距
         resizeDivClientTop: null, // 不包含外边距和内边距
-
         resizeDivScrollWidth: null, // 可滚动部分的宽度
         resizeDivScrollHeight: null,
         resizeDivScrollLeft: null,  // 可以滚动的宽度
         resizeDivScrollTop: null,
-        
+
         resizeDivOffsetWidth: null, // 整个控件的宽度，包括滚动条
         resizeDivOffsetHeight: null,
-        resizeDivOffsetLeft: null, // 控件到达窗口左边的宽度
+        resizeDivOffsetLeft: null, // 距离最近的已定位的父元素
         resizeDivOffsetTop: null,
-
         /** 以下是自身宽高及定位参数 */
         styleObj: {
             width: '600px',
@@ -95,10 +113,7 @@
             backgroundColor: 'rgba(126,45,66,0.5)',
             position: 'fixed',
         },
-
-
     };
-
     let vueContainer = new Vue({
         el: '#vueContainer',
         data: position,
@@ -109,10 +124,8 @@
                     top: (this.innerHeight - window.parseInt(this.styleObj.height.substring(0, this.styleObj.height.length-2)))/2 + 'px',
                 };
             },
-
         }
     });
-
     window.setInterval(function(){
         vueContainer.outerWidth = window.outerWidth;
         vueContainer.outerHeight = window.outerHeight;
@@ -122,20 +135,19 @@
         vueContainer.screenTop = window.screenY;
         vueContainer.scrollX = window.scrollX;
         vueContainer.scrollY = window.scrollY;
-
         vueContainer.resizeDivClientWidth = document.getElementById('resizeDiv').clientWidth;
         vueContainer.resizeDivClientHeight = document.getElementById('resizeDiv').clientHeight;
         vueContainer.resizeDivClientLeft =  document.getElementById('resizeDiv').clientLeft;
         vueContainer.resizeDivClientTop = document.getElementById('resizeDiv').clientTop;
-
         vueContainer.resizeDivScrollWidth = document.getElementById('resizeDiv').scrollWidth;
         vueContainer.resizeDivScrollHeight = document.getElementById('resizeDiv').scrollHeight;
         vueContainer.resizeDivScrollLeft = document.getElementById('resizeDiv').scrollLeft;
         vueContainer.resizeDivScrollTop = document.getElementById('resizeDiv').scrollTop;
-
+        vueContainer.resizeDivOffsetWidth = document.getElementById('resizeDiv').offsetWidth;
+        vueContainer.resizeDivOffsetHeight = document.getElementById('resizeDiv').offsetHeight;
+        vueContainer.resizeDivOffsetLeft = document.getElementById('resizeDiv').offsetLeft;
+        vueContainer.resizeDivOffsetTop = document.getElementById('resizeDiv').offsetTop;
     }, 200);
-
-
 </script>
 </body>
 </html>
