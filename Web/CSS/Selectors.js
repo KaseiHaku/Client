@@ -29,6 +29,7 @@ function cssSelectors(){
     document.querySelectorAll('div::selection');            // 匹配当前页面中被  鼠标拖动选中的内容
 
     /* Pseudo Class Selector */
+    document.querySelectorAll(':root');                     // 相当于 document.querySelectorAll('html');
     document.querySelectorAll(':scope > p');                // :scope 代表当前执行 querySelectorAll() 方法的元素
     document.querySelectorAll('div:is(selector)');          // 选择所有符合 selector 的 <dib> 元素
     document.querySelectorAll('div:not(selector)');         // 选择所有不符合 selector 的 <div> 元素    
