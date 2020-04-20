@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="root">
+    <global-component1></global-component1>
+    <global-component2></global-component2>
+    <global-component3></global-component3>
+</div>
+
+<template id="component1">
+    <div>
+        <span>{{ msg }}</span>
+        <button type="button" @click="clickHandler">触发事件</button>
+    </div>
+</template>
+
+<template id="component2">
+    <div>
+        <span>{{ msg }}</span>
+        <button type="button" @click="clickHandler">触发事件</button>
+    </div>
+</template>
+
+<template id="component3">
+    <div>
+        <span>{{ 'msgA=' + msgA + '; msgB=' + msgB }}</span>
+    </div>
+</template>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script>
+
+    var Event = new Vue(); // 定义一个空的Vue实例,作为消息总线
+
+    Vue.component('global-component1', {
+        template: `#component1`,
+        data(){
+            return {msg: 'A'};
+        },
+        methods: {
+            clickHandler(){
+                Event.$emit('data-a', this.msg);
+            }
+        },
+
+    });
+
+    Vue.component('global-component2', {
+        template: `#component2`,
+        data(){
+            return {msg: 'B'};
+        },
+        methods: {
+            clickHandler(){
+                Event.$emit('data-b', this.msg);
+            }
+        },
+    });
+
+    Vue.component('global-component3', {
+        template: `#component3`,
+        data(){
+            return {
+                msgA: '',
+                msgB: ''
+            };
+        },
+        mounted() {//在模板编译完成后执行
+            Event.$on('data-a', msg => {
+                this.msgA = msg;//箭头函数内部不会产生新的this，这边如果不用 =>,那么 this 将指向 Event
+            });
+            Event.$on('data-b', msg => {
+                this.msgB = msg;
+            });
+        }
+    });
+
+
+
+    let vueInstance = new Vue({
+        el: '#root',
+    });
+
+
+
+</script>
+</body>
+</html>

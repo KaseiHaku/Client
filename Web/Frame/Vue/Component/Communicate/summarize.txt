@@ -1,0 +1,7 @@
+Vue 组件之间通信方式:
+    1. props/$emit
+    2. $emit/$on        new Vue() 作为事件总线
+    3. vuex
+    4. $attrs/$listeners
+    5. provide/inject
+    6. $parent / $children 与 ref  直接获取实例

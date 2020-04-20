@@ -2,26 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="496c2d76-bbb0-4740-bf65-b643ba01f6dd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Web/JS/Syntax/Array.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Web/JS/Syntax/FlowControl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Web/JS/Syntax/KeyWord&amp;Operator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Web/JS/Syntax/Number.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Web/JS/Syntax/Object.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Web/JS/Syntax/RegExp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Web/JS/Syntax/String.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Web/JS/ifrastructure.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate/Ancestor2Posterity.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate/Any2Any.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate/Any2AnyVuex.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate/Child2Parent.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate/Parent2Child.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate/summarize.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/JS/Commonly/Array.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/JS/Commonly/Date.js" beforeDir="false" afterPath="$PROJECT_DIR$/Web/JS/Syntax/Date.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/JS/Commonly/Error.js" beforeDir="false" afterPath="$PROJECT_DIR$/Web/JS/Syntax/Error.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/JS/Commonly/Function.js" beforeDir="false" afterPath="$PROJECT_DIR$/Web/JS/Syntax/Function.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/JS/Commonly/Miscellaneous.js" beforeDir="false" afterPath="$PROJECT_DIR$/Web/JS/Syntax/Miscellaneous.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/JS/Commonly/Number.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/JS/Commonly/RegExp.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/JS/Commonly/String.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/JS/ES6/Syntax.js" beforeDir="false" afterPath="$PROJECT_DIR$/Web/JS/ES6/Syntax.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/JS/Syntax.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web/JS/summarize&amp;induction.js" beforeDir="false" afterPath="$PROJECT_DIR$/Web/JS/summarize&amp;induction.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,91 +21,65 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate/Child2Parent.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate/Any2Any.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="23" column="65" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="65" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate/Any2AnyVuex.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate/Ancestor2Posterity.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="59" column="56" selection-start-line="59" selection-start-column="48" selection-end-line="59" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Web/JS/ES6/Syntax.js">
+        <entry file="file://$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate/summarize.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="850">
-              <caret line="50" selection-start-line="50" selection-end-line="50" />
+            <state relative-caret-position="68">
+              <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Web/JS/Syntax/String.js">
+        <entry file="file://$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate/Parent2Child.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-46">
-              <caret line="3" column="56" selection-start-line="3" selection-start-column="56" selection-end-line="3" selection-end-column="56" />
+            <state relative-caret-position="425">
+              <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Web/JS/utility/ArrayUtil.js">
+        <entry file="file://$PROJECT_DIR$/Web/Frame/Vue/VueTree.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-692" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Web/JS/Syntax/Function.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
-              <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Splited/webpack.config.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="17" column="12" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="23" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Web/Frame/Vue/VueComponent.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Web/Frame/Vue/VueM2VBind.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="329" column="33" selection-start-line="329" selection-start-column="27" selection-end-line="329" selection-end-column="33" />
-              <folding>
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Web/Frame/Vue/VueV2MBind.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2134" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Web/JS/ifrastructure.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="542">
-              <caret line="44" column="55" selection-start-line="44" selection-start-column="55" selection-end-line="44" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Web/JS/ES6/class.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="88" lean-forward="true" selection-end-line="92" />
+            <state relative-caret-position="-817">
+              <caret line="1118" column="26" selection-start-line="1118" selection-start-column="22" selection-end-line="1118" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -129,12 +90,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>render</find>
+      <find>emit</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -165,6 +128,12 @@
         <option value="$PROJECT_DIR$/Web/JS/Syntax/KeyWord&amp;Operator.js" />
         <option value="$PROJECT_DIR$/Web/JS/Syntax/String.js" />
         <option value="$PROJECT_DIR$/Web/JS/ES6/Syntax.js" />
+        <option value="$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate/Parent2Child.html" />
+        <option value="$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate/Child2Parent.html" />
+        <option value="$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate/Any2Any.html" />
+        <option value="$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate/Any2AnyVuex.html" />
+        <option value="$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate/Ancestor2Posterity.html" />
+        <option value="$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate/summarize.txt" />
       </list>
     </option>
   </component>
@@ -182,8 +151,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -194,30 +163,13 @@
             <path>
               <item name="Client" type="b2602c69:ProjectViewProjectNode" />
               <item name="Client" type="462c0819:PsiDirectoryNode" />
-              <item name="Splited" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Client" type="462c0819:PsiDirectoryNode" />
-              <item name="Splited" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Client" type="462c0819:PsiDirectoryNode" />
               <item name="Web" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Client" type="b2602c69:ProjectViewProjectNode" />
               <item name="Client" type="462c0819:PsiDirectoryNode" />
               <item name="Web" type="462c0819:PsiDirectoryNode" />
-              <item name="AJAX" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Client" type="462c0819:PsiDirectoryNode" />
-              <item name="Web" type="462c0819:PsiDirectoryNode" />
-              <item name="Browser" type="462c0819:PsiDirectoryNode" />
+              <item name="CSS" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Client" type="b2602c69:ProjectViewProjectNode" />
@@ -236,28 +188,30 @@
               <item name="Client" type="b2602c69:ProjectViewProjectNode" />
               <item name="Client" type="462c0819:PsiDirectoryNode" />
               <item name="Web" type="462c0819:PsiDirectoryNode" />
-              <item name="JS" type="462c0819:PsiDirectoryNode" />
+              <item name="Frame" type="462c0819:PsiDirectoryNode" />
+              <item name="Vue" type="462c0819:PsiDirectoryNode" />
+              <item name="Component" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Client" type="462c0819:PsiDirectoryNode" />
+              <item name="Web" type="462c0819:PsiDirectoryNode" />
+              <item name="Frame" type="462c0819:PsiDirectoryNode" />
+              <item name="Vue" type="462c0819:PsiDirectoryNode" />
+              <item name="Component" type="462c0819:PsiDirectoryNode" />
+              <item name="Communicate" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Client" type="462c0819:PsiDirectoryNode" />
+              <item name="Web" type="462c0819:PsiDirectoryNode" />
+              <item name="HTML" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Client" type="b2602c69:ProjectViewProjectNode" />
               <item name="Client" type="462c0819:PsiDirectoryNode" />
               <item name="Web" type="462c0819:PsiDirectoryNode" />
               <item name="JS" type="462c0819:PsiDirectoryNode" />
-              <item name="ES6" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Client" type="462c0819:PsiDirectoryNode" />
-              <item name="Web" type="462c0819:PsiDirectoryNode" />
-              <item name="JS" type="462c0819:PsiDirectoryNode" />
-              <item name="Syntax" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Client" type="462c0819:PsiDirectoryNode" />
-              <item name="Web" type="462c0819:PsiDirectoryNode" />
-              <item name="JS" type="462c0819:PsiDirectoryNode" />
-              <item name="utility" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -266,10 +220,11 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../NodeJS" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -278,11 +233,12 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate" />
+      <recent name="$PROJECT_DIR$/SplitedClient" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Web/JS/Syntax" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/SplitedClient" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -353,18 +309,21 @@
       <workItem from="1587135132124" duration="5675000" />
       <workItem from="1587149328822" duration="1461000" />
       <workItem from="1587195333771" duration="70000" />
-      <workItem from="1587276950452" duration="5691000" />
+      <workItem from="1587276950452" duration="6083000" />
+      <workItem from="1587319000544" duration="1372000" />
+      <workItem from="1587322464665" duration="1210000" />
+      <workItem from="1587366852114" duration="15971000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15303000" />
+    <option name="totallyTimeSpent" value="34248000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="1920" height="1018" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2724359" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2820513" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -381,7 +340,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.27822122" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.28164196" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -424,70 +383,19 @@
         <state relative-caret-position="-1377" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Web/Browser/browser_js.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Web/JS/Commonly/Array.js" />
     <entry file="file://$PROJECT_DIR$/Web/JS/Commonly/Number.js" />
     <entry file="file://$PROJECT_DIR$/Web/JS/Commonly/String.js" />
     <entry file="file://$PROJECT_DIR$/Web/JS/Commonly/RegExp.js" />
-    <entry file="file://$PROJECT_DIR$/Web/JS/Syntax/Date.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Web/JS/Syntax/Number.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Web/JS/Syntax/RegExp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Web/JS/Syntax/Array.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Web/JS/Syntax/FlowControl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Web/JS/Syntax/Miscellaneous.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Web/JS/Syntax/Error.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="46" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/JS/Syntax/Date.js" />
+    <entry file="file://$PROJECT_DIR$/Web/JS/Syntax/Number.js" />
+    <entry file="file://$PROJECT_DIR$/Web/JS/Syntax/RegExp.js" />
+    <entry file="file://$PROJECT_DIR$/Web/JS/Syntax/Array.js" />
+    <entry file="file://$PROJECT_DIR$/Web/JS/Syntax/FlowControl.js" />
+    <entry file="file://$PROJECT_DIR$/Web/JS/Syntax/Miscellaneous.js" />
+    <entry file="file://$PROJECT_DIR$/Web/JS/Syntax/Error.js" />
     <entry file="file://$PROJECT_DIR$/Web/JS/Syntax.js" />
-    <entry file="file://$PROJECT_DIR$/Web/JS/Syntax/Object.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2465">
-          <caret line="145" column="10" selection-start-line="145" selection-start-column="10" selection-end-line="145" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/JS/Syntax/Object.js" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -504,89 +412,115 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Web/JS/summarize&amp;induction.js">
+    <entry file="file://$PROJECT_DIR$/Web/JS/summarize&amp;induction.js" />
+    <entry file="file://$PROJECT_DIR$/Web/JS/Tenet.js" />
+    <entry file="file://$PROJECT_DIR$/Web/JS/Syntax/KeyWord&amp;Operator.js" />
+    <entry file="file://$PROJECT_DIR$/Web/JS/Syntax/Function.js" />
+    <entry file="file://$PROJECT_DIR$/Web/JS/Syntax/String.js" />
+    <entry file="file://$PROJECT_DIR$/Web/JS/utility/ArrayUtil.js" />
+    <entry file="file://$PROJECT_DIR$/Web/JS/ES6/Syntax.js" />
+    <entry file="file://$PROJECT_DIR$/Web/JS/ifrastructure.txt" />
+    <entry file="file://$PROJECT_DIR$/Web/JS/ES6/class.js" />
+    <entry file="file://$PROJECT_DIR$/Splited/webpack.config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+        <state relative-caret-position="289">
+          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="23" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Web/JS/Tenet.js">
+    <entry file="file://$PROJECT_DIR$/Web/JS/Demo/singleDoubleClickConflict.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Web/JS/Syntax/KeyWord&amp;Operator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/Web/HTML/html.html">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Web/Frame/Vue/VueM2VBind.html">
+    <entry file="file://$PROJECT_DIR$/Web/Event.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="329" column="33" selection-start-line="329" selection-start-column="27" selection-end-line="329" selection-end-column="33" />
+        <state relative-caret-position="-408">
           <folding>
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="e#3#9#0" expanded="true" />
+            <element signature="e#9#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Web/Frame/Vue/VueV2MBind.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2134" />
+        <state relative-caret-position="-510" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/Browser/browser_js.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-896">
+          <caret line="23" column="78" lean-forward="true" selection-start-line="23" selection-start-column="60" selection-end-line="23" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/CSS/WidthHeight.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1630" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/Frame/Vue/VueM2VBind.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3128">
+          <caret line="65" column="28" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="28" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Web/Frame/Vue/VueComponent.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+        <state relative-caret-position="243">
+          <caret line="151" column="9" lean-forward="true" selection-start-line="151" selection-start-column="9" selection-end-line="151" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Splited/webpack.config.js">
+    <entry file="file://$PROJECT_DIR$/Web/Frame/Vue/VueTree.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="17" column="12" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="23" selection-end-column="14" />
+        <state relative-caret-position="-817">
+          <caret line="1118" column="26" selection-start-line="1118" selection-start-column="22" selection-end-line="1118" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Web/JS/Syntax/Function.js">
+    <entry file="file://$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate/Parent2Child.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+        <state relative-caret-position="425">
+          <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Web/JS/Syntax/String.js">
+    <entry file="file://$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate/Child2Parent.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-46">
-          <caret line="3" column="56" selection-start-line="3" selection-start-column="56" selection-end-line="3" selection-end-column="56" />
+        <state relative-caret-position="476">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Web/JS/utility/ArrayUtil.js">
+    <entry file="file://$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate/Any2AnyVuex.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-692" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Web/JS/ifrastructure.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="44" column="55" selection-start-line="44" selection-start-column="55" selection-end-line="44" selection-end-column="55" />
+        <state relative-caret-position="374">
+          <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Web/JS/ES6/class.js">
+    <entry file="file://$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate/Any2Any.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="88" lean-forward="true" selection-end-line="92" />
+        <state relative-caret-position="136">
+          <caret line="23" column="65" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="65" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Web/JS/ES6/Syntax.js">
+    <entry file="file://$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate/Ancestor2Posterity.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        <state relative-caret-position="391">
+          <caret line="59" column="56" selection-start-line="59" selection-start-column="48" selection-end-line="59" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/Frame/Vue/Component/Communicate/summarize.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
         </state>
       </provider>
     </entry>

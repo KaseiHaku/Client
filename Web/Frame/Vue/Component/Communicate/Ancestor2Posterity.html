@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="root">
+    <global-ancestor></global-ancestor>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script>
+
+
+    Vue.component('global-posterity1', {
+        inject: ['theme'],
+        methods: {
+            clickHandler(){
+                // this.theme++; // 方式1
+                this.theme.count++; // 方式2,3
+            }
+        },
+        // template: `<button type="button" @click="clickHandler">{{ this.theme }}</button>` // 方式1
+        template: `<button type="button" @click="clickHandler">{{ this.theme.count }}</button>` // 方式2,3
+    });
+
+    Vue.component('global-posterity2', {
+        inject: ['theme'],
+        methods: {
+            clickHandler(){
+                // this.theme++; // 方式1
+                this.theme.count++; // 方式2,3
+            }
+        },
+        // template: `<button type="button" @click="clickHandler">{{ this.theme }}</button>` // 方式1
+        template: `<button type="button" @click="clickHandler">{{ this.theme.count }}</button>` // 方式2,3
+    });
+
+    Vue.component('global-ancestor', {
+        data(){
+            return {
+                count: 0
+            };
+
+        },
+        /** TODO 方式1: 这种方式绑定的数据并不是可响应的,即A组件的color变化后，组件D、E、F不会跟着变 */
+        // provide() {
+        //     return {
+        //         theme: this.count
+        //     };
+        // },
+        /** TODO 方式2: 提供祖先组件的实例 */
+        // provide() {
+        //     return {
+        //         theme: this // 提供祖先组件的实例
+        //     };
+        // },
+        /** TODO 方式3: 使用2.6最新API Vue.observable 优化响应式 provide */
+        provide() {
+          this.theme = Vue.observable({ // 这种方式 ancestor 本身值不会变
+            count: this.count
+          });
+          return {
+            theme: this.theme
+          };
+        },
+
+        methods: {
+            clickHandler(){
+                this.count++;
+            }
+        },
+        template: `
+            <div>
+                <button type="button" @click="clickHandler">{{ this.count }}</button>
+                <global-posterity1></global-posterity1>
+                <global-posterity2></global-posterity2>
+            </div>
+        `
+    });
+
+
+
+    let vueInstance = new Vue({
+        el: '#root',
+    });
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="root">
+    <global-parent></global-parent>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script>
+
+
+    Vue.component('global-child', {
+        methods: {
+            aa: function(){
+                alert('child');
+                this.$emit("beClicked", "子向父组件传值");//自定义事件  传递值“子向父组件传值”
+            }
+        },
+        template: `
+            <span @click="aa">点我</span>
+        `
+    });
+
+    Vue.component('global-parent', {
+        methods:{
+            subComponentBeClicked: function( data){
+                alert('parent: ' + data);
+            }
+        },
+        template: `
+            <div><global-child @beClicked="subComponentBeClicked"></global-child></div>
+        `
+    });
+
+
+
+    let vueInstance = new Vue({
+        el: '#root',
+    });
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="root">
+    <global-parent></global-parent>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script>
+
+
+    Vue.component('global-parent', {
+        template: `
+            <div><global-child custom-attr1="1" custom-attr2="aa"></global-child></div>
+        `
+    });
+
+    Vue.component('global-child', {
+        props: {
+            customAttr1: Number,  // Number 表示期望的值为 数字类型
+            customAttr2: String
+        }, // 表示当前模板接收的属性,因为 HTML 属性不区分大小写,所以 a-b 形式在这里是 aB
+        template: `
+            <span>{{customAttr1 + customAttr2}}</span>
+        `
+    });
+
+    let vueInstance = new Vue({
+        el: '#root',
+    });
+
+
+
+</script>
+</body>
+</html>
