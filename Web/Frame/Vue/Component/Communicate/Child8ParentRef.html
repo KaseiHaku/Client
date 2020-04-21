@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="root">
+    <h1>ref, $parent, $children</h1>
+    <global-parent></global-parent>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script>
+
+
+    Vue.component('global-parent', {
+
+        template: `
+            <div>
+                <button type="button" @click="clickHandler">点我弹出子 title</button>
+                <global-child ref="childCom" ></global-child>
+            </div>
+        `,
+        data(){
+            return {
+                title: 'parent title'
+            };
+        },
+        methods: {
+            clickHandler(){
+                alert(this.$children[0].title);
+            }
+        },
+        mounted () {
+            const comA = this.$refs.childCom;
+            console.log(comA.title);  // Vue.js
+            comA.sayHello();  // 弹窗
+        }
+    });
+
+    Vue.component('global-child', {
+        data(){
+            return {
+                title: 'child title'
+            };
+        },
+        methods: {
+            sayHello(){
+                alert(this.title);
+            },
+            clickHandler(){
+                alert(this.$parent.title);
+            }
+        },
+        template: `
+            <span @click="clickHandler">点我弹出父 title</span>
+        `
+    });
+
+    let vueInstance = new Vue({
+        el: '#root',
+    });
+
+
+
+</script>
+</body>
+</html>

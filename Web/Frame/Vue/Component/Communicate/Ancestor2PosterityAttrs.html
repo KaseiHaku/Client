@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="root">
+    <h1>$attrs, $listeners</h1>
+    <global-ancestor></global-ancestor>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script>
+
+    Vue.component('global-ancestor', {
+        template: `
+            <div>
+                <global-posterity :foo="foo" :boo="boo" ggh="ggh" @eevent="eeventHandler"></global-posterity>
+            </div>
+        `,
+        data() {
+            return {
+                foo: "Javascript",
+                boo: "Html"
+            };
+
+        },
+        methods: {
+            eeventHandler(){
+                alert('eevent handler');
+            },
+        }
+    });
+
+
+    Vue.component('global-posterity', {
+        template: `<button type="button">{{ this.$attrs }}</button>`,
+        inheritAttrs: false, // 可以关闭自动挂载到组件根元素上的没有在props声明的属性
+        props: {
+            foo: String // foo作为props属性绑定
+        },
+        created() {
+            console.log(this.$attrs); // $attrs 包含除了 props 捕获的之外的其他所有属性 (class 和 style 除外)
+            console.log(this.$listeners.eevent());
+        },
+
+    });
+
+
+
+
+
+    let vueInstance = new Vue({
+        el: '#root',
+    });
+
+
+</script>
+</body>
+</html>
