@@ -36,7 +36,7 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
 <script>
 
-    var Event = new Vue(); // 定义一个空的Vue实例,作为消息总线
+    var EventBus = new Vue(); // 定义一个空的Vue实例,作为消息总线
 
     Vue.component('global-component1', {
         template: `#component1`,
@@ -45,7 +45,7 @@
         },
         methods: {
             clickHandler(){
-                Event.$emit('data-a', this.msg);
+                EventBus.$emit('data-a', this.msg);
             }
         },
 
@@ -58,7 +58,7 @@
         },
         methods: {
             clickHandler(){
-                Event.$emit('data-b', this.msg);
+                EventBus.$emit('data-b', this.msg);
             }
         },
     });
@@ -72,10 +72,10 @@
             };
         },
         mounted() {//在模板编译完成后执行
-            Event.$on('data-a', msg => {
-                this.msgA = msg;//箭头函数内部不会产生新的this，这边如果不用 =>,那么 this 将指向 Event
+            EventBus.$on('data-a', msg => {
+                this.msgA = msg;//箭头函数内部不会产生新的this，这边如果不用 =>,那么 this 将指向 EventBus
             });
-            Event.$on('data-b', msg => {
+            EventBus.$on('data-b', msg => {
                 this.msgB = msg;
             });
         }
