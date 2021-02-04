@@ -15,6 +15,7 @@ function cssSelectors(){
     document.querySelectorAll('[attr|=val]');           // 选择所有 attr 属性值以 val 字符串开头的元素
 
     /* Combination and Multiple Selector */
+    document.querySelectorAll('div.clazz');             // 选择所有 <div> 且 class 有 .clazz 的元素
     document.querySelectorAll('div , p');               // 选择所有 <div> 和 <p> 元素
     document.querySelectorAll('div   p');               // 选择所有 <div> 元素里面的所有 <p> 元素
     document.querySelectorAll('div > p');               // 选择所有 <div> 元素直接子元素为 <p> 的所有元素
