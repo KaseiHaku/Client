@@ -20,6 +20,6 @@
     "webpack-encoding-plugin": "^0.3.1"
   },
   "dependencies": {
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.21"
   }
 }
