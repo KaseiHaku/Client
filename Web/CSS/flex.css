@@ -1,0 +1,25 @@
+/** 定义 flex 容器 */
+.div {
+  /*  */
+  display: flex;  /* inline-flex */
+  flex-direction: column;
+  flex-wrap: wrap; /* 超出换列 */
+  /* flex-flow: column wrap  等价于 flex-direction + flex-wrap */
+  justify-content: space-around; /** 调整 flex 容器中 flex 元素在 主轴上 的对齐方式 */
+  align-items: flex-start; /** 调整 flex 容器中 flex 元素在 交叉轴上 的对齐方式 */
+}
+
+/** 定义 flex 元素本身 */
+.div p {
+  flex-basis: auto; /* 定义当前 flex 元素初始的空间大小， auto 或 100px */
+  flex-grow: 1; /* flex 容器有剩余空间时，各个元素之间扩展所占的比例  */
+  flex-shrink: 1;/* flex 容器空间不足时，各个元素的缩小比例 */
+  
+  
+  flex: 1 1 auto;   /** 相当于 flex-grow flex-shrink flex-basis */
+  flex: initial;    /*  flex: 0 1 auto */
+  flex: auto;       /*  flex: 1 1 auto */
+  flex: none;       /*  flex: 0 0 auto */
+  flex: 4;          /*  flex: 4 4 auto */
+    
+}
