@@ -1,7 +1,20 @@
 Vue 组件之间通信方式:
-    1. props/$emit
-    2. $emit/$on        new Vue() 作为事件总线
-    3. vuex
-    4. $attrs/$listeners
-    5. provide/inject
-    6. $parent / $children 与 ref  直接获取实例
+    父子通信:
+        1. props/$emit
+        2. $parent / $children 与 ref  直接获取实例
+        4. $attrs/$listeners            # $attrs: 继承所有的父组件属性（除了prop传递的属性、class和style;  $listeners: 包含了父作用域中的v-on事件监听器
+        5. provide/inject
+    兄弟通信:
+        1. $emit/$on        # new Vue() 作为事件总线
+        2. vuex             # vuex 就是基于 $emit/$on， new Vue() 的技术的
+    跨级通信:
+        1. $attrs/$listeners
+        2. provide/inject
+        3. vuex 
+        
+        
+        
+    
+    
+    
+    
