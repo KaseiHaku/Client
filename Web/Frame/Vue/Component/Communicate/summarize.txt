@@ -3,7 +3,8 @@ Vue 组件之间通信方式:
         1. props/$emit
         2. $parent/$children/$refs      # 直接获取实例
         4. $attrs/$listeners            # $attrs: 继承所有的父组件属性（除了prop传递的属性、class和style;  $listeners: 包含了父作用域中的v-on事件监听器
-        5. provide/inject
+        5. provide/inject               # 禁止双向绑定，即: 值可以在 provide 中修改，同时可以在 inject 中修改
+                                        # 如果想让 provide 提供的属性是 reactive 的，那么 provide 提供的属性必须来自 data() 或者  Vue.observable() 或者 Vue.reactive()
     兄弟通信:
         1. $emit/$on        # new Vue() 作为事件总线; vuex 的原理
         2. vuex             
