@@ -1,6 +1,6 @@
 Vue 组件之间通信方式:
     父子通信:
-        1. props/$emit
+        1. props/$emit                  # props 单项数据流，只有父组件里面可以改，子组件修改会报错，但是可以修改内部引用
         2. $parent/$children/$refs      # 直接获取实例
         4. $attrs/$listeners            # $attrs: 继承所有的父组件属性（除了prop传递的属性、class和style;  $listeners: 包含了父作用域中的v-on事件监听器
         5. provide/inject               # 禁止双向绑定，即: 值可以在 provide 中修改，同时可以在 inject 中修改
