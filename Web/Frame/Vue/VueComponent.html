@@ -113,11 +113,22 @@
 
             },
         },
-        /* 渲染模板：模板必须单根，即所有内容在一个标签内 */
+        /* 渲染模板：模板必须单根，即所有内容在一个标签内
+         * 什么是 <slot> ? 相当于一个 占位符，组件使用时，<cp></cp>  两个标签之间的内容会替换 <slot> , 如果使用时，替换内容不存在，则使用 defaultContent 来展示
+         * <slot name="slotName"> name 属性用于区分组件内部的多个 <slot> ，
+         * 使用时，用 v-slot 属性来指定 <template> 中的内容，替换组件内的哪个 <slot>,
+         * 其中 在 <cp></cp> 之间且没在 <template> 中的内容 或者 <template v-slot:default></template> 中的内容，用于替换 未命名的 <slot> 或者 <slot name="default"></slot>
+         *  <cp>
+         *      <template v-slot:default></template>
+         *      
+         *      <template v-slot:slotName1></template>
+         *      <template v-slot:slotName2></template>
+         * </cp> 
+         * */
         template: `
             <div>
                 <div v-on:click="count++" v-on:custom-event="customEventHandler" v-on:mouseover="$emit('my-event', 'value')">You clicked me {{ count }} times.</div>
-                <slot></slot>
+                <slot name="default">defaultContent</slot>
             </div>
         `,
     };
