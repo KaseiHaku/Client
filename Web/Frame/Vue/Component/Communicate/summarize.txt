@@ -1,18 +1,52 @@
 Vue 组件之间通信方式:
-    父子通信:
-        1. props/$emit                  # props 单项数据流，只有父组件里面可以改，子组件修改会报错，但是可以修改内部引用
-        2. $parent/$children/$refs      # 直接获取实例
-        4. $attrs/$listeners            # $attrs: 继承所有的父组件属性（除了prop传递的属性、class和style;  $listeners: 包含了父作用域中的v-on事件监听器
-        5. provide/inject               # 禁止双向绑定，即: 值可以在 provide 中修改，同时可以在 inject 中修改
-                                        # 如果想让 provide 提供的属性是 reactive 的，那么 provide 提供的属性必须来自 data() 或者  Vue.observable() 或者 Vue.reactive()
-    兄弟通信:
-        1. $emit/$on        # new Vue() 作为事件总线; vuex 的原理
-        2. vuex             
-    跨级通信:
-        1. $attrs/$listeners
-        2. provide/inject               # 子组件 向 祖先组件 传递数据，provide 提供的对象必须是 reactive 的
-        3. $emit/$on                    # 这里不能通过 this.$emit() 发射事件，这样只有直接父组件可以接收到事件，必须通过一个事件总线 或者 this.$root
-        4. vuex                         # 坑: 组件可以同时有多个实例时，该方法会导致多实例间相互影响
+
+    props:
+        props 单项数据流，只有父组件里面可以改，子组件修改会报错，但是可以修改内部引用
+        通信限制：直接父子关系
+        优点：
+            1. props 直接写在子组件调用处，简单直观
+            2. 子组件只跟 props 有关联，子组件多个实例之间不相互影响
+        缺点：
+            1. props 跨级传输，需要每个中间件都写 props，逐级传递，很麻烦
+    
+    $root/$parent/$children/$refs: 直接获取 vue 实例的方式
+        可以通过实例，直接访问实例内部所有内容
+        通信限制：都拿到对象了，有毛限制
+        优点：
+        缺点：
+    
+    $attrs/$listeners:
+        $attrs: 继承所有的父组件属性（除了prop传递的属性、class和style;  
+        $listeners: 包含了父作用域中的v-on事件监听器
+        通信限制: 必须具有层级关系
+        优点:
+            1. 可以跨级传递 attr 和 listener
+        缺点: 
+            1. 中间件 捕获的 attr 和 listener 将不会在后续组件中出现
+
+    $emit:
+        触发一个事件
+        通信限制: 哪个组件抛出的事件，只有能拿到该组件实例的地方才能捕获事件
+        优点:
+            1. 不同实例间不相互影响，
+        缺点：
+            1. this.$emit() 只能被直接 父组件捕获，如果需要抛出全局事件，那么需要调用 this.$root.$emit()
+            
+    
+    provide/inject:
+        一般禁止双向绑定，即: 值可以在 provide 中修改，同时可以在 inject 中修改
+        如果想让 provide 提供的属性是 reactive 的，那么 provide 提供的属性必须来自 data() 或者  Vue.observable() 或者 Vue.reactive()
+        通信限制: 组件间具有层级关系
+        优点：
+            1. 子组件只跟 provide 有关联，子组件多个实例之间不相互影响
+
+    vuex:
+        通信限制: 无限制
+        优点:
+            1. 组件单例的情况下，解决所有通信问题
+        缺点: 
+            1. 组件可以同时有多个实例时，该方法会导致多实例间相互影响
+
         
         
         
