@@ -122,13 +122,15 @@
          *      <template v-slot:default></template>
          *      
          *      <template v-slot:slotName1></template>
-         *      <template v-slot:slotName2></template>
+         *      <template v-slot:slotName2="childSlotScopProps">{{childSlotScopProps.user.lastname}}</template>  childSlotScopProps 代表 <slot> 中所有的 v-bind 属性
          * </cp> 
          * */
         template: `
             <div>
                 <div v-on:click="count++" v-on:custom-event="customEventHandler" v-on:mouseover="$emit('my-event', 'value')">You clicked me {{ count }} times.</div>
-                <slot name="default">defaultContent</slot>
+                <slot name="default" v-bind:user="user">
+                    defaultContent {{user.firstname}}
+                </slot>
             </div>
         `,
     };
