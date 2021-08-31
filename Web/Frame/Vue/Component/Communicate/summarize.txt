@@ -10,8 +10,9 @@ Vue 组件之间通信方式:
         2. vuex             
     跨级通信:
         1. $attrs/$listeners
-        2. provide/inject
-        3. vuex 
+        2. provide/inject               # 子组件 向 祖先组件 传递数据，provide 提供的对象必须是 reactive 的
+        3. $emit/$on                    # 这里不能通过 this.$emit() 发射事件，这样只有直接父组件可以接收到事件，必须通过一个事件总线 或者 this.$root
+        4. vuex                         # 坑: 组件可以同时有多个实例时，该方法会导致多实例间相互影响
         
         
         
