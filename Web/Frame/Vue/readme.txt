@@ -5,6 +5,7 @@ Vue Reactive 不生效的场景：
             1. 将 property 在 vue 初始化实例之前，就放到 data 中
             2. 将属性放到 data() 返回对象的非 root level 的属性中，然后使用  Vue.set(vm.someObject, 'b', 2) 或者 this.$set(this.someObject, 'b', 2) 来添加属性
                如果要添加多个属性，那么使用 this.someObject = Object.assign({}, this.someObject, { a: 1, b: 2 });
+               @trap 必须是上面的格式，这个格式也是不行的： this.someObject = Object.assign(this.someObject, { a: 1, b: 2 });
     
     2. Vue 无线检测 Object property 的新增和删除
        原因: JS 无法对属性的新增和删除方法做代理，所以检测不到 property 的新增和删除
