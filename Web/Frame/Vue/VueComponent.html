@@ -122,7 +122,12 @@
          *      <template v-slot:default></template>
          *      
          *      <template v-slot:slotName1></template>
-         *      <template v-slot:slotName2="childSlotScopProps">{{childSlotScopProps.user.lastname}}</template>  childSlotScopProps 代表 <slot> 中所有的 v-bind 属性
+         *      <!-- 
+         *          childSlotScopeProps 代表 <slot> 中所有的 v-bind 属性,
+         *          @trap 这里的 v-bind 属性是从 子组件传入到 template 中的，而不是 template 传到 子组件, 
+         *                即: 所有没有通过 childSlotScopeProps 引用的变量，都是在 父作用域 的，而不是在 子作用域(slot scope)
+         *      -->
+         *      <template v-slot:slotName2="childSlotScopeProps">{{childSlotScopProps.user.lastname}}</template>  
          * </cp> 
          * */
         template: `
