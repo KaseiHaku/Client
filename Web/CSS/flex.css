@@ -13,9 +13,10 @@
  * min-width/max-width/min-content > flex-grow/flex-shrink > flex-basis/width/box-sizing
  */
 .div p {
-  flex-basis: auto; /* 定义当前 flex 元素初始的空间大小， auto 或 100px */
+  
   flex-grow: 1; /* flex 容器有剩余空间时，各个元素之间扩展所占的比例  */
   flex-shrink: 1;/* flex 容器空间不足时，各个元素的缩小比例 */
+  flex-basis: auto; /* 定义当前 flex 元素初始的空间大小， auto 或 100px */
   
   
   flex: 1 1 auto;   /** 相当于 flex-grow flex-shrink flex-basis */
