@@ -80,6 +80,10 @@
             staticStringParam: {
                 type: [String, Number],   // String, Number, Boolean, Array, Object, Function, Promise, or any other constructor
                 required: true,
+                default(rawProps) {
+                    // default function receives the raw props object as argument
+                    return { message: 'hello' }
+                },
                 validator: function (value) {
                     return [
                         'syncing',
