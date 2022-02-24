@@ -80,6 +80,8 @@
             staticStringParam: {
                 type: [String, Number],   // String, Number, Boolean, Array, Object, Function, Promise, or any other constructor
                 required: true,
+                // 当当前 props 不存在 或者 传入的值为 undefined 时，使用该默认值，
+                // trap: 传入值为 null 时，不会使用该默认值
                 default(rawProps) {
                     // default function receives the raw props object as argument
                     return { message: 'hello' }
