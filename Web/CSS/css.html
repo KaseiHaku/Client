@@ -4,7 +4,31 @@
     <title>CSS</title>
     <meta http-equiv="content-Type"content="text/html;charset=utf-8">
     <style>
-        /* 盒子模型及尺寸 */
+        /** 
+         * 盒子模型及尺寸
+         *     尺寸单位:
+         *         https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#numbers_lengths_and_percentages
+         *         绝对长度
+         *         cm       = 厘米
+         *         mm       = 毫米
+         *         Q        = 1/4mm
+         *         in       = 2.54cm = 96px         
+         *         pc       = 1/6in
+         *         pt       = 1/72in
+         *         px       = 1/96in                除了这个其他都用于 print(打印)，而不用于 screen(屏幕)
+         *         
+         *         相对长度
+         *         em, rem                    父元素的 Font Size
+         *         ex                         当前元素 Font 在 x 轴方向上的高度
+         *         ch                         "0" 在当前元素中的宽度
+         *         lh, rlh                    当前元素行高
+         *         vw, svw, lvw, dvw          1% 视窗宽度
+         *         vh, svh, lvh, dvh          1% 视窗高度
+         *         vmin                       
+         *         vmax                       
+         *         vb
+         *         vi
+         * */
         #div5 {
             /* 外边距：上右下左，[%|1px] */
             margin:25px 20px 30px 50px;
