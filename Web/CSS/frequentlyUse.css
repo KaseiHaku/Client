@@ -31,6 +31,12 @@ div {
     overflow: auto;
     
     margin: 0,0,0,0;
+
+
+    border-radius: 10px/30px;         // 在 角 上画一个 横轴=10px 纵轴=30px 的椭圆
+    border-radius: 10px;              // 等价于 10px/10px
+    border-radius: 10%/30%;           // 取元素 10% width 作为 横轴，再取 30% height 作为 纵轴，画一个椭圆
+    
     
     
     bottom: ; /* 设置定位元素下外边距边界与其包含块下边界之间的偏移 */
