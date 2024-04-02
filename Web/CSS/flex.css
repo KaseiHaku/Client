@@ -14,8 +14,8 @@
  */
 .div p {
   
-  flex-grow: 1; /* flex 容器有剩余空间时，各个元素之间扩展所占的比例  */
-  flex-shrink: 1;/* flex 容器空间不足时，各个元素的缩小比例 */
+  flex-grow: 1; /* flex 容器有剩余空间时，各个元素之间扩展所占的比例; 拉伸比例 = 元素的 flex-grow 值 / 所有弹性盒子元素的总 flex-grow 值之和  */
+  flex-shrink: 1;/* flex 容器空间不足时，各个元素的缩小比例; 缩小比例 = 元素的 flex-shrink 值 / 所有弹性盒子元素的总 flex-shrink 值之和 */
   flex-basis: auto; /* 定义当前 flex 元素初始的空间大小， auto 或 100px */
   
   
