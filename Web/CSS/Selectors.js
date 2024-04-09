@@ -17,8 +17,8 @@ function cssSelectors(){
     /* Combination and Multiple Selector 
      * @doc https://developer.mozilla.org/en-US/docs/Web/CSS/Child_combinator
      * */
+    document.querySelectorAll('div , p');               // 选择所有 <div> 和/或 <p> 元素
     document.querySelectorAll('div.clazz');             // 选择所有 <div> 且 class 有 .clazz 的元素
-    document.querySelectorAll('div , p');               // 选择所有 <div> 和 <p> 元素
     document.querySelectorAll('div   p');               // 选择所有 <div> 元素里面的所有 <p> 元素
     document.querySelectorAll('div > p');               // 选择所有 <div> 元素直接子元素为 <p> 的所有元素
     document.querySelectorAll('div ~ p');               // 选择所有 <div> 元素后面的所有兄弟 <p> 元素
