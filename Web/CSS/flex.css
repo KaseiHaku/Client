@@ -14,7 +14,11 @@
   place-content: flex-start space-around;  /* 简写模式 == justify-content + align-content */
 
   /* 子元素的对齐方式配置 */
-  justify-items: safe stretch; /** 主轴上的对齐方式; 配置 flex 容器中 flex 元素的 justify-self 的默认值 */
+  /** 
+   * 主轴上的对齐方式; 配置 flex 容器中 flex 元素的 justify-self 的默认值 
+   * @trap 该属性在 flex 容器中没用，因为 flex 容器主轴上的对齐是通过 justify-content 配置的 
+   * */
+  justify-items: safe stretch; 
   align-items: safe center; /** 交叉轴上的对齐方式; 配置 flex 容器中 flex 元素的 align-self 的默认值 */
   place-items: safe end safe flex-start; /* 简写模式 == justify-items + align-items */
 
@@ -29,7 +33,11 @@
  */
 .div p {
   /* 自身的对齐方式配置 */
-  justify-self: safe stretch; /** 主轴上的对齐方式;  */
+  /** 
+   * 主轴上的对齐方式; 
+   * @trap 该属性在 flex 容器中没用，因为 flex 容器主轴上的对齐是通过 justify-content 配置的 
+   * */
+  justify-self: safe stretch; 
   align-self: safe center;  /** 交叉轴上的对齐方式; */
   place-self: safe flex-start safe self-start; /* 简写模式 == justify-self + align-self */
   
