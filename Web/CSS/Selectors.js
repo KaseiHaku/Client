@@ -45,6 +45,10 @@ function cssSelectors(){
     document.querySelectorAll('div:is(selector)');          // 选择所有符合 selector 的 <div> 元素
     document.querySelectorAll('div:where(selector)');       // 同 :is() 只是 :where() 的 specificity 比 元素选择器 还低
     document.querySelectorAll('div:not(selector)');         // 选择所有不符合 selector 的 <div> 元素    
-    document.querySelectorAll('div:nth-child(4n+1)');       // 选择 div 元素中直接子元素位置符合 4n+1 格式的元素， odd 奇数位；event 偶数位
-    document.querySelectorAll('div:nth-of-type(4n+1)');     // 选择位置符合 4n+1 格式的 <div> 元素， odd 奇数位；event 偶数位
+    // 格式: (odd | even | <An+B> of selector) ; 其中: A=step; B=offset; n=从 0 开始的非负整数; 结果为 n=0,1,2,... 对应的结果
+    document.querySelectorAll('div:nth-child(4n+1 of selector)');           // 选择 div 元素中直接子元素位置符合 4n+1 格式的元素， odd 奇数位；event 偶数位
+    document.querySelectorAll('div:nth-last-child(-n+3 of selector)');      // 选择 div 元素中直接子元素位置符合 4n+1 格式的元素， odd 奇数位；event 偶数位
+    // 格式: (odd | even | <An+B>) ; 其中: A=step; B=offset; n=从 0 开始的非负整数; 结果为 n=0,1,2,... 对应的结果
+    document.querySelectorAll('div:nth-of-type(4n+1)');         // 选择位置符合 4n+1 格式的 <div> 元素， odd 奇数位；event 偶数位
+    document.querySelectorAll('div:nth-last-of-type(-n+3)');    // 选择位置符合 4n+1 格式的 <div> 元素， odd 奇数位；event 偶数位
 }
