@@ -2,17 +2,37 @@
 .div {
   /*  */
   display: flex;  /* inline-flex */
+
+  /* flex 容器配置 */
   flex-direction: column;
   flex-wrap: wrap; /* 超出换列 */
-  /* flex-flow: column wrap  等价于 flex-direction + flex-wrap */
-  justify-content: space-around; /** 调整 flex 容器中 flex 元素在 主轴上 的对齐方式 */
-  align-items: flex-start; /** 调整 flex 容器中 flex 元素在 交叉轴上 的对齐方式 */
+  flex-flow: column wrap; /* 简写模式 == flex-direction + flex-wrap */
+  
+  /* 空间分布 */
+  justify-content: flex-start; /** 调整 flex 容器中 flex 元素在 主轴上 的 空间分布 */
+  align-content: space-around; /** 调整 flex 容器中 flex 元素在 交叉轴上 的 空间分布 */
+  place-content: flex-start space-around;  /* 简写模式 == justify-content + align-content */
+
+  /* 子元素的对齐方式配置 */
+  justify-items: safe stretch; /** 主轴上的对齐方式; 配置 flex 容器中 flex 元素的 justify-self 的默认值 */
+  align-items: safe center; /** 交叉轴上的对齐方式; 配置 flex 容器中 flex 元素的 align-self 的默认值 */
+  place-items: safe end safe flex-start; /* 简写模式 == justify-items + align-items */
+
+  /* 间隔 */
+  row-gap: 10%;   /* 行间隔，10% 元素高度 */
+  column-gap: calc(16px + 5%); /* 列间隔, 最小 16px + 5% 元素宽度 */
+  gat: 6px 10px;   /* 简写模式 == row-gap + column-gap */
 }
 
 /** 定义 flex 元素本身
  * min-width/max-width/min-content > flex-grow/flex-shrink > flex-basis/width/box-sizing
  */
 .div p {
+  /* 自身的对齐方式配置 */
+  justify-self: safe stretch; /** 主轴上的对齐方式;  */
+  align-self: safe center;  /** 交叉轴上的对齐方式; */
+  place-self: safe flex-start safe self-start; /* 简写模式 == justify-self + align-self */
+  
   
   flex-grow: 1; /* flex 容器有剩余空间时，各个元素之间扩展所占的比例; 拉伸比例 = 元素的 flex-grow 值 / 所有弹性盒子元素的总 flex-grow 值之和  */
   flex-shrink: 1;/* flex 容器空间不足时，各个元素的缩小比例; 缩小比例 = 元素的 flex-shrink 值 / 所有弹性盒子元素的总 flex-shrink 值之和 */
