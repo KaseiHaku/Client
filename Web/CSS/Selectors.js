@@ -38,7 +38,8 @@ function cssSelectors(){
      * */
     document.querySelectorAll(':root');                     // 相当于 document.querySelectorAll('html');
     document.querySelectorAll(':scope > p');                // :scope 代表当前执行 querySelectorAll() 方法的元素
-    document.querySelectorAll('div:is(selector)');          // 选择所有符合 selector 的 <dib> 元素
+    document.querySelectorAll('div:has(selector)');         // 选择所有包含 符合 selector 的元素 的 <div> 元素
+    document.querySelectorAll('div:is(selector)');          // 选择所有符合 selector 的 <div> 元素
     document.querySelectorAll('div:not(selector)');         // 选择所有不符合 selector 的 <div> 元素    
     document.querySelectorAll('div:nth-child(4n+1)');       // 选择 div 元素中直接子元素位置符合 4n+1 格式的元素， odd 奇数位；event 偶数位
     document.querySelectorAll('div:nth-of-type(4n+1)');     // 选择位置符合 4n+1 格式的 <div> 元素， odd 奇数位；event 偶数位
