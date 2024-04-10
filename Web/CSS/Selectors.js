@@ -1,4 +1,10 @@
 /**
+ * universal selector 
+ *    < element selector == pseudo-element selector 
+ *    < class selector   == pseudo-classes selector  == attribute selector        
+ *    < id selector
+ * 当 specificity 相同时，后定义的生效
+ *
  * @doc {选择器 specificity(优先级) } https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance#specificity
  * */
 function cssSelectors(){
