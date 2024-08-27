@@ -9,7 +9,13 @@
 		    height: 200px;	
 		    background-color:#9933ff;
         }
-        
+
+        /**
+         * 失效原因:
+         *     - 设置时必须指定 top, right, bottom 或 left 四个阈值其中之一，才能生效
+         *     - 父元素高度没子元素高；通常为父元素设置了 height 属性，例如: height: 100%; 导致失效
+         *     - 父元素设置了 overflow 属性，也会导致失效
+         * */
         #sticky {
             position: sticky; 
             top: 0; /* 当元素离开屏幕时，采用 fixed 定位的位置 */
