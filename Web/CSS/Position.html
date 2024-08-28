@@ -4,6 +4,15 @@
     <title>CSS Position</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <style>
+	    /**
+         * https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning
+         * 一共有: 
+         *     static            默认值
+         *     relative          相对于 static 进行偏移  
+         *     absolute          相对于最近的 非 static 祖先元素进行定位；如果没有，则相对与 viewport 进行定位
+         *     fixed             直接相对于 viewport 进行定位
+         *     sticky            滚动超出 viewport 同 fixed, 否则同 relative
+	     * */
         .position {
             width: 200px;
 		    height: 200px;	
