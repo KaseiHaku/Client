@@ -14,7 +14,7 @@
  *
  * 特殊选择器:
  *     &                 嵌套
- *     namespace|p       命名空间选择器
+ *     namespace|div     命名空间选择器
  * */
 function cssSelectors(){
     /* Simple Selector */
