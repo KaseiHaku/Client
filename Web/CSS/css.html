@@ -173,11 +173,16 @@
             vertical-align:text-top;                /* [baseline|sub|inherit|super|top|text-top|middle|bottom|text-bottom|length|%] */
 
 
-            white-space:nowrap;                        /* [normal|pre|nowrap|pre-wrap|pre-line|inherit] */
+            /** 自动换行相关
+             * white-space  = white-space-collapse + text-wrap
+             * text-wrap    = text-wrap-mode + text-wrap-style
+             * */
+            white-space: pre-wrap;                      /* [normal|pre|nowrap|pre-wrap|pre-line|inherit] */
+            overflow-wrap: break-word;                  /* 替代原来的 word-wrap 属性; 允许对长的不可分割的单词进行分割并换行到下一行。 */
+            word-break: break-all;                      /* 规定非中日韩文本的换行的断点规则 */
 
-            word-spacing:30px;                        /* [normal|length|inherit] */
-            word-break:break-all;                    /* 规定非中日韩文本的换行规则 */
-            word-wrap:break-word;                    /* 允许对长的不可分割的单词进行分割并换行到下一行。 */
+            word-spacing: 30px;                        /* [normal|length|inherit] */
+            
         }
 
         #img1
