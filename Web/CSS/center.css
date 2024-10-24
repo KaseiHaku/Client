@@ -1,0 +1,102 @@
+/**  CSS 垂直居中的方式 */
+
+
+/** 
+ * 单行文本:
+ *   设置父容器 height 和 line-height 为相同值即可
+ * */
+div {
+  height: 10px;
+  line-height: 10px;
+}
+
+/** 
+ * 多行文本 && 父容器高度不固定:
+ *   设置父容器 padding-top 和 padding-bottom 为相同值即可
+ * */
+div {
+  height: 10px;
+  padding: 10px 0;
+}
+
+/** 
+ * 多行文本 && 父容器高度不固定:
+ *   设置父容器 padding-top 和 padding-bottom 为相同值即可
+ * */
+div {
+  display: table-cell;
+  vertical-align: middle; /* 该属性只对  inline, inline-block or table-cell box 有效*/
+}
+
+/** 
+ * 子 div 大小固定:
+ *   使用偏移
+ * */
+div {
+  position: relative; 
+  
+  > div {
+    width: 100px;
+    height: 100px;
+    
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -50px;
+    margin-top: -50px;
+  }
+}
+
+/** 
+ * 子 div 大小固定:
+ *   使用 CSS3 偏移
+ * */
+div {
+  position: relative; 
+  
+  > div {
+    width: 100px;
+    height: 100px;
+    
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transfrom: translateX(-50%) translateY(-50%);
+  }
+}
+
+
+/** 
+ * 子 div 大小固定:
+ *   使用 CSS3 偏移
+ * */
+div {
+  position: relative; 
+  
+  > div {
+    width: 100px;
+    height: 100px;
+
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+
+/** 
+ * flex:
+ *   使用 CSS3 偏移
+ * */
+div {
+  display: flex;
+  align-items: center;
+  
+  > div {
+    
+  }
+}
+
