@@ -61,6 +61,15 @@
             min-width:;
         }
 
+        /**
+         * Inline 中的对齐方式
+         * @ref { CSS 中关于对齐方式的文档 block/inline } https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_alignment
+         * @ref { W3C 中关于 inline 布局方面的描述 } https://www.w3.org/TR/css-inline-3/
+         * */
+        #inlinePosition {
+            dominant-baseline: text-bottom;        /* inline 中关于 baseline 的配置，不同语言有不同的 baseline */
+            vertical-align: bottom;    /* inline 垂直对齐方式 */
+        }
 
         /* 定位 */
         #parent {
