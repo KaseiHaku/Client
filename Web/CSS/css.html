@@ -19,16 +19,20 @@
          *         px       = 1/96in                除了这个其他都用于 print(打印)，而不用于 screen(屏幕)
          *         
          *         相对长度
-         *         em, rem                    相对于 父元素，root元素(<html>) 的 Font Size
-         *         ex                         当前元素 Font 在 x 轴方向上的高度
-         *         ch                         字符 "0" 在当前元素中的宽度
-         *         lh, rlh                    相对于 当前元素，root元素  的行高
+         *         cap, rcap                  相对于 大写字母 在当前元素中的高度
+         *         em, rem                    相对于 父元素，root元素(<html>) 的 font-size 属性的值
+         *         ex, rex                    相对于 字符 'x' 在当前元素中的高度
+         *         ch, rch                    相对于 字符 '0' 在当前元素中的宽度
+         *         ic, ric                    相对于 字符 '水' 在当前元素中的宽度
+         *         lh, rlh                    相对于 当前元素，root 元素 的 line-heigh 属性的值
+         *
+         *         相对于 viewport 的长度: 有四种不同的大小: small, large, dynamic, default
          *         vw, svw, lvw, dvw          1% 视窗宽度
          *         vh, svh, lvh, dvh          1% 视窗高度
          *         vmin                       
          *         vmax                       
-         *         vb, svb, lvb, dvb          表示初始包含块的大小在根元素的块轴方向上的百分比
-         *         vi, svi, lvi, dvi          表示初始包含块的大小在根元素的内联轴方向上的百分比
+         *         vb, svb, lvb, dvb          表示 初始包含块 的大小在 根元素 的 块轴(block axis) 方向上的百分比; 可以由 writing-mode, direction, text-orientation 属性控制
+         *         vi, svi, lvi, dvi          表示 初始包含块 的大小在 根元素 的 内联轴(inline axis) 方向上的百分比; 可以由 writing-mode, direction, text-orientation 属性控制
          * */
         #div5 {
             /* 外边距：上右下左，[%|1px] */
