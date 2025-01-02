@@ -25,7 +25,7 @@
   /* 间隔 */
   row-gap: 10%;   /* 行间隔，10% 当前 flex 容器的高度 */
   column-gap: calc(16px + 5%); /* 列间隔, 最小 16px + 5% 当前 flex 容器的宽度 */
-  gat: 6px 10px;   /* 简写模式 == row-gap + column-gap */
+  gap: 6px 10px;   /* 简写模式 == row-gap + column-gap */
 }
 
 /** 定义 flex 元素本身
