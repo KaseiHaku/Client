@@ -54,3 +54,10 @@ div {
     visibility: ; /* 规定元素是否可见 */
     z-index: ; /* 设置元素的堆叠顺序 */
 }
+
+/* 文字超出容器，省略显示 */
+.kh-ellipsis {
+    white-space: nowrap;      /* 禁止换行 */
+    overflow: hidden;         /* 隐藏溢出内容 */
+    text-overflow: ellipsis;  /* 显示省略号 */
+}
