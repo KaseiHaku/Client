@@ -67,8 +67,8 @@ div {
 
 
 /** 
- * 子 div 大小固定:
- *   使用 CSS3 偏移
+ * margin: auto 方法
+ * 子 div 需要固定高度
  * */
 div {
   position: relative; 
@@ -86,10 +86,21 @@ div {
   }
 }
 
+/** 
+ * table
+ * */
+div {
+  display: table;
+  
+  > div {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
 
 /** 
- * flex:
- *   使用 CSS3 偏移
+ * flex
  * */
 div {
   display: flex;
@@ -99,4 +110,32 @@ div {
     
   }
 }
+
+
+/** 
+ * grid
+ * */
+div {
+  display: grid;
+  align-items: center:
+  justify-items: center;
+  place-items: center; /* 以上两个属性的缩写 同时水平和垂直居中 */
+}
+
+/** 
+ * 伪元素法
+ * */
+.container::before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.container {
+  .child {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
 
