@@ -9,8 +9,24 @@ html, body {
 
 
 textarea, td {
+    /* normal: 默认值，空白符会被合并，文本会自动换行。  
+     * pre: 保留空白符和换行符，文本按原样显示; 
+     * */
+    white-space: pre; 
+
+    /* 控制单词的换行方式。
+     * normal：默认值，按照语言的规则换行。
+     * break-all：在任意字符间换行，适用于长单词。
+     * keep-all：不允许在单词内部换行，通常用于中文文本。
+     * */
     word-break: break-all; /* 设置换行规则 */
-    word-wrap: break-word; /* 允许长单词换行 */   
+
+    /* 控制长单词如何换行
+     * break-word：在必要时强制换行，适用于长单词或 URL。
+     * */
+    word-wrap: break-word; /* @deprecated 非标准 CSS 属性，建议使用 CSS 标准属性 overflow-wrap  替代 */  
+    overflow-wrap: break-word; /* 允许长单词换行 */   
+     
 }
 
 table {
