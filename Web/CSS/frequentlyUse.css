@@ -76,4 +76,6 @@ div {
     white-space: nowrap;      /* 禁止换行 */
     overflow: hidden;         /* 隐藏溢出内容 */
     text-overflow: ellipsis;  /* 显示省略号 */
+    max-width: 100%;          /* 必须有明确的 width， ellipsis 才能生效 */
+    display: inline-block;    /* 必须是 块级元素， ellipsis 才能生效 */
 }
