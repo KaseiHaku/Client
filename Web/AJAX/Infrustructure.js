@@ -64,41 +64,53 @@ function nativeAjaxGet(url, async){
 /** todo 原生 AJAX 属性 方法 事件介绍
  * */
 function nativeAjax(){
+    /** 以下是 xhr 对象使用步骤 */
     let xhr = new XMLHttpRequest();
+    xhr.open("PUT", url, true);
 
     /** properties */
     xhr.responseType = 'json';  // 设置返回值类型，如果返回值不符合格式，那么 xhr.response 的值为 null
     xhr.timeout = 60*1000;
     xhr.withCredentials = false; // 跨域请求时使用
-    xhr.onreadystatechange = function(){};
-
-    // readonly
-    xhr.readyState;
-    xhr.response;
-    xhr.status;
-    xhr.statusText;
-    xhr.upload; // 返回一个 XMLHttpRequestUpload 实例，这个实例是用来表示 ajax 上传的进度，而 ajax 下载的进度在 XMLHttpRequest 实例本身中
+    
+    xhr.setRequestHeader("Content-Type", "application/octet-stream");
+    // xhr.overrideMimeType("application/json"); // 将 response 类型强制修改为 json 类型
 
     /** event */
+    xhr.addEventListener("abort", (event) => { });
+    xhr.addEventListener("error", (event) => { });
+    xhr.addEventListener("loadstart", (event) => { });
+    xhr.addEventListener("load", (event) => { });
+    xhr.addEventListener("loadend", (event) => { });
+    xhr.addEventListener("progress", (event) => { });
+    xhr.addEventListener("timeout", (event) => { });
+    xhr.addEventListener("readystatechange", (event) => {
+        // readonly 属性
+        xhr.readyState;
+        xhr.response;
+        xhr.status;
+        xhr.statusText;
+        xhr.upload; // 返回一个 XMLHttpRequestUpload 实例，这个实例是用来表示 ajax 上传的进度，而 ajax 下载的进度在 XMLHttpRequest 实例本身中
 
-    xhr.addEventListener('loadstart', function(){}, false);
-    xhr.addEventListener('load', function(){}, false);
-    xhr.addEventListener('loadend', function(){}, false);
-    xhr.addEventListener('progress', function(){}, false);
-    xhr.addEventListener('error', function(){}, false);
-    xhr.addEventListener('abort', function(){}, false);
-    xhr.addEventListener('timeout', function(){}, false);
+        // 其他逻辑
+        console.log(xhr.readyState, event);
+        if (xhr.readyState === XMLHttpRequest.OPENED) {
+    
+        }
+      });
+    xhr.send(file);
 
-    /** method */
+    
+
+    /** 以下可用方法罗列 */
     xhr.abort();
     xhr.getAllResponseHeaders();
     xhr.getResponseHeader("headerName");
-    xhr.open();
+    xhr.open("PUT", url, true);
     xhr.overrideMimeType();
     xhr.send();
     xhr.setRequestHeader("headerName", "headerValue");
 }
-
 
 
 
