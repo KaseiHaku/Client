@@ -79,3 +79,28 @@ div {
     max-width: 100%;          /* 要求父容器必须有明确的 width，子容器的 ellipsis 才能生效 */
     display: inline-block;    /* 必须是 块级元素， ellipsis 才能生效 */
 }
+
+/* 字体相关配置 */
+/* 导入自定义字体 */
+@font-face {
+  font-family: "Miku";
+  src:
+    local("Miku"),
+    url("Miku.ttf") format("truetype") tech(color-colrv0),
+    url("Miku.otf") format("opentype"),
+    url("Miku.woff") format("woff")
+    url("Miku.woff2") format("woff2");
+}
+.font-sample {
+    font-style: normal;    /* [normal, italic, oblique, oblique -90deg]*/
+    font-variant: emoji;   /* 合并属性 */
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 3;
+    font-stretch: 200%;
+    font-family: "Gill Sans", sans-serif;;
+    font: <font-style> <font-variant> <font-weight> <font-size>/<line-height> <font-stretch> <font-family>;
+}
+
+
+
