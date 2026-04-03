@@ -120,9 +120,13 @@
 
             /* 以下属性必须先设置 background-image */
             background-image:;            /* [url('URL')|none|inherit] */
-            background-position:;         /* [left top|left center|left bottom|right center|center bottom|x% y%|xpos ypos|inherit] */
-            background-repeat:;         /* [repeat-x|no-repeat|repeat|inherit]*/
-            background-attachment:;        /* [fixed|scroll|inherit] */
+            background-origin: border-box;    /* [border-box|padding-box|content-box] */
+            background-position: center top 30px;         /* center 可以看成两个值，例如此处 center=left 50%  */
+            background-position: right 35% bottom 45%;         /* [left top|left center|left bottom|right center|center bottom|x% y%|xpos ypos|inherit] */
+            background-repeat: no-repeat;         /* [repeat-x|no-repeat|repeat|inherit]*/
+            background-attachment: scroll;        /* [fixed|scroll|inherit] */
+            background-size: 100% 100%;
+            background-clip: text;                /* [border-box|padding-box|content-box|text|border-area] */
 
         }
 
