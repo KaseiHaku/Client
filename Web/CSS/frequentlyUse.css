@@ -80,6 +80,17 @@ div {
     max-width: 100%;          /* 要求父容器必须有明确的 width，子容器的 ellipsis 才能生效 */
     display: inline-block;    /* 必须是 块级元素， ellipsis 才能生效 */
 }
+.kh-ellipsis-n-line {
+    display: -webkit-box;                 /* 必须是 块级元素， ellipsis 才能生效 */
+    -webkit-line-clamp: 8;                /* 最多8行 */
+    -webkit-box-orient: vertical;         /* 设置方向 */
+    overflow: hidden;                     /* 隐藏溢出内容 */
+    text-overflow: ellipsis;              /* 显示省略号 */
+
+    /* 可选：根据行高固定高度 */
+    max-height: 8em; 
+    line-height: 1.2;
+}
 
 /* 字体相关配置 */
 /* 导入自定义字体 */
