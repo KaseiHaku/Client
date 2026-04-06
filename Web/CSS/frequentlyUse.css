@@ -87,7 +87,7 @@ div {
     overflow: hidden;                     /* 隐藏溢出内容 */
     text-overflow: ellipsis;              /* 显示省略号 */
 
-    /* 可选：根据行高固定高度 */
+    /* 可选：根据行高固定高度，防止不支持 -webkit-box 属性 */
     max-height: 8em; 
     line-height: 1.2;
 }
